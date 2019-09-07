@@ -11,11 +11,6 @@ public class SceneSwitcher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Started up");
-        Debug.Log(SceneManager.sceneCount);
-      
-
-
     }
 
     // Update is called once per frame
