@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class SceneSwitcher : MonoBehaviour
 {
+    public List<GameObject> ToggleOff;
+    public List<GameObject> ToggleOn;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,19 +24,28 @@ public class SceneSwitcher : MonoBehaviour
         
     }
 
-    public void SwitchToManagement()
+    public void Toggle()
     {
-
-        Debug.Log("switching to management");
-        SceneManager.LoadSceneAsync("BaseManagement");
-
-        Debug.Log(SceneManager.sceneCount);
+        foreach(GameObject obby in ToggleOff)
+        {
+            obby.SetActive(false);
+        }
+        foreach (GameObject obby in ToggleOn)
+        {
+            obby.SetActive(true);
+        }
     }
 
-    public void SwitchToCombat()
+    public void ReverseToggle()
     {
-        SceneManager.LoadSceneAsync("CombatScene");
-        Debug.Log("switching to combat");
+        foreach (GameObject obby in ToggleOff)
+        {
+            obby.SetActive(true);
+        }
+        foreach (GameObject obby in ToggleOn)
+        {
+            obby.SetActive(false);
+        }
     }
 
 }
