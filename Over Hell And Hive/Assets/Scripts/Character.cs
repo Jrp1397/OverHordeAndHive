@@ -7,6 +7,7 @@ public class Character : MonoBehaviour
     //3 main stats, weapon type and tier, armour type and teir, class type and tier
     public int UniqueID, Str, Wis, Cha, OffType, OffTier, DefType, DefTier, SkillType, SkillTier;
     public int Health, Stamina, MP;
+    public string DisplayName;
 
     // Start is called before the first frame update
     void Start()

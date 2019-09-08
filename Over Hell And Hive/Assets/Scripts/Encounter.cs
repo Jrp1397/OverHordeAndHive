@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Encounter : MonoBehaviour
 {
@@ -9,8 +10,10 @@ public class Encounter : MonoBehaviour
     [SerializeField] private BaseManager HomeBase;
     public GameObject FieldTilePrefab;
     private GameObject[,] BattleField = new GameObject [4,12];
+    public int SelectedFoeIndex = 0, SelectedFriendIndex = 0;
     [SerializeField] private List<int> Seed;
     public int DangerSeedModifer;
+    [SerializeField] private Text FoeName, FriendName;
 
 
     // Start is called before the first frame update
@@ -104,4 +107,36 @@ public class Encounter : MonoBehaviour
             tempPos.y += 1.05f;
         }
     }
+
+    public void CycleSelFoe(bool Forward)
+    {
+        if (Forward)
+        {
+            SelectedFoeIndex++;
+            if (SelectedFoeIndex > Foes.Count-1) { SelectedFoeIndex = 0; }
+        }
+        else
+        {
+            SelectedFoeIndex--;
+            if (SelectedFoeIndex < 0) { SelectedFoeIndex = Foes.Count-1; }
+        }
+
+        FoeName.text = Foes[SelectedFoeIndex].Title;
+    }
+
+    public void CycleSelFriend(bool Forward)
+    {
+        if (Forward)
+        {
+            SelectedFriendIndex++;
+            if (SelectedFriendIndex > Friends.Count-1) { SelectedFriendIndex = 0; }
+        }
+        else
+        {
+            SelectedFriendIndex--;
+            if (SelectedFriendIndex < 0) { SelectedFriendIndex = Friends.Count-1; }
+        }
+        FriendName.text = Friends[SelectedFriendIndex].DisplayName;
+    }
+
 }
