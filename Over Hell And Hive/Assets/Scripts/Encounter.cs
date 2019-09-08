@@ -5,12 +5,14 @@ using UnityEngine;
 public class Encounter : MonoBehaviour
 {
     [SerializeField] private List<Character> Combatants;
-    [SerializeField] private BaseManager HomeBase;  
+    [SerializeField] private BaseManager HomeBase;
+    public GameObject FieldTilePrefab;
+    private GameObject[,] BattleField = new GameObject [4,12];
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        GenerateField();
     }
 
     // Update is called once per frame
@@ -63,6 +65,39 @@ public class Encounter : MonoBehaviour
         foreach (Character chara in Combatants)
         {
             chara.PingStrength();
+        }
+    }
+
+   void OnDisable()
+    {
+        foreach (GameObject obby in BattleField)
+        {
+            obby.SetActive(false);
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (BattleField[0,0] == null) { return; }
+        foreach (GameObject obby in BattleField)
+        {
+           
+            obby.SetActive(true);
+        }
+    }
+
+    public void GenerateField()
+    {
+        Vector3 tempPos = new Vector3(-6.275f, -1.05f, 0);
+        for (int i = 0; i < 4; i++)
+        {
+            tempPos.x = -5.775f;
+            for (int j = 0; j < 12; j++)
+            {
+                BattleField[i,j] = Instantiate(FieldTilePrefab, tempPos, Quaternion.identity, gameObject.transform);                
+                tempPos.x += 1.05f;
+            }
+            tempPos.y += 1.05f;
         }
     }
 }
