@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Encounter : MonoBehaviour
 {
-    [SerializeField] private List<Character> Combatants;
+    [SerializeField] private List<Character> Friends;
+    [SerializeField] private List<Monster> Foes;
     [SerializeField] private BaseManager HomeBase;
     public GameObject FieldTilePrefab;
     private GameObject[,] BattleField = new GameObject [4,12];
+    [SerializeField] private List<int> Seed;
+    public int DangerSeedModifer;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +28,12 @@ public class Encounter : MonoBehaviour
     public void GiveCharacterById(int incID)
     {
         Character temp = null;
-        for (int i = Combatants.Count - 1; i >= 0; i--)
+        for (int i = Friends.Count - 1; i >= 0; i--)
         {
-            if (Combatants[i].UniqueID == incID)
+            if (Friends[i].UniqueID == incID)
             {
-                temp = Combatants[i];
-                Combatants.RemoveAt(i);
+                temp = Friends[i];
+                Friends.RemoveAt(i);
                 break;
             }
         }
@@ -39,22 +43,22 @@ public class Encounter : MonoBehaviour
     public void TakeCharacter(Character incChar)
     {
         if (incChar == null) { return; }
-        for (int i = Combatants.Count - 1; i >= 0; i--)//if a character is being updated, replace the old character
+        for (int i = Friends.Count - 1; i >= 0; i--)//if a character is being updated, replace the old character
         {
-            if (Combatants[i].UniqueID == incChar.UniqueID)
+            if (Friends[i].UniqueID == incChar.UniqueID)
             {
-                Combatants[i] = incChar;
+                Friends[i] = incChar;
                 return;
             }
         }//otherwise, its a new version, add it to the list.
 
-        Combatants.Add(incChar);
+        Friends.Add(incChar);
 
     }
 
     public void TickCharacters()
     {
-        foreach(Character chara in Combatants)
+        foreach(Character chara in Friends)
         {
             chara.AlterStats();
         }
@@ -62,7 +66,7 @@ public class Encounter : MonoBehaviour
 
     public void DisplayCharacters()
     {
-        foreach (Character chara in Combatants)
+        foreach (Character chara in Friends)
         {
             chara.PingStrength();
         }

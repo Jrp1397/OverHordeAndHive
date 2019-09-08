@@ -8,6 +8,7 @@ public class SceneSwitcher : MonoBehaviour
 {
     public List<GameObject> ToggleOff;
     public List<GameObject> ToggleOn;
+    private bool Toggled = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,25 @@ public class SceneSwitcher : MonoBehaviour
         
     }
 
-    public void Toggle()
+    public void BiDirectionalToggle()//switches to on or off.
+    {
+       
+       foreach (GameObject obby in ToggleOff)
+       {
+           obby.SetActive(!Toggled);
+       }
+       foreach (GameObject obby in ToggleOn)
+       {
+           obby.SetActive(Toggled);
+       }
+       Toggled = !Toggled;
+       
+    }
+
+
+
+
+    public void Toggle()//switches off-list to off, and on-list to on
     {
         foreach(GameObject obby in ToggleOff)
         {
@@ -31,7 +50,7 @@ public class SceneSwitcher : MonoBehaviour
         }
     }
 
-    public void ReverseToggle()
+    public void ReverseToggle()// Switches off-list back on, and On-list to off.
     {
         foreach (GameObject obby in ToggleOff)
         {
