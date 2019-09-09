@@ -865,6 +865,11 @@ GameObject:
   m_Component:
   - component: {fileID: 255530816}
   - component: {fileID: 255530815}
+  - component: {fileID: 255530821}
+  - component: {fileID: 255530820}
+  - component: {fileID: 255530819}
+  - component: {fileID: 255530818}
+  - component: {fileID: 255530817}
   m_Layer: 0
   m_Name: EncounterObject
   m_TagString: Untagged
@@ -885,12 +890,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Friends: []
-  Foes: []
+  Foes:
+  - {fileID: 255530821}
+  - {fileID: 255530820}
+  - {fileID: 255530819}
+  - {fileID: 255530818}
+  - {fileID: 255530817}
   HomeBase: {fileID: 980925424}
   FieldTilePrefab: {fileID: 5677995056926713367, guid: 61625e9f37b62bf469ff6449a09c2a7e,
     type: 3}
+  SelectedFoeIndex: 0
+  SelectedFriendIndex: 0
   Seed: 
   DangerSeedModifer: 0
+  FoeName: {fileID: 1636216964}
+  FriendName: {fileID: 1219727154}
 --- !u!4 &255530816
 Transform:
   m_ObjectHideFlags: 0
@@ -905,6 +919,136 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &255530817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255530814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fdc983d990a25c4ba96f3900345c3ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UniqueID: 0
+  Str: 0
+  Wis: 0
+  Cha: 0
+  OffType: 0
+  OffTier: 0
+  DefType: 0
+  DefTier: 0
+  SkillType: 0
+  SkillTier: 0
+  Health: 0
+  Stamina: 0
+  MP: 0
+  Title: One Small Boi
+--- !u!114 &255530818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255530814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fdc983d990a25c4ba96f3900345c3ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UniqueID: 0
+  Str: 0
+  Wis: 0
+  Cha: 0
+  OffType: 0
+  OffTier: 0
+  DefType: 0
+  DefTier: 0
+  SkillType: 0
+  SkillTier: 0
+  Health: 0
+  Stamina: 0
+  MP: 0
+  Title: One Big Boi
+--- !u!114 &255530819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255530814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fdc983d990a25c4ba96f3900345c3ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UniqueID: 0
+  Str: 0
+  Wis: 0
+  Cha: 0
+  OffType: 0
+  OffTier: 0
+  DefType: 0
+  DefTier: 0
+  SkillType: 0
+  SkillTier: 0
+  Health: 0
+  Stamina: 0
+  MP: 0
+  Title: One Hungry Boi
+--- !u!114 &255530820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255530814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fdc983d990a25c4ba96f3900345c3ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UniqueID: 0
+  Str: 0
+  Wis: 0
+  Cha: 0
+  OffType: 0
+  OffTier: 0
+  DefType: 0
+  DefTier: 0
+  SkillType: 0
+  SkillTier: 0
+  Health: 0
+  Stamina: 0
+  MP: 0
+  Title: One Scaly Boi
+--- !u!114 &255530821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255530814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fdc983d990a25c4ba96f3900345c3ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UniqueID: 0
+  Str: 0
+  Wis: 0
+  Cha: 0
+  OffType: 0
+  OffTier: 0
+  DefType: 0
+  DefTier: 0
+  SkillType: 0
+  SkillTier: 0
+  Health: 0
+  Stamina: 0
+  MP: 0
+  Title: One Soft Boi
 --- !u!1 &269687636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,7 +1387,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 329666037}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 255530815}
+        m_MethodName: CycleSelFriend
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &329666037
@@ -1363,7 +1518,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 372345412}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 255530815}
+        m_MethodName: CycleSelFriend
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &372345412
@@ -1566,7 +1732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &397840935
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1885,7 +2051,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 496784926}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 255530815}
+        m_MethodName: CycleSelFoe
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &496784926
@@ -2084,7 +2261,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 559921584}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 255530815}
+        m_MethodName: CycleSelFoe
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &559921584
@@ -2720,7 +2908,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &931236921
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2798,7 +2986,7 @@ MonoBehaviour:
   Health: 0
   Stamina: 0
   MP: 0
-  DisplayName: 
+  DisplayName: Von Hohen
 --- !u!114 &980925420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2824,7 +3012,7 @@ MonoBehaviour:
   Health: 0
   Stamina: 0
   MP: 0
-  DisplayName: 
+  DisplayName: Bombastus
 --- !u!4 &980925421
 Transform:
   m_ObjectHideFlags: 0
@@ -2864,7 +3052,7 @@ MonoBehaviour:
   Health: 0
   Stamina: 0
   MP: 0
-  DisplayName: 
+  DisplayName: Theophrastus
 --- !u!114 &980925423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2890,7 +3078,7 @@ MonoBehaviour:
   Health: 0
   Stamina: 0
   MP: 0
-  DisplayName: 
+  DisplayName: Number 23
 --- !u!114 &980925424
 MonoBehaviour:
   m_ObjectHideFlags: 0
