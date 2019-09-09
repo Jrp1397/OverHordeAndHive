@@ -20,6 +20,10 @@ public class Encounter : MonoBehaviour
     void Start()
     {
         GenerateField();
+        foreach (GameObject obby in BattleField)
+        {
+            obby.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -89,6 +93,14 @@ public class Encounter : MonoBehaviour
         foreach (GameObject obby in BattleField)
         {
            
+            obby.SetActive(true);
+        }
+    }
+
+    public void EnableMap()
+    {
+        foreach (GameObject obby in BattleField)
+        {
             obby.SetActive(true);
         }
     }
