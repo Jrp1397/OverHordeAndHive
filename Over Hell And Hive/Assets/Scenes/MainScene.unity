@@ -2548,11 +2548,12 @@ MonoBehaviour:
   OffTier: 0
   DefType: 0
   DefTier: 0
-  SkillType: 0
-  SkillTier: 0
+  StanceType: 0
+  MaxHealth: 0
   Health: 0
   Stamina: 0
   MP: 0
+  MaxMP: 0
   DisplayName: Von Hohen
 --- !u!114 &980925420
 MonoBehaviour:
@@ -2574,11 +2575,12 @@ MonoBehaviour:
   OffTier: 0
   DefType: 0
   DefTier: 0
-  SkillType: 0
-  SkillTier: 0
+  StanceType: 0
+  MaxHealth: 0
   Health: 0
   Stamina: 0
   MP: 0
+  MaxMP: 0
   DisplayName: Bombastus
 --- !u!4 &980925421
 Transform:
@@ -2614,11 +2616,12 @@ MonoBehaviour:
   OffTier: 0
   DefType: 0
   DefTier: 0
-  SkillType: 0
-  SkillTier: 0
+  StanceType: 0
+  MaxHealth: 0
   Health: 0
   Stamina: 0
   MP: 0
+  MaxMP: 0
   DisplayName: Theophrastus
 --- !u!114 &980925423
 MonoBehaviour:
@@ -2640,11 +2643,12 @@ MonoBehaviour:
   OffTier: 1
   DefType: 0
   DefTier: 1
-  SkillType: 1
-  SkillTier: 1
+  StanceType: 0
+  MaxHealth: 5
   Health: 5
   Stamina: 5
   MP: 5
+  MaxMP: 0
   DisplayName: Number 23
 --- !u!114 &980925424
 MonoBehaviour:
@@ -3268,27 +3272,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1188890796}
-        m_MethodName: Toggle
-        m_Mode: 1
+      - m_Target: {fileID: 980925424}
+        m_MethodName: GenerateAttackDefenceForSelected
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 255530815}
-        m_MethodName: EnableMap
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
