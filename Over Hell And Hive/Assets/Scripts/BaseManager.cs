@@ -103,5 +103,24 @@ public class BaseManager : MonoBehaviour
         }
     }
 
+    public void GenerateAttackDefenceForSelected(bool attDef)
+    {
+        for (int i = Combatants.Count - 1; i >= 0; i--)
+        {
+            if (Combatants[i].UniqueID == selectedChar)//if this is the selected Character
+            {
+                if (attDef)
+                {
+                    Combatants[i].GenerateAttack();
+                }
+                else
+                {
+                    Combatants[i].GenerateDefence();
+                }
+                return;
+            }
+        }
+        ExplorationPhase.GenerateAttackFriendly(selectedChar);
+    }
 
 }

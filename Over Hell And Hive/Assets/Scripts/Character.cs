@@ -5,8 +5,8 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     //3 main stats, weapon type and tier, armour type and teir, class type and tier
-    public int UniqueID, Str, Wis, Cha, OffType, OffTier, DefType, DefTier, SkillType, SkillTier;
-    public int Health, Stamina, MP;
+    public int UniqueID, Str, Wis, Cha, OffType, OffTier, DefType, DefTier, StanceType;
+    public int MaxHealth, Health, Stamina, MP, MaxMP, Speed;
     public string DisplayName;
 
     // Start is called before the first frame update
@@ -29,5 +29,19 @@ public class Character : MonoBehaviour
     {
         Debug.Log("str of " +UniqueID +" = " + Str);
 
+    }
+
+    public float GenerateAttack()
+    {
+        float output = ((float)Str * (((float)StanceType / 2.0f) + .5f) + (float)OffTier) * (.75f +(.5f * ((float)Stamina/MaxHealth)));
+        Debug.Log(output);
+        return output;
+    }
+
+    public float GenerateDefence()
+    {
+        float output = ((float)Str * ((1.5f - (float)StanceType / 2.0f) ) + (float)DefTier) * (.75f + (.5f * ((float)Stamina / MaxHealth)));
+        Debug.Log(output);
+        return output;
     }
 }

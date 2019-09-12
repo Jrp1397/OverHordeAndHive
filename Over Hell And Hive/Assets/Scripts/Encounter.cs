@@ -151,4 +151,15 @@ public class Encounter : MonoBehaviour
         FriendName.text = Friends[SelectedFriendIndex].DisplayName;
     }
 
+    public void GenerateAttackFriendly(int incID)
+    {
+        foreach(Character chara in Friends)
+        {
+            if (chara.UniqueID == incID)
+            {
+                chara.GenerateAttack();
+            }
+        }
+    }
+
 }
