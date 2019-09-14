@@ -2554,6 +2554,7 @@ MonoBehaviour:
   Stamina: 0
   MP: 0
   MaxMP: 0
+  Speed: 0
   DisplayName: Von Hohen
 --- !u!114 &980925420
 MonoBehaviour:
@@ -2581,6 +2582,7 @@ MonoBehaviour:
   Stamina: 0
   MP: 0
   MaxMP: 0
+  Speed: 0
   DisplayName: Bombastus
 --- !u!4 &980925421
 Transform:
@@ -2622,6 +2624,7 @@ MonoBehaviour:
   Stamina: 0
   MP: 0
   MaxMP: 0
+  Speed: 0
   DisplayName: Theophrastus
 --- !u!114 &980925423
 MonoBehaviour:
@@ -2649,6 +2652,7 @@ MonoBehaviour:
   Stamina: 5
   MP: 5
   MaxMP: 0
+  Speed: 0
   DisplayName: Number 23
 --- !u!114 &980925424
 MonoBehaviour:
@@ -3273,8 +3277,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 980925424}
-        m_MethodName: GenerateAttackDefenceForSelected
-        m_Mode: 6
+        m_MethodName: AttackSelectedUnit
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -14,6 +14,7 @@ public class Encounter : MonoBehaviour
     [SerializeField] private List<int> Seed;
     public int DangerSeedModifer;
     [SerializeField] private Text FoeName, FriendName;
+    public Attack TestAttack;
 
 
     // Start is called before the first frame update
@@ -151,15 +152,6 @@ public class Encounter : MonoBehaviour
         FriendName.text = Friends[SelectedFriendIndex].DisplayName;
     }
 
-    public void GenerateAttackFriendly(int incID)
-    {
-        foreach(Character chara in Friends)
-        {
-            if (chara.UniqueID == incID)
-            {
-                chara.GenerateAttack();
-            }
-        }
-    }
+
 
 }

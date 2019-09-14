@@ -8,13 +8,17 @@ public class BaseManager : MonoBehaviour
 {
     public List<Character> Combatants;
     public int selectedChar = 0;
+    public Attack TestAttack;
     [SerializeField] private Encounter ExplorationPhase;
     [SerializeField] private Text AddorRemovetextBox;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        TestAttack.ToHitValue = 11;
+        TestAttack.PenValue = 2;
+        TestAttack.ToCritModifier = 5;
+        TestAttack.Damage = new Vector3(3, 2, 1);
     }
 
     // Update is called once per frame
@@ -103,24 +107,16 @@ public class BaseManager : MonoBehaviour
         }
     }
 
-    public void GenerateAttackDefenceForSelected(bool attDef)
+    public void AttackSelectedUnit()
     {
         for (int i = Combatants.Count - 1; i >= 0; i--)
         {
             if (Combatants[i].UniqueID == selectedChar)//if this is the selected Character
             {
-                if (attDef)
-                {
-                    Combatants[i].GenerateAttack();
-                }
-                else
-                {
-                    Combatants[i].GenerateDefence();
-                }
-                return;
+                Combatants[i].ProcessAttack(TestAttack);
             }
         }
-        ExplorationPhase.GenerateAttackFriendly(selectedChar);
     }
+
 
 }
