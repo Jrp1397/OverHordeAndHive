@@ -689,6 +689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fe2ac744b072ec49abec256678fb87c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myECPhase: 1
   Friends: []
   Foes:
   - {fileID: 255530821}
@@ -696,6 +697,7 @@ MonoBehaviour:
   - {fileID: 255530819}
   - {fileID: 255530818}
   - {fileID: 255530817}
+  Initative: []
   HomeBase: {fileID: 980925424}
   FieldTilePrefab: {fileID: 5677995056926713367, guid: 61625e9f37b62bf469ff6449a09c2a7e,
     type: 3}
@@ -744,7 +746,12 @@ MonoBehaviour:
   Health: 0
   Stamina: 0
   MP: 0
+  MaxHealth: 0
+  Movement: 0
+  Initiative: 0
+  Speed: 0
   Title: One Small Boi
+  MapPosition: {x: -1, y: -1}
 --- !u!114 &255530818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,7 +777,12 @@ MonoBehaviour:
   Health: 0
   Stamina: 0
   MP: 0
+  MaxHealth: 0
+  Movement: 0
+  Initiative: 0
+  Speed: 0
   Title: One Big Boi
+  MapPosition: {x: -1, y: -1}
 --- !u!114 &255530819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -796,7 +808,12 @@ MonoBehaviour:
   Health: 0
   Stamina: 0
   MP: 0
+  MaxHealth: 0
+  Movement: 0
+  Initiative: 0
+  Speed: 0
   Title: One Hungry Boi
+  MapPosition: {x: -1, y: -1}
 --- !u!114 &255530820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,7 +839,12 @@ MonoBehaviour:
   Health: 0
   Stamina: 0
   MP: 0
+  MaxHealth: 0
+  Movement: 0
+  Initiative: 0
+  Speed: 0
   Title: One Scaly Boi
+  MapPosition: {x: -1, y: -1}
 --- !u!114 &255530821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -848,7 +870,12 @@ MonoBehaviour:
   Health: 0
   Stamina: 0
   MP: 0
+  MaxHealth: 0
+  Movement: 0
+  Initiative: 0
+  Speed: 0
   Title: One Soft Boi
+  MapPosition: {x: -1, y: -1}
 --- !u!1 &294716825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,7 +1628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &397840935
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2481,7 +2508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &931236921
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2553,7 +2580,10 @@ MonoBehaviour:
   MP: 0
   MaxMP: 0
   Speed: 0
+  Movement: 0
+  Initiative: 0
   DisplayName: Von Hohen
+  MapPosition: {x: -1, y: -1}
 --- !u!114 &980925420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2581,7 +2611,10 @@ MonoBehaviour:
   MP: 0
   MaxMP: 0
   Speed: 0
+  Movement: 0
+  Initiative: 0
   DisplayName: Bombastus
+  MapPosition: {x: -1, y: -1}
 --- !u!4 &980925421
 Transform:
   m_ObjectHideFlags: 0
@@ -2623,7 +2656,10 @@ MonoBehaviour:
   MP: 0
   MaxMP: 0
   Speed: 0
+  Movement: 0
+  Initiative: 0
   DisplayName: Theophrastus
+  MapPosition: {x: -1, y: -1}
 --- !u!114 &980925423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2651,7 +2687,10 @@ MonoBehaviour:
   MP: 5
   MaxMP: 0
   Speed: 0
+  Movement: 0
+  Initiative: 0
   DisplayName: Number 23
+  MapPosition: {x: -1, y: -1}
 --- !u!114 &980925424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3796,7 +3835,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1263997254}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 255530815}
+        m_MethodName: EndDeployment
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1263997254
@@ -4146,7 +4196,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Access Loot
+  m_Text: Finish Deployment
 --- !u!222 &1417335781
 CanvasRenderer:
   m_ObjectHideFlags: 0

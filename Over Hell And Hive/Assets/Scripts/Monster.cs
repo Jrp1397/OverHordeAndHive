@@ -6,9 +6,10 @@ public class Monster : MonoBehaviour
 {
     //3 main stats, weapon type and tier, armour type and teir, class type and tier
     public int UniqueID, Str, Wis, Cha, OffType, OffTier, DefType, DefTier, SkillType, SkillTier;
-    public int Health, Stamina, MP;
+    public int Health, Stamina, MP, MaxHealth, Movement, Initiative, Speed;
     public string Title;
     public Vector2Int MapPosition = new Vector2Int(-1, -1);
+
 
     // Start is called before the first frame update
     void Start()

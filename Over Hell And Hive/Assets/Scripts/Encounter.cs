@@ -11,6 +11,7 @@ public class Encounter : MonoBehaviour
     public EncounterPhase myECPhase = EncounterPhase.Deployment;
     public List<Character> Friends;
     public List<Monster> Foes;
+    public List<string> Initative;
     [SerializeField] private BaseManager HomeBase;
     public GameObject FieldTilePrefab;
     private GameObject[,] BattleFieldObject = new GameObject [4,12];
@@ -20,6 +21,7 @@ public class Encounter : MonoBehaviour
     public int DangerSeedModifer;
     [SerializeField] private Text FoeName, FriendName;
     public Attack TestAttack;
+    bool CharactersFirst = true;
 
 
     // Start is called before the first frame update
@@ -199,7 +201,31 @@ public class Encounter : MonoBehaviour
 
     public void EndDeployment()
     {
+        foreach(Character chara in Friends)
+        {
+            if(chara.MapPosition.x < 0)
+            {
+                return;
+            }
+        }
         //run the controls to start standard combat.
+
+        foreach(CombatTile comtil in BattleFieldTiles)
+        {
+            if(comtil.myTileState == TileState.Deployable)
+            {
+                comtil.ChangeState(0);
+            }
+        }
+
+        RollInitiative();
+        foreach (Character chara in Friends)
+        {
+            Debug.Log(chara.Initiative);
+        }
+
+
+
     }
 
     public void MoveSelectedCharacterTo(Vector2Int incLoc,int Distance)
@@ -207,5 +233,72 @@ public class Encounter : MonoBehaviour
         Friends[SelectedFriendIndex].MapPosition = incLoc;
         Friends[SelectedFriendIndex].Movement -= Distance;
     }
+
+    private void RollInitiative()
+    {
+        int maxSpeed = 0;
+       
+        foreach(Character chara in Friends)
+        {
+            chara.Initiative = (int)Random.Range(0, 20) + chara.Speed;
+            if(chara.Initiative > maxSpeed) { maxSpeed = chara.Initiative; }
+        }
+        
+        foreach(Monster mob in Foes)
+        {
+            mob.Initiative = (int)Random.Range(0, 20) + mob.Speed;
+            if (mob.Initiative > maxSpeed) { maxSpeed = mob.Initiative; CharactersFirst = false; }
+        }
+
+        Friends.Sort((p2, p1) => p1.Initiative.CompareTo(p2.Initiative));
+        Foes.Sort((p2, p1) => p1.Initiative.CompareTo(p2.Initiative));
+    }
+
+    public void CombatPhase()
+    {
+        bool endPhase = false, PlayersSelected = CharactersFirst;
+        SelectedFoeIndex = 0;
+        SelectedFriendIndex = 0;
+        int[] endedRound = { 0, 0 };
+        while (!endPhase)
+        {//Main Combat loop
+            
+            while(endedRound[0]== 0 || endedRound[1]== 0)//each round.
+            {
+                if (PlayersSelected)
+                {
+                    //This is where PLAYER CONTROLS go
+                    SelectedFriendIndex += 1;
+                    if(SelectedFriendIndex > Friends.Count - 1)
+                    {
+                        endedRound[0] = 1;
+                        PlayersSelected = false;
+                    }
+                  
+                }
+                else
+                {
+                    //This is where ENEMY AI goes
+                }
+
+                //Determines who goes next
+                if(Friends[SelectedFriendIndex].Initiative >= Foes[SelectedFoeIndex].Initiative || endedRound[1] == 1)//Players go again
+                {
+                    PlayersSelected = true;
+                }
+                else// Foes are FASTER than players, and still in the game
+                {
+                    PlayersSelected = false;
+                }
+            }
+
+            //End of Round stuff.
+            SelectedFoeIndex = 0;
+            SelectedFriendIndex = 0;
+            endedRound[0] = 0;
+            endedRound[1] = 0;
+        }
+    }
+
 
 }
