@@ -9,12 +9,12 @@ public enum EncounterPhase { TextDecision, Deployment, CombatLoop }
 public class Encounter : MonoBehaviour
 {
     public EncounterPhase myECPhase = EncounterPhase.Deployment;
-    [SerializeField] private List<Character> Friends;
-    [SerializeField] private List<Monster> Foes;
+    public List<Character> Friends;
+    public List<Monster> Foes;
     [SerializeField] private BaseManager HomeBase;
     public GameObject FieldTilePrefab;
     private GameObject[,] BattleFieldObject = new GameObject [4,12];
-    private CombatTile[,] BattleFieldTiles = new CombatTile[4, 12];
+    public CombatTile[,] BattleFieldTiles = new CombatTile[4, 12];
     public int SelectedFoeIndex = 0, SelectedFriendIndex = 0;
     [SerializeField] private List<int> Seed;
     public int DangerSeedModifer;
@@ -125,7 +125,9 @@ public class Encounter : MonoBehaviour
             {
                 BattleFieldObject[i,j] = Instantiate(FieldTilePrefab, tempPos, Quaternion.identity, gameObject.transform);
                 BattleFieldTiles[i, j] = BattleFieldObject[i, j].GetComponent<CombatTile>();
-                tempPos.x += 1.05f;
+                BattleFieldTiles[i, j].MapPosition = new Vector2Int(i, j);
+                BattleFieldTiles[i, j].myEncounter = this;
+               tempPos.x += 1.05f;
             }
             tempPos.y += 1.05f;
         }
@@ -200,6 +202,10 @@ public class Encounter : MonoBehaviour
         //run the controls to start standard combat.
     }
 
-
+    public void MoveSelectedCharacterTo(Vector2Int incLoc,int Distance)
+    {
+        Friends[SelectedFriendIndex].MapPosition = incLoc;
+        Friends[SelectedFriendIndex].Movement -= Distance;
+    }
 
 }

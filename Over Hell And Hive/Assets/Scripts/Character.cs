@@ -14,7 +14,7 @@ public class Character : MonoBehaviour
 {
     //3 main stats, weapon type and tier, armour type and teir, class type and tier
     public int UniqueID, Str, Wis, Cha, OffType, OffTier, DefType, DefTier, StanceType;
-    public int MaxHealth, Health, Stamina, MP, MaxMP, Speed;
+    public int MaxHealth, Health, Stamina, MP, MaxMP, Speed, Movement;
     public string DisplayName;
     public Vector2Int MapPosition = new Vector2Int(-1, -1);
 
