@@ -223,7 +223,7 @@ public class Encounter : MonoBehaviour
         {
             Debug.Log(chara.Initiative);
         }
-
+        CombatPhase();
 
 
     }
@@ -257,28 +257,41 @@ public class Encounter : MonoBehaviour
     public void CombatPhase()
     {
         bool endPhase = false, PlayersSelected = CharactersFirst;
+        int RoundTimer = 0;
         SelectedFoeIndex = 0;
         SelectedFriendIndex = 0;
         int[] endedRound = { 0, 0 };
-        while (!endPhase)
+        while (!endPhase && RoundTimer <10)
         {//Main Combat loop
-            
-            while(endedRound[0]== 0 || endedRound[1]== 0)//each round.
+            int turnTimer = 0;
+            while((endedRound[0]== 0 || endedRound[1]== 0)&& turnTimer < 10)//each round.
             {
+                turnTimer++;
                 if (PlayersSelected)
                 {
                     //This is where PLAYER CONTROLS go
-                    SelectedFriendIndex += 1;
+                    SelectedFriendIndex ++;
+                    Debug.Log("Player Turn: # " + SelectedFriendIndex);
                     if(SelectedFriendIndex > Friends.Count - 1)
                     {
                         endedRound[0] = 1;
+                         SelectedFriendIndex = 0;
                         PlayersSelected = false;
                     }
                   
                 }
                 else
                 {
+                    SelectedFoeIndex++;
+                    Debug.Log("Enemy Turn: # " + SelectedFoeIndex);
+                    if (SelectedFoeIndex > Foes.Count - 1)
+                    {
+                        endedRound[1] = 1;
+                        SelectedFoeIndex = 0;
+                        PlayersSelected = true;
+                    }
                     //This is where ENEMY AI goes
+                    //For now, they do nothing
                 }
 
                 //Determines who goes next
@@ -294,9 +307,9 @@ public class Encounter : MonoBehaviour
 
             //End of Round stuff.
             SelectedFoeIndex = 0;
-            SelectedFriendIndex = 0;
             endedRound[0] = 0;
             endedRound[1] = 0;
+            RoundTimer++;
         }
     }
 
