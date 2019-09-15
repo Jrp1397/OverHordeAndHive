@@ -8,6 +8,7 @@ public class Monster : MonoBehaviour
     public int UniqueID, Str, Wis, Cha, OffType, OffTier, DefType, DefTier, SkillType, SkillTier;
     public int Health, Stamina, MP;
     public string Title;
+    public Vector2Int MapPosition = new Vector2Int(-1, -1);
 
     // Start is called before the first frame update
     void Start()

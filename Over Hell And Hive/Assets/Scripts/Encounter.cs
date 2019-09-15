@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum EncounterPhase { TextDecision, Deployment, CombatLoop }
+
+
 public class Encounter : MonoBehaviour
 {
+    public EncounterPhase myECPhase = EncounterPhase.Deployment;
     [SerializeField] private List<Character> Friends;
     [SerializeField] private List<Monster> Foes;
     [SerializeField] private BaseManager HomeBase;
     public GameObject FieldTilePrefab;
-    private GameObject[,] BattleField = new GameObject [4,12];
+    private GameObject[,] BattleFieldObject = new GameObject [4,12];
+    private CombatTile[,] BattleFieldTiles = new CombatTile[4, 12];
     public int SelectedFoeIndex = 0, SelectedFriendIndex = 0;
     [SerializeField] private List<int> Seed;
     public int DangerSeedModifer;
@@ -21,7 +26,7 @@ public class Encounter : MonoBehaviour
     void Start()
     {
         GenerateField();
-        foreach (GameObject obby in BattleField)
+        foreach (GameObject obby in BattleFieldObject)
         {
             obby.SetActive(false);
         }
@@ -50,6 +55,7 @@ public class Encounter : MonoBehaviour
 
     public void TakeCharacter(Character incChar)
     {
+        incChar.MapPosition = new Vector2Int(-1, -1);
         if (incChar == null) { return; }
         for (int i = Friends.Count - 1; i >= 0; i--)//if a character is being updated, replace the old character
         {
@@ -82,7 +88,7 @@ public class Encounter : MonoBehaviour
 
    void OnDisable()
     {
-        foreach (GameObject obby in BattleField)
+        foreach (GameObject obby in BattleFieldObject)
         {
             obby.SetActive(false);
         }
@@ -90,20 +96,23 @@ public class Encounter : MonoBehaviour
 
     private void OnEnable()
     {
-        if (BattleField[0,0] == null) { return; }
-        foreach (GameObject obby in BattleField)
+        if (BattleFieldObject[0,0] == null) { return; }
+        foreach (GameObject obby in BattleFieldObject)
         {
            
             obby.SetActive(true);
         }
+
+        StartDeployment(4, 4);
     }
 
     public void EnableMap()
     {
-        foreach (GameObject obby in BattleField)
+        foreach (GameObject obby in BattleFieldObject)
         {
             obby.SetActive(true);
         }
+        StartDeployment(4,4);
     }
 
     public void GenerateField()
@@ -114,7 +123,8 @@ public class Encounter : MonoBehaviour
             tempPos.x = -5.775f;
             for (int j = 0; j < 12; j++)
             {
-                BattleField[i,j] = Instantiate(FieldTilePrefab, tempPos, Quaternion.identity, gameObject.transform);                
+                BattleFieldObject[i,j] = Instantiate(FieldTilePrefab, tempPos, Quaternion.identity, gameObject.transform);
+                BattleFieldTiles[i, j] = BattleFieldObject[i, j].GetComponent<CombatTile>();
                 tempPos.x += 1.05f;
             }
             tempPos.y += 1.05f;
@@ -150,6 +160,44 @@ public class Encounter : MonoBehaviour
             if (SelectedFriendIndex < 0) { SelectedFriendIndex = Friends.Count-1; }
         }
         FriendName.text = Friends[SelectedFriendIndex].DisplayName;
+    }
+
+    public void StartDeployment(int FriendlyDeployspace, int EnemyDeployspace)
+    {
+        for(int i =0; i < 4; i++)
+        {
+            for (int j = 0; j < FriendlyDeployspace; j++)
+            {
+                if (BattleFieldTiles[i, j].myTileState == TileState.Empty)
+                {
+                    BattleFieldTiles[i, j].ChangeState(4);//Deployable
+                }
+            }
+        }
+
+        foreach(Monster mob in Foes)
+        {
+            while (mob.MapPosition.x == -1)
+            {
+                int yValue = (int)Random.Range(0, 4);
+                int xValue = (int)Random.Range(12-EnemyDeployspace, 12);
+                if (BattleFieldTiles[yValue, xValue].myTileState == TileState.Empty)
+                {
+                    BattleFieldTiles[yValue, xValue].ChangeState(3);//Deployable
+                    mob.MapPosition = new Vector2Int(yValue, xValue);
+                }
+            }
+            
+        }
+
+
+
+
+    }
+
+    public void EndDeployment()
+    {
+        //run the controls to start standard combat.
     }
 
 

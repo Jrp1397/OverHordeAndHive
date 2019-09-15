@@ -7,6 +7,7 @@ public enum TileState {Empty=0, Blocked=1, Ally=2, Enemy=3, Deployable=4, Movabl
 public class CombatTile : MonoBehaviour
 {
     private SpriteRenderer mySR;
+    private BoxCollider2D myBC;
     public TileState myTileState;
     public bool isTileStateDirty;
 
@@ -14,7 +15,8 @@ public class CombatTile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mySR = gameObject.GetComponent<SpriteRenderer>();
+        mySR = gameObject.GetComponent<SpriteRenderer>();    
+        
     }
 
     // Update is called once per frame
@@ -71,6 +73,12 @@ public class CombatTile : MonoBehaviour
             default:
                 break;
         }
+    }
+
+   
+    private void OnMouseDown()
+    {
+        Debug.Log("You clicked on a " + myTileState.ToString() + " Tile");
     }
 
 }

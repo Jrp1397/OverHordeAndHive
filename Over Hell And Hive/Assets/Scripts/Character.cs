@@ -16,6 +16,7 @@ public class Character : MonoBehaviour
     public int UniqueID, Str, Wis, Cha, OffType, OffTier, DefType, DefTier, StanceType;
     public int MaxHealth, Health, Stamina, MP, MaxMP, Speed;
     public string DisplayName;
+    public Vector2Int MapPosition = new Vector2Int(-1, -1);
 
     // Start is called before the first frame update
     void Start()

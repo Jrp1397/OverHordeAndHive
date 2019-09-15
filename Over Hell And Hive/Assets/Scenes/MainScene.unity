@@ -1617,8 +1617,6 @@ RectTransform:
   - {fileID: 1263997252}
   - {fileID: 638049327}
   - {fileID: 1822119559}
-  - {fileID: 559921582}
-  - {fileID: 496784924}
   m_Father: {fileID: 294716829}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1945,12 +1943,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 397840935}
+  m_Father: {fileID: 1822119559}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 68.3, y: -116.58}
+  m_AnchoredPosition: {x: -113.2, y: 68.42001}
   m_SizeDelta: {x: 26.08, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &496784925
@@ -2155,12 +2153,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 397840935}
+  m_Father: {fileID: 1822119559}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 290.86002, y: -115.44}
+  m_AnchoredPosition: {x: 109.360016, y: 69.56}
   m_SizeDelta: {x: 26.08, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &559921583
@@ -2296,7 +2294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -181.5, y: -185}
+  m_AnchoredPosition: {x: -181.5, y: -206}
   m_SizeDelta: {x: 263, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &638049328
@@ -4560,12 +4558,14 @@ RectTransform:
   - {fileID: 992604637}
   - {fileID: 2028014517}
   - {fileID: 478102835}
+  - {fileID: 559921582}
+  - {fileID: 496784924}
   m_Father: {fileID: 397840935}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 181.5, y: -185}
+  m_AnchoredPosition: {x: 181.5, y: -206.00002}
   m_SizeDelta: {x: 263, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1822119560
