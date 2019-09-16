@@ -16,12 +16,14 @@ public class Encounter : MonoBehaviour
     public GameObject FieldTilePrefab;
     private GameObject[,] BattleFieldObject = new GameObject [4,12];
     public CombatTile[,] BattleFieldTiles = new CombatTile[4, 12];
+    private int[] endedRounds = { 0, 0 };
     public int SelectedFoeIndex = 0, SelectedFriendIndex = 0;
+    public int TurnFoeIndex = 0, TurnFriendIndex = 0;
     [SerializeField] private List<int> Seed;
     public int DangerSeedModifer;
     [SerializeField] private Text FoeName, FriendName;
     public Attack TestAttack;
-    bool CharactersFirst = true;
+    bool CharactersFirst = true, PlayerNext = true, autotick = false;
 
 
     // Start is called before the first frame update
@@ -37,7 +39,11 @@ public class Encounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (autotick)
+        {
+            autotick = false;
+            CombatTick();
+        }
     }
 
     public void GiveCharacterById(int incID)
@@ -223,7 +229,7 @@ public class Encounter : MonoBehaviour
         {
             Debug.Log(chara.Initiative);
         }
-        CombatPhase();
+        CombatTick();
 
 
     }
@@ -247,14 +253,14 @@ public class Encounter : MonoBehaviour
         foreach(Monster mob in Foes)
         {
             mob.Initiative = (int)Random.Range(0, 20) + mob.Speed;
-            if (mob.Initiative > maxSpeed) { maxSpeed = mob.Initiative; CharactersFirst = false; }
+            if (mob.Initiative > maxSpeed) { maxSpeed = mob.Initiative; CharactersFirst = false; PlayerNext = false; }
         }
 
         Friends.Sort((p2, p1) => p1.Initiative.CompareTo(p2.Initiative));
         Foes.Sort((p2, p1) => p1.Initiative.CompareTo(p2.Initiative));
     }
-
-    public void CombatPhase()
+    /*
+    public void CombatPhase()//TODO: Delete this, replace it with a version that calls out to either AI control, or to player control. Cut the while loops, but keep the same functionality.
     {
         bool endPhase = false, PlayersSelected = CharactersFirst;
         int RoundTimer = 0;
@@ -310,6 +316,52 @@ public class Encounter : MonoBehaviour
             endedRound[0] = 0;
             endedRound[1] = 0;
             RoundTimer++;
+        }
+    }*/
+    public void CombatTick()
+    {
+        
+        if (PlayerNext)
+        {//Player Controls
+            Debug.Log(Friends[TurnFriendIndex].DisplayName + "'s Turn");
+            TurnFriendIndex++;
+            if(TurnFriendIndex > Friends.Count - 1)
+            {
+                TurnFriendIndex = 0;
+                endedRounds[0] = 1;
+            }
+
+        }
+        else
+        {//Monster turn
+            Debug.Log(Foes[TurnFoeIndex].Title + "'s Turn");
+            TurnFoeIndex++;
+            if(TurnFoeIndex > Foes.Count - 1)
+            {
+                autotick = true;
+                TurnFoeIndex = 0;
+                endedRounds[1] = 1;
+            }
+        }
+        
+        if(endedRounds[0] ==0 || endedRounds[1]==0)
+        {
+            if(Friends[SelectedFriendIndex].Initiative >= Foes[SelectedFoeIndex].Initiative || endedRounds[1] == 1)
+            {//Players go next
+                PlayerNext = true;
+            FriendName.text = Friends[TurnFriendIndex].DisplayName;
+            }
+            else
+            {
+
+                FoeName.text = Foes[TurnFoeIndex].Title;
+                PlayerNext = false;
+            }
+        }
+        else
+        {//round restarts.
+            endedRounds[0] = 0;
+            endedRounds[1] = 0;
         }
     }
 
