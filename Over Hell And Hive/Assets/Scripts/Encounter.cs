@@ -265,11 +265,9 @@ public class Encounter : MonoBehaviour
        // ClearMapOfMovement();
         if (PlayerNext)
         {//Player Controls
-            Debug.Log(Friends[TurnFriendIndex].DisplayName + "'s Turn");
             Friends[TurnFriendIndex].Movement = Friends[TurnFriendIndex].Speed;
             SelectedFriendIndex = TurnFriendIndex;
-            FriendName.text = Friends[SelectedFriendIndex].DisplayName;
-            ClearMapOfMovement();
+            FriendName.text = Friends[SelectedFriendIndex].DisplayName;            
             CalculatePlayerMovement();
             TurnFriendIndex++;
             if(TurnFriendIndex > Friends.Count - 1)
@@ -329,7 +327,8 @@ public class Encounter : MonoBehaviour
         Vector2Int tempPos;
         int Xvalue = Friends[SelectedFriendIndex].Movement;
         int Yvalue = 0;
-           Debug.Log("calculating Movement for player # " + SelectedFriendIndex + " With a movement of " + Xvalue );
+        ClearMapOfMovement();
+        Debug.Log("calculating Movement for player # " + SelectedFriendIndex + " With a movement of " + Xvalue );
         for (int i=0; i <= Friends[SelectedFriendIndex].Movement; i++)
         {
             while (Xvalue >= 0)
@@ -390,6 +389,18 @@ public class Encounter : MonoBehaviour
         foreach (CombatTile CT in BattleFieldTiles)
         {
             CT.ChangeFromMovable();
+        }
+    }
+
+    public void AttackFoeAt(Vector2Int location, Attack incAttack)
+    {
+        foreach(Monster foe in Foes)
+        {
+            if (foe.MapPosition == location)
+            {
+                Debug.Log("attack found viable Target");
+                foe.ProcessAttack(incAttack);
+            }
         }
     }
 

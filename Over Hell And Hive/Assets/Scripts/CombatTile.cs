@@ -84,7 +84,9 @@ public class CombatTile : MonoBehaviour
                 ChangeState(5);
                 break;
             case TileState.Enemy:
-                ChangeState(7);
+                if (myEncounter.Friends[myEncounter.SelectedFriendIndex].Movement > 0) { 
+                    ChangeState(7);
+                }
                 break;
             default:
                 break;
@@ -124,7 +126,7 @@ public class CombatTile : MonoBehaviour
                 Debug.Log("You clicked on a " + myTileState.ToString() + " Tile. This should change the selected Enemy to this guy. we're working on it...");
                 break;
             case TileState.Deployable:
-                 oldPosition = myEncounter.Friends[myEncounter.SelectedFriendIndex].MapPosition;
+                oldPosition = myEncounter.Friends[myEncounter.SelectedFriendIndex].MapPosition;
                 if (oldPosition.x >= 0)
                 {
                     myEncounter.BattleFieldTiles[oldPosition.x, oldPosition.y].ChangeState(4);// make the old position available.
@@ -152,8 +154,17 @@ public class CombatTile : MonoBehaviour
                 mySR.color = Color.yellow;
                 break;
             case TileState.Attackable:
+                if (myEncounter.Friends[myEncounter.SelectedFriendIndex].Movement > 0) { 
                 Debug.Log("You clicked on a " + myTileState.ToString() + " Tile.This should generate and then distribute an attack. Eek.");
+                myEncounter.AttackFoeAt(MapPosition, myEncounter.Friends[myEncounter.SelectedFriendIndex].GenerateAttack());
+                myEncounter.Friends[myEncounter.SelectedFriendIndex].Movement -= 2;//Currently set to attack value of 2
+                myEncounter.OnPlayerMovement();
                 mySR.color = Color.magenta;
+                }
+                else{
+                    Debug.Log("not Enough Movement Left.");
+
+                }
                 break;
             case TileState.InRange:
 
