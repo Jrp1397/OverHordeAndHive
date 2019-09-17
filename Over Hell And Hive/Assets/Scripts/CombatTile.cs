@@ -76,10 +76,39 @@ public class CombatTile : MonoBehaviour
         }
     }
 
+    public void ChangeToMovable()
+    {
+        switch (myTileState)
+        {
+            case TileState.Empty:
+                ChangeState(5);
+                break;
+            case TileState.Enemy:
+                ChangeState(7);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void ChangeFromMovable()
+    {
+        switch (myTileState)
+        {
+            case TileState.Movable:
+                ChangeState(0);
+             break;
+            case TileState.Attackable:
+                ChangeState(3);
+            break;
+
+}
+        }
    
     private void OnMouseDown()
     {
         Debug.Log("You clicked on a " + myTileState.ToString() + " Tile");
+        Vector2Int oldPosition;
         switch (myTileState)
         {
             case TileState.Empty:
@@ -95,7 +124,7 @@ public class CombatTile : MonoBehaviour
                 Debug.Log("You clicked on a " + myTileState.ToString() + " Tile. This should change the selected Enemy to this guy. we're working on it...");
                 break;
             case TileState.Deployable:
-                Vector2Int oldPosition = myEncounter.Friends[myEncounter.SelectedFriendIndex].MapPosition;
+                 oldPosition = myEncounter.Friends[myEncounter.SelectedFriendIndex].MapPosition;
                 if (oldPosition.x >= 0)
                 {
                     myEncounter.BattleFieldTiles[oldPosition.x, oldPosition.y].ChangeState(4);// make the old position available.
@@ -106,7 +135,16 @@ public class CombatTile : MonoBehaviour
                 Debug.Log("You clicked on a " + myTileState.ToString() + " Tile. You have moved a character into this spot.");
                 break;
             case TileState.Movable:
+                oldPosition = myEncounter.Friends[myEncounter.SelectedFriendIndex].MapPosition;
+                if (oldPosition.x >= 0)
+                {
+                    myEncounter.BattleFieldTiles[oldPosition.x, oldPosition.y].ChangeState(0);// make the old position available.
+                }
                 myEncounter.MoveSelectedCharacterTo(MapPosition, 0);
+                int movementTotal = Mathf.Abs(oldPosition.x - MapPosition.x) + Mathf.Abs(oldPosition.y - MapPosition.y);
+                myEncounter.Friends[myEncounter.SelectedFriendIndex].Movement -= movementTotal;
+                myEncounter.OnPlayerMovement();
+                ChangeState(2);//Place Ally here
                 Debug.Log("You clicked on a " + myTileState.ToString() + " Tile. You have moved a character into this spot. But we need to account for the speed, and reduce his movement.");
                 break;
             case TileState.Threatened:

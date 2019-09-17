@@ -259,87 +259,32 @@ public class Encounter : MonoBehaviour
         Friends.Sort((p2, p1) => p1.Initiative.CompareTo(p2.Initiative));
         Foes.Sort((p2, p1) => p1.Initiative.CompareTo(p2.Initiative));
     }
-    /*
-    public void CombatPhase()//TODO: Delete this, replace it with a version that calls out to either AI control, or to player control. Cut the while loops, but keep the same functionality.
-    {
-        bool endPhase = false, PlayersSelected = CharactersFirst;
-        int RoundTimer = 0;
-        SelectedFoeIndex = 0;
-        SelectedFriendIndex = 0;
-        int[] endedRound = { 0, 0 };
-        while (!endPhase && RoundTimer <10)
-        {//Main Combat loop
-            int turnTimer = 0;
-            while((endedRound[0]== 0 || endedRound[1]== 0)&& turnTimer < 10)//each round.
-            {
-                turnTimer++;
-                if (PlayersSelected)
-                {
-                    //This is where PLAYER CONTROLS go
-                    SelectedFriendIndex ++;
-                    Debug.Log("Player Turn: # " + SelectedFriendIndex);
-                    if(SelectedFriendIndex > Friends.Count - 1)
-                    {
-                        endedRound[0] = 1;
-                         SelectedFriendIndex = 0;
-                        PlayersSelected = false;
-                    }
-                  
-                }
-                else
-                {
-                    SelectedFoeIndex++;
-                    Debug.Log("Enemy Turn: # " + SelectedFoeIndex);
-                    if (SelectedFoeIndex > Foes.Count - 1)
-                    {
-                        endedRound[1] = 1;
-                        SelectedFoeIndex = 0;
-                        PlayersSelected = true;
-                    }
-                    //This is where ENEMY AI goes
-                    //For now, they do nothing
-                }
-
-                //Determines who goes next
-                if(Friends[SelectedFriendIndex].Initiative >= Foes[SelectedFoeIndex].Initiative || endedRound[1] == 1)//Players go again
-                {
-                    PlayersSelected = true;
-                }
-                else// Foes are FASTER than players, and still in the game
-                {
-                    PlayersSelected = false;
-                }
-            }
-
-            //End of Round stuff.
-            SelectedFoeIndex = 0;
-            endedRound[0] = 0;
-            endedRound[1] = 0;
-            RoundTimer++;
-        }
-    }*/
+    
     public void CombatTick()
     {
-        
+       // ClearMapOfMovement();
         if (PlayerNext)
         {//Player Controls
             Debug.Log(Friends[TurnFriendIndex].DisplayName + "'s Turn");
+            Friends[TurnFriendIndex].Movement = Friends[TurnFriendIndex].Speed;
+            SelectedFriendIndex = TurnFriendIndex;
+            FriendName.text = Friends[SelectedFriendIndex].DisplayName;
+            ClearMapOfMovement();
+            CalculatePlayerMovement();
             TurnFriendIndex++;
             if(TurnFriendIndex > Friends.Count - 1)
             {
-                TurnFriendIndex = 0;
+              
                 endedRounds[0] = 1;
             }
 
         }
         else
         {//Monster turn
-            Debug.Log(Foes[TurnFoeIndex].Title + "'s Turn");
+            //Debug.Log(Foes[TurnFoeIndex].Title + "'s Turn");
             TurnFoeIndex++;
             if(TurnFoeIndex > Foes.Count - 1)
             {
-                autotick = true;
-                TurnFoeIndex = 0;
                 endedRounds[1] = 1;
             }
         }
@@ -349,21 +294,103 @@ public class Encounter : MonoBehaviour
             if(Friends[SelectedFriendIndex].Initiative >= Foes[SelectedFoeIndex].Initiative || endedRounds[1] == 1)
             {//Players go next
                 PlayerNext = true;
-            FriendName.text = Friends[TurnFriendIndex].DisplayName;
+            FriendName.text = Friends[SelectedFriendIndex].DisplayName;
             }
             else
             {
 
                 FoeName.text = Foes[TurnFoeIndex].Title;
                 PlayerNext = false;
+                autotick = true;
             }
         }
         else
         {//round restarts.
             endedRounds[0] = 0;
             endedRounds[1] = 0;
+            TurnFoeIndex = 0;
+            TurnFriendIndex = 0;
+            PlayerNext = CharactersFirst;
+            if (!PlayerNext)
+            {
+                autotick = true;
+            }           
         }
     }
 
+    private void CalculatePlayerMovement()
+    {
+        //Propagate across movement range empty tiles to moveable, enemy tiles to Attackable
+        //Get position of selected character
+        //Get their movement left
+        //Start loop that paints in all directions, checking for valid states of the tiles
+        
+        Vector2Int selectedPosition = Friends[SelectedFriendIndex].MapPosition;
+        Vector2Int tempPos;
+        int Xvalue = Friends[SelectedFriendIndex].Movement;
+        int Yvalue = 0;
+           Debug.Log("calculating Movement for player # " + SelectedFriendIndex + " With a movement of " + Xvalue );
+        for (int i=0; i <= Friends[SelectedFriendIndex].Movement; i++)
+        {
+            while (Xvalue >= 0)
+            {
+                tempPos = selectedPosition;
+                tempPos.x += Xvalue;
+                tempPos.y += Yvalue;
+                if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
+                {
+                    BattleFieldTiles[tempPos.x, tempPos.y].ChangeToMovable();
+                }
+
+                tempPos = selectedPosition;
+                tempPos.x -= Xvalue;
+                tempPos.y += Yvalue;
+
+                if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
+                {
+                    BattleFieldTiles[tempPos.x, tempPos.y].ChangeToMovable();
+                }
+
+
+                tempPos = selectedPosition;
+                tempPos.x += Xvalue;
+                tempPos.y -= Yvalue;
+                if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
+                {
+                    BattleFieldTiles[tempPos.x, tempPos.y].ChangeToMovable();
+                }
+
+
+                tempPos = selectedPosition;
+                tempPos.x -= Xvalue;
+                tempPos.y -= Yvalue;
+                if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
+                {
+                    BattleFieldTiles[tempPos.x, tempPos.y].ChangeToMovable();
+                }
+
+                Xvalue--;
+            }
+            Yvalue++;
+            Xvalue = Friends[TurnFriendIndex].Movement - Yvalue;
+        }
+
+
+
+    }
+
+    public void OnPlayerMovement()
+    {
+        ClearMapOfMovement();
+    }
+
+    public void ClearMapOfMovement()
+    {
+        Debug.Log("Clearing Map");
+        foreach (CombatTile CT in BattleFieldTiles)
+        {
+            CT.ChangeFromMovable();
+        }
+    }
 
 }

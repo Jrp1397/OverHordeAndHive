@@ -2661,8 +2661,8 @@ MonoBehaviour:
   Stamina: 0
   MP: 0
   MaxMP: 0
-  Speed: 0
-  Movement: 0
+  Speed: 2
+  Movement: 2
   Initiative: 0
   DisplayName: Von Hohen
   MapPosition: {x: -1, y: -1}
@@ -2692,8 +2692,8 @@ MonoBehaviour:
   Stamina: 0
   MP: 0
   MaxMP: 0
-  Speed: 0
-  Movement: 0
+  Speed: 2
+  Movement: 2
   Initiative: 0
   DisplayName: Bombastus
   MapPosition: {x: -1, y: -1}
@@ -2737,8 +2737,8 @@ MonoBehaviour:
   Stamina: 0
   MP: 0
   MaxMP: 0
-  Speed: 0
-  Movement: 0
+  Speed: 2
+  Movement: 2
   Initiative: 0
   DisplayName: Theophrastus
   MapPosition: {x: -1, y: -1}
@@ -2768,8 +2768,8 @@ MonoBehaviour:
   Stamina: 5
   MP: 5
   MaxMP: 0
-  Speed: 0
-  Movement: 0
+  Speed: 2
+  Movement: 2
   Initiative: 0
   DisplayName: Number 23
   MapPosition: {x: -1, y: -1}
