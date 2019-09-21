@@ -13,10 +13,12 @@ public struct Attack
 public class Character : MonoBehaviour
 {
     //3 main stats, weapon type and tier, armour type and teir, class type and tier
-    public int UniqueID, Str, Wis, Cha, OffType, OffTier, DefType, DefTier, StanceType;
+    public int UniqueID, Str, Wis, Cha, StanceType;
     public int MaxHealth, Health, Stamina, MP, MaxMP, Speed, Movement, Initiative;
     public string DisplayName;
     public Vector2Int MapPosition = new Vector2Int(-1, -1);
+    public Armour myArmor= null;
+    public Weapon myWeapon = null;
 
     // Start is called before the first frame update
     void Start()
@@ -42,34 +44,29 @@ public class Character : MonoBehaviour
 
     public Attack GenerateAttack()
     {
+        int OffTier = myWeapon.Tier;
         Attack outgoingAttack = new Attack(); 
         //                              Stances are Defensive, Nuetral, Offensive. Higher stances give a better result.  Stamina gives up to a 25% boost, and 25% penalty
         outgoingAttack.ToHitValue = ((float)Str * (((float)StanceType / 2.0f) + .5f) + (float)OffTier) * (.75f +(.5f * ((float)Stamina/MaxHealth)));
-        outgoingAttack.ToCritModifier = 0 + OffTier + (1-OffType);
-        float slashDMG = OffTier * (3 - OffType), pierceDMG = OffTier * (1 + (OffType % 2)), crushDMG;
-        if(OffType != 2)
-        {
-            crushDMG = OffTier / 2;
-        }
-        else
-        {
-            crushDMG = OffTier * 1.5f;
-        }
+        outgoingAttack.ToCritModifier = OffTier * (myWeapon.CritMultiplier);
+        float slashDMG =myWeapon.SlashOffence, pierceDMG = myWeapon.PierceOffence, crushDMG = myWeapon.CrushOffence;
+     
 
         outgoingAttack.Damage = new Vector3(slashDMG, pierceDMG, crushDMG);
-        outgoingAttack.PenValue = OffTier + OffType;
+        outgoingAttack.PenValue = OffTier + myWeapon.CritMultiplier;
         return outgoingAttack;
     }
 
     public float GenerateDefence()
     {
-        float output = ((float)Str * ((1.5f - (float)StanceType / 2.0f) ) + (float)DefTier) * (.75f + (.5f * ((float)Stamina / MaxHealth)));
+        float output = ((float)Str * ((1.5f - (float)StanceType / 2.0f) ) + (float)myArmor.Tier) * (.75f + (.5f * ((float)Stamina / MaxHealth)));
         Debug.Log(output);
         return output;
     }
 
     public void ProcessAttack( Attack IncAttack)
     {
+        int DefTier = myArmor.Tier;
         float DidHit = Random.Range(0.0f, 100.0f);
         Debug.Log("Random Chance =" + DidHit + "  Plus " + ((IncAttack.ToHitValue * 10) - (GenerateDefence() * 10)));
         DidHit += (IncAttack.ToHitValue * 10) - (GenerateDefence()*10);
@@ -77,7 +74,8 @@ public class Character : MonoBehaviour
         if(DidHit > 50)
         {//Successful Hit, calculate Damage
             float DidCrit = Random.Range(0.0f, 100.0f);
-            DidCrit += (DefType + DefTier - 3) + IncAttack.ToCritModifier;
+            DidCrit +=   IncAttack.ToCritModifier - (myArmor.CritDefence + DefTier);
+            Debug.Log("Crit level=" + DidCrit);
             if (DidCrit > 100)
             {
                 float damagetotal = IncAttack.Damage.x + IncAttack.Damage.y + IncAttack.Damage.z;
@@ -87,8 +85,9 @@ public class Character : MonoBehaviour
             {
                 float damagetotal = 0;
                 //Damage totals       Slash damage is eaisest to reduce or remove,       pierce has an easier time penetrating, but blunt damage goes through the most
-                float temp = ( 1+ (DefTier + DefType - IncAttack.PenValue));
+                float temp = ( 1+ (myArmor.SlashDefence - IncAttack.PenValue));
                 Debug.Log(temp);
+                //See if the armor is completely penetrated or not, if it is, do full damage(like with a crit), otherwise, reduce the total damage
                 if (temp > 0) {
                     damagetotal +=( IncAttack.Damage.x / temp);
                 }
@@ -96,7 +95,7 @@ public class Character : MonoBehaviour
                 {
                     damagetotal += IncAttack.Damage.x;
                 }
-                temp = (1+ ((DefTier / 2) + DefType - IncAttack.PenValue));
+                temp = (1+  myArmor.PierceDefence - IncAttack.PenValue);
                 Debug.Log(temp);
                 if (temp > 0)
                 {
@@ -106,7 +105,7 @@ public class Character : MonoBehaviour
                 {
                     damagetotal += IncAttack.Damage.y;
                 }
-                temp =(1+ (DefTier - IncAttack.PenValue));
+                temp =(1+ (myArmor.CrushDefence- IncAttack.PenValue));
                 Debug.Log(temp);
                 if (temp > 0)
                 {

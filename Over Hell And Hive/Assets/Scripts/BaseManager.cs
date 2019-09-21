@@ -9,6 +9,9 @@ public class BaseManager : MonoBehaviour
     public List<Character> Combatants;
     public int selectedChar = 0;
     public Attack TestAttack;
+    public int ResourceGold = 0, ResourceConMat = 0, ResourceOre = 0, ResourceTomes = 0;
+    public List<Armour> BaseArmorInventory;
+    public List<Weapon> BaseWeaponInventory;
     [SerializeField] private Encounter ExplorationPhase;
     [SerializeField] private Text AddorRemovetextBox;
 
@@ -115,6 +118,42 @@ public class BaseManager : MonoBehaviour
             {
                 Combatants[i].ProcessAttack(TestAttack);
             }
+        }
+    }
+
+    //takes item from unit, and adds it to bases list
+    public void TakeItemFromSelectedUnit(bool isArmor)
+    {
+        if (isArmor)
+        {
+            if (Combatants[selectedChar].myArmor != null)
+            {
+                BaseArmorInventory.Add(Combatants[selectedChar].myArmor);
+                Combatants[selectedChar].myArmor = null;
+            }
+        }
+        else
+        {
+            if (Combatants[selectedChar].myWeapon != null)
+            {
+                BaseWeaponInventory.Add(Combatants[selectedChar].myWeapon);
+                Combatants[selectedChar].myWeapon = null;
+            }
+        }
+    }
+
+    //takes item from bases list, and gives it to unit
+    public void GiveItemToSelectedUnit(bool isArmor, int index)
+    {
+        if(isArmor && index < BaseArmorInventory.Count)
+        {
+            Combatants[selectedChar].myArmor = BaseArmorInventory[index];
+            BaseArmorInventory.RemoveAt(index);
+        }
+        else if ( index < BaseWeaponInventory.Count)
+        {
+            Combatants[selectedChar].myWeapon = BaseWeaponInventory[index];
+            BaseWeaponInventory.RemoveAt(index);
         }
     }
 
