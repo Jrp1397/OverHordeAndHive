@@ -60,7 +60,6 @@ public class Encounter : MonoBehaviour
         return temp;
     }
 
-
     public void GiveCharacterById(int incID)
     {
         Character temp = null;

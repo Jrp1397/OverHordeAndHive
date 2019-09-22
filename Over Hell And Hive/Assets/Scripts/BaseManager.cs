@@ -13,8 +13,11 @@ public class BaseManager : MonoBehaviour
     public List<Armour> BaseArmorInventory;
     public List<Weapon> BaseWeaponInventory;
     [SerializeField] private Text [] StatsBlock = new Text[9];
+    [SerializeField] private GameObject[] DisplayInventory;
+    [SerializeField] private GameObject[] PlayerInventory;
     [SerializeField] private Encounter ExplorationPhase;
     [SerializeField] private Text AddorRemovetextBox;
+    public GameObject LastClickedPlayerInventory = null;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,28 @@ public class BaseManager : MonoBehaviour
         
     }
 
+    public Character AccessSelectedCharacter()
+    {
+        Character temp = null;
+        for (int i = Combatants.Count - 1; i >= 0; i--)
+        {
+            if (Combatants[i].UniqueID == selectedChar)
+            {
+                temp = Combatants[i];
+                break;
+            }
+        }
+
+        if (temp == null)
+        {
+            temp = ExplorationPhase.AccessCharacterById(selectedChar);
+        }
+
+        return temp;
+
+
+
+    }
     
     public void GiveCharacterById(int incID)
     {
@@ -115,42 +140,40 @@ public class BaseManager : MonoBehaviour
 
    
     //takes item from unit, and adds it to bases list
-    public void TakeItemFromSelectedUnit(bool isArmor)
+    public void TakeItemFromSelectedUnit(bool isArmor, Character IncChar)
     {
         if (isArmor)
         {
-            if (Combatants[selectedChar].myArmor != null)
+            if (IncChar != null)
             {
-                BaseArmorInventory.Add(Combatants[selectedChar].myArmor);
-                Combatants[selectedChar].myArmor = null;
+                BaseArmorInventory.Add(IncChar.myArmor);
+                IncChar.myArmor = null;
             }
         }
         else
         {
-            if (Combatants[selectedChar].myWeapon != null)
+            if (IncChar.myWeapon != null)
             {
-                BaseWeaponInventory.Add(Combatants[selectedChar].myWeapon);
-                Combatants[selectedChar].myWeapon = null;
+                BaseWeaponInventory.Add(IncChar.myWeapon);
+                IncChar.myWeapon = null;
             }
         }
     }
 
     //takes item from bases list, and gives it to unit
-    public void GiveItemToSelectedUnit(bool isArmor, int index)
+    public void GiveItemToSelectedUnit(bool isArmor, Character IncChar, int index)
     {
         if(isArmor && index < BaseArmorInventory.Count)
         {
-            Combatants[selectedChar].myArmor = BaseArmorInventory[index];
+            IncChar.myArmor = BaseArmorInventory[index];
             BaseArmorInventory.RemoveAt(index);
         }
         else if ( index < BaseWeaponInventory.Count)
         {
-            Combatants[selectedChar].myWeapon = BaseWeaponInventory[index];
+            IncChar.myWeapon = BaseWeaponInventory[index];
             BaseWeaponInventory.RemoveAt(index);
         }
     }
-
-
 
     public void UpdateStatsPanel(Character IncChar){
         //current order = Name, Health, Attack, Armor, Stamina, Speed, Magic, Resistance, and Mana
@@ -164,6 +187,57 @@ public class BaseManager : MonoBehaviour
         StatsBlock[7].text = ("Resistance: " + IncChar.Cha);
         StatsBlock[8].text = ("Mana: " + +IncChar.MP+ "/" + IncChar.MaxMP);
     }
+
+    public void UpdateInventoryPanel(Character IncChar, int isNullArmororWeapon)
+    {
+        foreach(GameObject obby in DisplayInventory)
+        {
+            obby.SetActive(false);
+        }
+
+        InventoryObject temp = PlayerInventory[0].GetComponent<InventoryObject>();
+        temp.possibleArmor = IncChar.myArmor; 
+        if(IncChar.myArmor == null) { temp.isFull = false; } else { temp.isFull = true; }
+        temp.isDirty = true;
+
+        temp = PlayerInventory[1].GetComponent<InventoryObject>();
+        temp.possibleWeapon = IncChar.myWeapon;
+        if (IncChar.myWeapon == null) { temp.isFull = false; } else { temp.isFull = true; }
+        temp.isDirty = true;
+
+        if(isNullArmororWeapon == 1)
+        {
+            int index = 0;
+            foreach(Armour arms in BaseArmorInventory)
+            {
+                InventoryObject basetemp = DisplayInventory[index%15].GetComponent<InventoryObject>();
+                basetemp.possibleArmor = BaseArmorInventory[index];
+                basetemp.IsArmor = true; basetemp.isFull = true; basetemp.isDirty = true;
+                basetemp.Index = index;
+                DisplayInventory[index % 15].SetActive(true);
+                index++;
+            }
+        }
+        else if(isNullArmororWeapon == 2)
+        {
+            int index = 0;
+            foreach (Weapon arms in BaseWeaponInventory)
+            {
+                InventoryObject basetemp = DisplayInventory[index % 15].GetComponent<InventoryObject>();
+                basetemp.possibleWeapon = BaseWeaponInventory[index];
+                basetemp.IsArmor = true; basetemp.isFull = true; basetemp.isDirty = true;
+                basetemp.Index = index;
+                DisplayInventory[index % 15].SetActive(true);
+                index++;
+            }
+        }
+
+
+
+
+
+    }
+
 
 
 }

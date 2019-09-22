@@ -19,7 +19,7 @@ public class Character : MonoBehaviour
     public Vector2Int MapPosition = new Vector2Int(-1, -1);
     public Armour myArmor= null;
     public Weapon myWeapon = null;
-
+    
     // Start is called before the first frame update
     void Start()
     {

@@ -420,6 +420,8 @@ GameObject:
   - component: {fileID: 155155662}
   - component: {fileID: 155155664}
   - component: {fileID: 155155663}
+  - component: {fileID: 155155666}
+  - component: {fileID: 155155665}
   m_Layer: 5
   m_Name: Inventory_Slot_1.3
   m_TagString: Untagged
@@ -482,6 +484,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155155661}
   m_CullTransparentMesh: 0
+--- !u!114 &155155665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155155661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 1
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 21300000, guid: 9828d772f0fde804a8689c4507ceca86, type: 3}
+  Index: 2
+--- !u!61 &155155666
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155155661}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &168757930
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,6 +975,8 @@ GameObject:
   - component: {fileID: 233650593}
   - component: {fileID: 233650595}
   - component: {fileID: 233650594}
+  - component: {fileID: 233650597}
+  - component: {fileID: 233650596}
   m_Layer: 5
   m_Name: 'Inventory_Slot_2.3 '
   m_TagString: Untagged
@@ -987,6 +1039,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233650592}
   m_CullTransparentMesh: 0
+--- !u!114 &233650596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233650592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 1
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 21300000, guid: 9828d772f0fde804a8689c4507ceca86, type: 3}
+  Index: 7
+--- !u!61 &233650597
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233650592}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &250406770
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,6 +1098,8 @@ GameObject:
   - component: {fileID: 250406771}
   - component: {fileID: 250406773}
   - component: {fileID: 250406772}
+  - component: {fileID: 250406775}
+  - component: {fileID: 250406774}
   m_Layer: 5
   m_Name: Inventory_Slot_3.4
   m_TagString: Untagged
@@ -1060,6 +1162,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250406770}
   m_CullTransparentMesh: 0
+--- !u!114 &250406774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250406770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 1
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 21300000, guid: 9828d772f0fde804a8689c4507ceca86, type: 3}
+  Index: 13
+--- !u!61 &250406775
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250406770}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &255530814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,7 +1519,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 513376939}
   m_HandleRect: {fileID: 513376938}
   m_Direction: 3
-  m_Value: 1
+  m_Value: 0.9999997
   m_Size: 0.85271317
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2010,6 +2160,8 @@ GameObject:
   - component: {fileID: 333748525}
   - component: {fileID: 333748527}
   - component: {fileID: 333748526}
+  - component: {fileID: 333748529}
+  - component: {fileID: 333748528}
   m_Layer: 5
   m_Name: 'Inventory_Slot_2.2 '
   m_TagString: Untagged
@@ -2072,6 +2224,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333748524}
   m_CullTransparentMesh: 0
+--- !u!114 &333748528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333748524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 1
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 21300000, guid: 9828d772f0fde804a8689c4507ceca86, type: 3}
+  Index: 6
+--- !u!61 &333748529
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333748524}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &372345409
 GameObject:
   m_ObjectHideFlags: 0
@@ -2396,6 +2596,8 @@ GameObject:
   - component: {fileID: 438364519}
   - component: {fileID: 438364521}
   - component: {fileID: 438364520}
+  - component: {fileID: 438364523}
+  - component: {fileID: 438364522}
   m_Layer: 5
   m_Name: Inventory_Slot_1.1
   m_TagString: Untagged
@@ -2458,6 +2660,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 438364518}
   m_CullTransparentMesh: 0
+--- !u!114 &438364522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438364518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 1
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 21300000, guid: 9828d772f0fde804a8689c4507ceca86, type: 3}
+  Index: 0
+--- !u!61 &438364523
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438364518}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &468247306
 GameObject:
   m_ObjectHideFlags: 0
@@ -2823,13 +3073,15 @@ GameObject:
   - component: {fileID: 531429236}
   - component: {fileID: 531429238}
   - component: {fileID: 531429237}
+  - component: {fileID: 531429240}
+  - component: {fileID: 531429239}
   m_Layer: 5
   m_Name: Image_LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &531429236
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2886,6 +3138,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531429235}
   m_CullTransparentMesh: 0
+--- !u!114 &531429239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531429235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 0
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 0}
+  Index: 0
+--- !u!61 &531429240
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531429235}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &532938313
 GameObject:
   m_ObjectHideFlags: 0
@@ -2974,6 +3274,8 @@ GameObject:
   - component: {fileID: 552549850}
   - component: {fileID: 552549852}
   - component: {fileID: 552549851}
+  - component: {fileID: 552549854}
+  - component: {fileID: 552549853}
   m_Layer: 5
   m_Name: 'Inventory_Slot_3.1 '
   m_TagString: Untagged
@@ -3036,6 +3338,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552549849}
   m_CullTransparentMesh: 0
+--- !u!114 &552549853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552549849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 1
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 21300000, guid: 9828d772f0fde804a8689c4507ceca86, type: 3}
+  Index: 10
+--- !u!61 &552549854
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552549849}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &559921581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3512,6 +3862,8 @@ GameObject:
   - component: {fileID: 749601699}
   - component: {fileID: 749601701}
   - component: {fileID: 749601700}
+  - component: {fileID: 749601703}
+  - component: {fileID: 749601702}
   m_Layer: 5
   m_Name: Inventory_Slot_1.5
   m_TagString: Untagged
@@ -3574,6 +3926,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749601698}
   m_CullTransparentMesh: 0
+--- !u!114 &749601702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749601698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 1
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 21300000, guid: 9828d772f0fde804a8689c4507ceca86, type: 3}
+  Index: 4
+--- !u!61 &749601703
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749601698}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &811666383
 GameObject:
   m_ObjectHideFlags: 0
@@ -3949,6 +4349,8 @@ GameObject:
   - component: {fileID: 937651715}
   - component: {fileID: 937651717}
   - component: {fileID: 937651716}
+  - component: {fileID: 937651719}
+  - component: {fileID: 937651718}
   m_Layer: 5
   m_Name: 'Inventory_Slot_2.4 '
   m_TagString: Untagged
@@ -4011,6 +4413,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937651714}
   m_CullTransparentMesh: 0
+--- !u!114 &937651718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937651714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 1
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 21300000, guid: 9828d772f0fde804a8689c4507ceca86, type: 3}
+  Index: 8
+--- !u!61 &937651719
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937651714}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &963365235
 GameObject:
   m_ObjectHideFlags: 0
@@ -4265,8 +4715,18 @@ MonoBehaviour:
   ResourceConMat: 0
   ResourceOre: 0
   ResourceTomes: 0
-  BaseArmorInventory: []
-  BaseWeaponInventory: []
+  BaseArmorInventory:
+  - {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
+  - {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
+  - {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
+  - {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
+  - {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
+  BaseWeaponInventory:
+  - {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403, type: 3}
+  - {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403, type: 3}
+  - {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403, type: 3}
+  - {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403, type: 3}
+  - {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403, type: 3}
   StatsBlock:
   - {fileID: 1062253297}
   - {fileID: 603009448}
@@ -4277,8 +4737,26 @@ MonoBehaviour:
   - {fileID: 1599500309}
   - {fileID: 2002146464}
   - {fileID: 1574732740}
+  DisplayInventory:
+  - {fileID: 438364518}
+  - {fileID: 1002356457}
+  - {fileID: 155155661}
+  - {fileID: 1761182596}
+  - {fileID: 749601698}
+  - {fileID: 2132158195}
+  - {fileID: 333748524}
+  - {fileID: 233650592}
+  - {fileID: 937651714}
+  - {fileID: 1013146540}
+  - {fileID: 552549849}
+  - {fileID: 1198033809}
+  - {fileID: 1933787337}
+  - {fileID: 250406770}
+  - {fileID: 1983392427}
+  PlayerInventory: []
   ExplorationPhase: {fileID: 255530815}
   AddorRemovetextBox: {fileID: 1228524339}
+  LastClickedPlayerInventory: {fileID: 0}
 --- !u!1 &992604636
 GameObject:
   m_ObjectHideFlags: 0
@@ -4435,6 +4913,8 @@ GameObject:
   - component: {fileID: 1002356458}
   - component: {fileID: 1002356460}
   - component: {fileID: 1002356459}
+  - component: {fileID: 1002356462}
+  - component: {fileID: 1002356461}
   m_Layer: 5
   m_Name: Inventory_Slot_1.2
   m_TagString: Untagged
@@ -4458,7 +4938,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -70, y: 65}
+  m_AnchoredPosition: {x: -67.9, y: 63.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1002356459
@@ -4497,6 +4977,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1002356457}
   m_CullTransparentMesh: 0
+--- !u!114 &1002356461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002356457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 1
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 21300000, guid: 9828d772f0fde804a8689c4507ceca86, type: 3}
+  Index: 1
+--- !u!61 &1002356462
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002356457}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &1013146540
 GameObject:
   m_ObjectHideFlags: 0
@@ -4508,6 +5036,8 @@ GameObject:
   - component: {fileID: 1013146541}
   - component: {fileID: 1013146543}
   - component: {fileID: 1013146542}
+  - component: {fileID: 1013146545}
+  - component: {fileID: 1013146544}
   m_Layer: 5
   m_Name: 'Inventory_Slot_2.5 '
   m_TagString: Untagged
@@ -4570,6 +5100,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013146540}
   m_CullTransparentMesh: 0
+--- !u!114 &1013146544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013146540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 1
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 21300000, guid: 9828d772f0fde804a8689c4507ceca86, type: 3}
+  Index: 9
+--- !u!61 &1013146545
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013146540}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &1062253295
 GameObject:
   m_ObjectHideFlags: 0
@@ -5061,6 +5639,8 @@ GameObject:
   - component: {fileID: 1146466468}
   - component: {fileID: 1146466470}
   - component: {fileID: 1146466469}
+  - component: {fileID: 1146466472}
+  - component: {fileID: 1146466471}
   m_Layer: 5
   m_Name: Image_Head
   m_TagString: Untagged
@@ -5124,6 +5704,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146466467}
   m_CullTransparentMesh: 0
+--- !u!114 &1146466471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146466467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 1
+  isBaseInventory: 0
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 21300000, guid: 61ec298e18a8ed847a3f350d9c1d9efb, type: 3}
+  Index: 0
+--- !u!61 &1146466472
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146466467}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &1164507381
 GameObject:
   m_ObjectHideFlags: 0
@@ -5412,6 +6040,8 @@ GameObject:
   - component: {fileID: 1198033810}
   - component: {fileID: 1198033812}
   - component: {fileID: 1198033811}
+  - component: {fileID: 1198033814}
+  - component: {fileID: 1198033813}
   m_Layer: 5
   m_Name: Inventory_Slot_3.2
   m_TagString: Untagged
@@ -5474,6 +6104,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198033809}
   m_CullTransparentMesh: 0
+--- !u!114 &1198033813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198033809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 1
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 21300000, guid: 9828d772f0fde804a8689c4507ceca86, type: 3}
+  Index: 11
+--- !u!61 &1198033814
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198033809}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &1219727152
 GameObject:
   m_ObjectHideFlags: 0
@@ -7407,6 +8085,8 @@ GameObject:
   - component: {fileID: 1761182597}
   - component: {fileID: 1761182599}
   - component: {fileID: 1761182598}
+  - component: {fileID: 1761182601}
+  - component: {fileID: 1761182600}
   m_Layer: 5
   m_Name: Inventory_Slot_1.4
   m_TagString: Untagged
@@ -7469,6 +8149,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761182596}
   m_CullTransparentMesh: 0
+--- !u!114 &1761182600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761182596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 1
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 21300000, guid: 9828d772f0fde804a8689c4507ceca86, type: 3}
+  Index: 3
+--- !u!61 &1761182601
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761182596}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &1818108831
 GameObject:
   m_ObjectHideFlags: 0
@@ -7636,13 +8364,15 @@ GameObject:
   - component: {fileID: 1825266892}
   - component: {fileID: 1825266894}
   - component: {fileID: 1825266893}
+  - component: {fileID: 1825266896}
+  - component: {fileID: 1825266895}
   m_Layer: 5
   m_Name: Image_Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1825266892
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7698,6 +8428,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825266891}
   m_CullTransparentMesh: 0
+--- !u!114 &1825266895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825266891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 0
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 0}
+  Index: 0
+--- !u!61 &1825266896
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825266891}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &1884361278
 GameObject:
   m_ObjectHideFlags: 0
@@ -7709,6 +8487,8 @@ GameObject:
   - component: {fileID: 1884361279}
   - component: {fileID: 1884361281}
   - component: {fileID: 1884361280}
+  - component: {fileID: 1884361283}
+  - component: {fileID: 1884361282}
   m_Layer: 5
   m_Name: Image_Body
   m_TagString: Untagged
@@ -7772,6 +8552,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884361278}
   m_CullTransparentMesh: 0
+--- !u!114 &1884361282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884361278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 0
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 21300000, guid: 61ec298e18a8ed847a3f350d9c1d9efb, type: 3}
+  Index: 0
+--- !u!61 &1884361283
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884361278}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &1908233289
 GameObject:
   m_ObjectHideFlags: 0
@@ -7783,13 +8611,15 @@ GameObject:
   - component: {fileID: 1908233290}
   - component: {fileID: 1908233292}
   - component: {fileID: 1908233291}
+  - component: {fileID: 1908233294}
+  - component: {fileID: 1908233293}
   m_Layer: 5
   m_Name: Image_RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1908233290
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7845,6 +8675,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908233289}
   m_CullTransparentMesh: 0
+--- !u!114 &1908233293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908233289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 0
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 0}
+  Index: 0
+--- !u!61 &1908233294
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908233289}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &1933787337
 GameObject:
   m_ObjectHideFlags: 0
@@ -7856,6 +8734,8 @@ GameObject:
   - component: {fileID: 1933787338}
   - component: {fileID: 1933787340}
   - component: {fileID: 1933787339}
+  - component: {fileID: 1933787342}
+  - component: {fileID: 1933787341}
   m_Layer: 5
   m_Name: Inventory_Slot_3.3
   m_TagString: Untagged
@@ -7918,6 +8798,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1933787337}
   m_CullTransparentMesh: 0
+--- !u!114 &1933787341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933787337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 1
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 21300000, guid: 9828d772f0fde804a8689c4507ceca86, type: 3}
+  Index: 12
+--- !u!61 &1933787342
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933787337}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &1969691824
 GameObject:
   m_ObjectHideFlags: 0
@@ -8009,6 +8937,8 @@ GameObject:
   - component: {fileID: 1983392428}
   - component: {fileID: 1983392430}
   - component: {fileID: 1983392429}
+  - component: {fileID: 1983392432}
+  - component: {fileID: 1983392431}
   m_Layer: 5
   m_Name: Inventory_Slot_3.5
   m_TagString: Untagged
@@ -8071,6 +9001,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1983392427}
   m_CullTransparentMesh: 0
+--- !u!114 &1983392431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983392427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 1
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 21300000, guid: 9828d772f0fde804a8689c4507ceca86, type: 3}
+  Index: 14
+--- !u!61 &1983392432
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983392427}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
 --- !u!1 &1989667452
 GameObject:
   m_ObjectHideFlags: 0
@@ -8986,6 +9964,8 @@ GameObject:
   - component: {fileID: 2132158196}
   - component: {fileID: 2132158198}
   - component: {fileID: 2132158197}
+  - component: {fileID: 2132158200}
+  - component: {fileID: 2132158199}
   m_Layer: 5
   m_Name: 'Inventory_Slot_2.1 '
   m_TagString: Untagged
@@ -9048,3 +10028,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132158195}
   m_CullTransparentMesh: 0
+--- !u!114 &2132158199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132158195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28213c71ad936a34ea5605b6338bd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeBase: {fileID: 980925424}
+  ExplorationPhase: {fileID: 255530815}
+  IsArmor: 0
+  isBaseInventory: 1
+  isFull: 0
+  isDirty: 1
+  possibleArmor: {fileID: 0}
+  possibleWeapon: {fileID: 0}
+  DefaultTexture: {fileID: 21300000, guid: 9828d772f0fde804a8689c4507ceca86, type: 3}
+  Index: 5
+--- !u!61 &2132158200
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132158195}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45}
+  m_EdgeRadius: 0
