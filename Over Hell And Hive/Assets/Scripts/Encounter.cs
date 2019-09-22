@@ -46,6 +46,21 @@ public class Encounter : MonoBehaviour
         }
     }
 
+    public Character AccessCharacterById(int incID)
+    {
+        Character temp = null;
+        for (int i = Friends.Count - 1; i >= 0; i--)
+        {
+            if (Friends[i].UniqueID == incID)
+            {
+                temp = Friends[i];
+                break;
+            }
+        }
+        return temp;
+    }
+
+
     public void GiveCharacterById(int incID)
     {
         Character temp = null;
