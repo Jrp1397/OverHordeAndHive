@@ -32,14 +32,14 @@ public class InventoryObject : MonoBehaviour
             {
                 if (IsArmor)
                 {
-                    if (possibleArmor.ArmorIcon != null)
+                    if (possibleArmor != null)
                     {
                         gameObject.GetComponent<Image>().sprite = possibleArmor.ArmorIcon;
                     }
                 }
                 else
                 {
-                    if (possibleWeapon.WeaponIcon != null)
+                    if (possibleWeapon != null)
                     {
                         gameObject.GetComponent<Image>().sprite = possibleWeapon.WeaponIcon;
                     }
@@ -68,10 +68,12 @@ public class InventoryObject : MonoBehaviour
             if (IsArmor)
             {
                 HomeBase.GiveItemToSelectedUnit(true, HomeBase.AccessSelectedCharacter(), Index);
+                HomeBase.UpdateInventoryPanel(HomeBase.AccessSelectedCharacter(), 1);
             }
             else
             {
                 HomeBase.GiveItemToSelectedUnit(false, HomeBase.AccessSelectedCharacter(), Index);
+                HomeBase.UpdateInventoryPanel(HomeBase.AccessSelectedCharacter(), 2);
             }
                
         }
@@ -87,6 +89,8 @@ public class InventoryObject : MonoBehaviour
                         isFull = false;
                         possibleArmor = null;
                         isDirty = true;
+
+                        HomeBase.UpdateInventoryPanel(HomeBase.AccessSelectedCharacter(),1);
                     }
                     else
                     {
@@ -94,24 +98,26 @@ public class InventoryObject : MonoBehaviour
                         isFull = false;
                         possibleWeapon = null;
                         isDirty = true;
+
+                        HomeBase.UpdateInventoryPanel(HomeBase.AccessSelectedCharacter(), 2);
                     }
                 }
             }
-            else {
 
-                HomeBase.LastClickedPlayerInventory = gameObject;
-                if (IsArmor)
-                {
-                    HomeBase.UpdateInventoryPanel(HomeBase.Combatants[HomeBase.selectedChar], 1);
-                }
-                else
-                {
-                    HomeBase.UpdateInventoryPanel(HomeBase.Combatants[HomeBase.selectedChar], 2);
-                }
+            HomeBase.LastClickedPlayerInventory = gameObject;
+            if (IsArmor)
+            {
+
+                HomeBase.UpdateInventoryPanel(HomeBase.AccessSelectedCharacter(), 1);
             }
+            else
+            {
+                HomeBase.UpdateInventoryPanel(HomeBase.AccessSelectedCharacter(), 2);
+            }
+            
         }
 
-
+        HomeBase.UpdateStatsPanel(HomeBase.AccessSelectedCharacter());
 
 
 

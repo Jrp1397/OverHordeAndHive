@@ -124,6 +124,7 @@ public class BaseManager : MonoBehaviour
             {
                 isCharhere = true;
                 UpdateStatsPanel(Combatants[i]);
+                UpdateInventoryPanel(Combatants[i], 0);
             }
         }
 
@@ -134,6 +135,7 @@ public class BaseManager : MonoBehaviour
         else
         {
             UpdateStatsPanel(ExplorationPhase.AccessCharacterById(incnumb));
+            UpdateInventoryPanel(ExplorationPhase.AccessCharacterById(incnumb),0);
             AddorRemovetextBox.text = "Remove Unit From Expedition";
         }
     }
@@ -178,9 +180,24 @@ public class BaseManager : MonoBehaviour
     public void UpdateStatsPanel(Character IncChar){
         //current order = Name, Health, Attack, Armor, Stamina, Speed, Magic, Resistance, and Mana
         StatsBlock[0].text = (IncChar.DisplayName);
+
         StatsBlock[1].text = ("Health: " +IncChar.Health + "/" + IncChar.MaxHealth);
-        StatsBlock[2].text = ("Attack: " + IncChar.myWeapon.SlashOffence + "/" + IncChar.myWeapon.PierceOffence + "/" + IncChar.myWeapon.CrushOffence);
-        StatsBlock[3].text = ("Armor: " + IncChar.myArmor.SlashDefence + "/" + IncChar.myArmor.PierceDefence + "/" + IncChar.myArmor.CrushDefence);
+        if (IncChar.myWeapon == null)
+        {
+            StatsBlock[3].text = ("Attack: 0/0/0");
+        }
+        else
+        {
+            StatsBlock[2].text = ("Attack: " + IncChar.myWeapon.SlashOffence + "/" + IncChar.myWeapon.PierceOffence + "/" + IncChar.myWeapon.CrushOffence);
+        }
+        if (IncChar.myArmor == null)
+        {
+            StatsBlock[3].text = ("Armor: 0/0/0");
+        }
+        else
+        {
+            StatsBlock[3].text = ("Armor: " + IncChar.myArmor.SlashDefence + "/" + IncChar.myArmor.PierceDefence + "/" + IncChar.myArmor.CrushDefence);
+        }
         StatsBlock[4].text = ("Stamina: " + IncChar.Stamina + "/" + IncChar.MaxHealth);
         StatsBlock[5].text = ("Speed: " + IncChar.Speed);
         StatsBlock[6].text = ("Wisdom: " + IncChar.Wis);
@@ -225,7 +242,7 @@ public class BaseManager : MonoBehaviour
             {
                 InventoryObject basetemp = DisplayInventory[index % 15].GetComponent<InventoryObject>();
                 basetemp.possibleWeapon = BaseWeaponInventory[index];
-                basetemp.IsArmor = true; basetemp.isFull = true; basetemp.isDirty = true;
+                basetemp.IsArmor = false; basetemp.isFull = true; basetemp.isDirty = true;
                 basetemp.Index = index;
                 DisplayInventory[index % 15].SetActive(true);
                 index++;
