@@ -117,6 +117,7 @@ public class BaseManager : MonoBehaviour
     {//change the value, and then update any required UI elements.
         selectedChar = incnumb;
         bool isCharhere = false;
+        LastClickedPlayerInventory = null;
 
         for (int i = Combatants.Count - 1; i >= 0; i--)
         {
@@ -165,6 +166,7 @@ public class BaseManager : MonoBehaviour
     //takes item from bases list, and gives it to unit
     public void GiveItemToSelectedUnit(bool isArmor, Character IncChar, int index)
     {
+        Debug.Log("index =" + index);
         if(isArmor && index < BaseArmorInventory.Count)
         {
             IncChar.myArmor = BaseArmorInventory[index];
@@ -231,6 +233,7 @@ public class BaseManager : MonoBehaviour
                 basetemp.possibleArmor = BaseArmorInventory[index];
                 basetemp.IsArmor = true; basetemp.isFull = true; basetemp.isDirty = true;
                 basetemp.Index = index;
+                Debug.Log(index);
                 DisplayInventory[index % 15].SetActive(true);
                 index++;
             }
@@ -244,6 +247,7 @@ public class BaseManager : MonoBehaviour
                 basetemp.possibleWeapon = BaseWeaponInventory[index];
                 basetemp.IsArmor = false; basetemp.isFull = true; basetemp.isDirty = true;
                 basetemp.Index = index;
+                Debug.Log(index);
                 DisplayInventory[index % 15].SetActive(true);
                 index++;
             }

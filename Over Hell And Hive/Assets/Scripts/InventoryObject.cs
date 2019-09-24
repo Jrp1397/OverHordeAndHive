@@ -60,18 +60,18 @@ public class InventoryObject : MonoBehaviour
 
     public void OnMouseDown()
     {
-        Debug.Log("Clicked Object");
-
-
         if (isBaseInventory)//Base Inventory- moves things into player inventory
         {
+            Debug.Log("as of Click, Index =" + Index);
             if (IsArmor)
             {
+                HomeBase.TakeItemFromSelectedUnit(true, HomeBase.AccessSelectedCharacter());
                 HomeBase.GiveItemToSelectedUnit(true, HomeBase.AccessSelectedCharacter(), Index);
                 HomeBase.UpdateInventoryPanel(HomeBase.AccessSelectedCharacter(), 1);
             }
             else
             {
+                HomeBase.TakeItemFromSelectedUnit(false, HomeBase.AccessSelectedCharacter());
                 HomeBase.GiveItemToSelectedUnit(false, HomeBase.AccessSelectedCharacter(), Index);
                 HomeBase.UpdateInventoryPanel(HomeBase.AccessSelectedCharacter(), 2);
             }
@@ -121,5 +121,10 @@ public class InventoryObject : MonoBehaviour
 
 
 
+    }
+
+    public void foobart(int debug)
+    {
+        Debug.Log(debug);
     }
 }
