@@ -149,16 +149,22 @@ public class BaseManager : MonoBehaviour
         {
             if (IncChar != null)
             {
-                BaseArmorInventory.Add(IncChar.myArmor);
-                IncChar.myArmor = null;
+                if (IncChar.myArmor != null)
+                {
+                    BaseArmorInventory.Add(IncChar.myArmor);
+                    IncChar.myArmor = null;
+                }
             }
         }
         else
         {
             if (IncChar.myWeapon != null)
             {
-                BaseWeaponInventory.Add(IncChar.myWeapon);
-                IncChar.myWeapon = null;
+                if (IncChar.myWeapon != null)
+                {
+                    BaseWeaponInventory.Add(IncChar.myWeapon);
+                    IncChar.myWeapon = null;
+                }
             }
         }
     }
