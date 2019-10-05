@@ -92,14 +92,6 @@ public class Encounter : MonoBehaviour
 
     }
 
-    public void TickCharacters()
-    {
-        foreach(Character chara in Friends)
-        {
-            chara.AlterStats();
-        }
-    }
-
     public void DisplayCharacters()
     {
         foreach (Character chara in Friends)

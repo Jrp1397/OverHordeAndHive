@@ -40,6 +40,12 @@ public class BaseManager : MonoBehaviour
         
     }
 
+    public void AssignSelectedCharacterJob(int incWork)
+    {
+        AccessSelectedCharacter().myWork = (Worktype)incWork;
+        UpdateCharacterSelection();
+    }
+
     public Character AccessSelectedCharacter()
     {
         Character temp = null;
