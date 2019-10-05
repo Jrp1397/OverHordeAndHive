@@ -16,6 +16,7 @@ public class Character : MonoBehaviour
     public int UniqueID, Str, Wis, Cha, StanceType;
     public int MaxHealth, Health, Stamina, MP, MaxMP, Speed, Movement, Initiative;
     public string DisplayName;
+    public Sprite mySprite;
     public Vector2Int MapPosition = new Vector2Int(-1, -1);
     public Armour myArmor= null;
     public Weapon myWeapon = null;

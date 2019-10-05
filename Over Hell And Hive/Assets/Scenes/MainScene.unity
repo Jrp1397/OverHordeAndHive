@@ -939,7 +939,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 6, y: 275}
-  m_SizeDelta: {x: 150, y: 645}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &171044316
 MonoBehaviour:
@@ -2200,9 +2200,9 @@ RectTransform:
   m_Father: {fileID: 171044315}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75, y: -322.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &295316237
@@ -3084,7 +3084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &397840935
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3819,7 +3819,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.85271317}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5490,7 +5490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &931236921
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5791,6 +5791,7 @@ MonoBehaviour:
   Movement: 2
   Initiative: 0
   DisplayName: Von Hohen
+  mySprite: {fileID: 21300000, guid: 7f884d8f07089ea43b59273157e909b1, type: 3}
   MapPosition: {x: -1, y: -1}
   myArmor: {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
   myWeapon: {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403,
@@ -5821,6 +5822,7 @@ MonoBehaviour:
   Movement: 2
   Initiative: 0
   DisplayName: Bombastus
+  mySprite: {fileID: 21300000, guid: cf041673e93cc4d469a1a1ffce1a583b, type: 3}
   MapPosition: {x: -1, y: -1}
   myArmor: {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
   myWeapon: {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403,
@@ -5865,6 +5867,7 @@ MonoBehaviour:
   Movement: 2
   Initiative: 0
   DisplayName: Theophrastus
+  mySprite: {fileID: 21300000, guid: 29475be153db9834ab7e8fdcdcb602f2, type: 3}
   MapPosition: {x: -1, y: -1}
   myArmor: {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
   myWeapon: {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403,
@@ -5895,6 +5898,7 @@ MonoBehaviour:
   Movement: 2
   Initiative: 0
   DisplayName: Number 23
+  mySprite: {fileID: 21300000, guid: 3cdb0701034ba794aac85b3c79dddf5e, type: 3}
   MapPosition: {x: -1, y: -1}
   myArmor: {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
   myWeapon: {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403,
@@ -5964,6 +5968,7 @@ MonoBehaviour:
   - {fileID: 1884361278}
   ExplorationPhase: {fileID: 255530815}
   AddorRemovetextBox: {fileID: 1228524339}
+  CharacterDisplay: {fileID: 1348749497}
   LastClickedPlayerInventory: {fileID: 0}
 --- !u!1 &992604636
 GameObject:
@@ -7150,9 +7155,9 @@ RectTransform:
   m_Father: {fileID: 171044315}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75, y: -62.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1164507383
@@ -9386,9 +9391,9 @@ RectTransform:
   m_Father: {fileID: 171044315}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75, y: -582.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1563201070
@@ -9977,9 +9982,9 @@ RectTransform:
   m_Father: {fileID: 171044315}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75, y: -192.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1695712693
@@ -12363,9 +12368,9 @@ RectTransform:
   m_Father: {fileID: 171044315}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75, y: -452.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2046822867

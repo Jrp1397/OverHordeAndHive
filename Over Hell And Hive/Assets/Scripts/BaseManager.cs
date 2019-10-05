@@ -12,11 +12,12 @@ public class BaseManager : MonoBehaviour
     public int ResourceGold = 0, ResourceConMat = 0, ResourceOre = 0, ResourceTomes = 0;
     public List<Armour> BaseArmorInventory;
     public List<Weapon> BaseWeaponInventory;
-    [SerializeField] private Text [] StatsBlock = new Text[9];
+    [SerializeField] private Text[] StatsBlock = new Text[9];
     [SerializeField] private GameObject[] DisplayInventory;
     [SerializeField] private GameObject[] PlayerInventory;
     [SerializeField] private Encounter ExplorationPhase;
     [SerializeField] private Text AddorRemovetextBox;
+    [SerializeField] private Image CharacterDisplay;
     public GameObject LastClickedPlayerInventory = null;
 
     // Start is called before the first frame update
@@ -211,6 +212,7 @@ public class BaseManager : MonoBehaviour
         StatsBlock[6].text = ("Wisdom: " + IncChar.Wis);
         StatsBlock[7].text = ("Resistance: " + IncChar.Cha);
         StatsBlock[8].text = ("Mana: " + +IncChar.MP+ "/" + IncChar.MaxMP);
+        CharacterDisplay.sprite = IncChar.mySprite;
     }
 
     public void UpdateInventoryPanel(Character IncChar, int isNullArmororWeapon)
