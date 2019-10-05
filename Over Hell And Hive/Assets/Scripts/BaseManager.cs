@@ -18,6 +18,10 @@ public class BaseManager : MonoBehaviour
     [SerializeField] private Encounter ExplorationPhase;
     [SerializeField] private Text AddorRemovetextBox;
     [SerializeField] private Image CharacterDisplay;
+    [SerializeField] private Sprite[] WorkIcons;
+    public GameObject CharacterSelectorPrefab;
+    public GameObject CharacterSelectionBox;
+    private List<GameObject> CharacterSelectionButtons;
     public GameObject LastClickedPlayerInventory = null;
 
     // Start is called before the first frame update
@@ -27,6 +31,7 @@ public class BaseManager : MonoBehaviour
         TestAttack.PenValue = 2;
         TestAttack.ToCritModifier = 5;
         TestAttack.Damage = new Vector3(3, 2, 1);
+        UpdateCharacterSelection();
     }
 
     // Update is called once per frame
@@ -267,6 +272,32 @@ public class BaseManager : MonoBehaviour
 
     }
 
+    public void UpdateCharacterSelection()
+    {
+        List<Character> TempList = Combatants;
+        foreach(Character Chara in ExplorationPhase.Friends)
+        {
+            TempList.Add(Chara);
+        }
 
+        TempList.Sort((p1, p2) => p1.UniqueID.CompareTo(p2.UniqueID));
+
+       foreach(Transform child in CharacterSelectionBox.GetComponentsInChildren<Transform>())
+        {
+            if (child.gameObject != CharacterSelectionBox)
+            {
+                Debug.Log("Removing button");
+                Destroy(child.gameObject);
+            }
+        }
+
+       foreach (Character chara in TempList)
+        {
+            GameObject temp = Instantiate(CharacterSelectorPrefab, CharacterSelectionBox.transform);
+            temp.GetComponent<Button>().onClick.AddListener(delegate { SetSelectedCharacter(chara.UniqueID); });
+            temp.GetComponent<Image>().sprite = WorkIcons[(int)chara.myWork];
+        }
+
+    }
 
 }

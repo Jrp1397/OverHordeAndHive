@@ -9,6 +9,8 @@ public struct Attack
     public Vector3 Damage;
 }
 
+public enum Worktype { Combat =0, Mats =1, Ore =2, Gold =3, Forging =4 }
+
 
 public class Character : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class Character : MonoBehaviour
     public string DisplayName;
     public Sprite mySprite;
     public Vector2Int MapPosition = new Vector2Int(-1, -1);
+    public Worktype myWork;
     public Armour myArmor= null;
     public Weapon myWeapon = null;
     
