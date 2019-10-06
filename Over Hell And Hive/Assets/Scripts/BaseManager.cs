@@ -19,6 +19,7 @@ public class BaseManager : MonoBehaviour
     [SerializeField] private Text AddorRemovetextBox;
     [SerializeField] private Image CharacterDisplay;
     [SerializeField] private Sprite[] WorkIcons;
+    [SerializeField] private Building[] Buildings;
     public GameObject CharacterSelectorPrefab;
     public GameObject CharacterSelectionBox;
     private List<GameObject> CharacterSelectionButtons;
@@ -43,7 +44,10 @@ public class BaseManager : MonoBehaviour
 
     public void AssignSelectedCharacterJob(int incWork)
     {
-        AccessSelectedCharacter().myWork = (Worktype)incWork;
+        Character tempChar = AccessSelectedCharacter();
+        Buildings[(int)tempChar.myWork / 2].DecreaseManpower();
+        tempChar.myWork = (Worktype)incWork;
+        Buildings[(int)incWork / 2].IncreaseManpower(true);
         UpdateCharacterSelection();
     }
 
@@ -124,6 +128,21 @@ public class BaseManager : MonoBehaviour
         ExplorationPhase.GiveCharacterById(selectedChar);
         AddorRemovetextBox.text = "Add Unit To Expedition";
     }
+
+    public void DirectionalToggleActiveCharacterExpedition(bool embarking)
+    {
+        if (embarking)
+        {
+            GiveCharacterById(selectedChar);
+            AddorRemovetextBox.text = "Remove Unit From Expedition";
+        }
+        else
+        {
+            ExplorationPhase.GiveCharacterById(selectedChar);
+            AddorRemovetextBox.text = "Add Unit To Expedition";
+        }
+    }
+
 
 
     public void SetSelectedCharacter(int incnumb)
@@ -281,7 +300,11 @@ public class BaseManager : MonoBehaviour
 
     public void UpdateCharacterSelection()
     {
-        List<Character> TempList = Combatants;
+        List<Character> TempList = new List<Character>();
+        foreach (Character Chara in Combatants)
+        {
+            TempList.Add(Chara);
+        }
         foreach(Character Chara in ExplorationPhase.Friends)
         {
             TempList.Add(Chara);
