@@ -9,7 +9,7 @@ public struct Attack
     public Vector3 Damage;
 }
 
-public enum Worktype { Combat =0, Mats =1, Ore =2, Gold =3, Forging =4 }
+public enum Worktype { CombatFight =0, CombatSupport =1, QuarryStone=2, QuarryOre=3, TradeGold=4, TradeRecuit=5, ForgeArms=6, ForgeArmor=7, TowerSpells=9, TowerSkills=10}
 
 
 public class Character : MonoBehaviour

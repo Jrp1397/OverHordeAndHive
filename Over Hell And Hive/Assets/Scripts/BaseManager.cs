@@ -31,6 +31,7 @@ public class BaseManager : MonoBehaviour
         TestAttack.PenValue = 2;
         TestAttack.ToCritModifier = 5;
         TestAttack.Damage = new Vector3(3, 2, 1);
+        SetSelectedCharacter(0);
         UpdateCharacterSelection();
     }
 
