@@ -114,6 +114,7 @@ public class Building : MonoBehaviour
             default:
                 break;
         }
+        myBase.UpdateIncomes();
     }
 
 }

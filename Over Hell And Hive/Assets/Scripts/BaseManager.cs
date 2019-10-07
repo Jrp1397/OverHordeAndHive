@@ -17,6 +17,7 @@ public class BaseManager : MonoBehaviour
     [SerializeField] private GameObject[] PlayerInventory;
     [SerializeField] private Encounter ExplorationPhase;
     [SerializeField] private Text AddorRemovetextBox;
+    [SerializeField] private Text[] CurrencyBoxes;
     [SerializeField] private Image CharacterDisplay;
     [SerializeField] private Sprite[] WorkIcons;
     [SerializeField] private Building[] Buildings;
@@ -329,5 +330,22 @@ public class BaseManager : MonoBehaviour
         }
 
     }
+
+    public void UpdateIncomes()
+    {
+        CurrencyBoxes[0].text = (ResourceGold + " + " + Buildings[2].ManpowerLeft * 5);
+        CurrencyBoxes[1].text = (ResourceConMat + " + " + Buildings[1].ManpowerLeft * 2);
+        CurrencyBoxes[2].text = (ResourceOre + " + " + Buildings[1].ManpowerRight * 2);
+    }
+
+    public void TickBuildings()
+    {
+        ResourceGold += (Buildings[2].ManpowerLeft * 5);
+        ResourceConMat += (Buildings[1].ManpowerLeft * 2);
+        ResourceOre += (Buildings[1].ManpowerRight * 2);
+
+        UpdateIncomes();
+    }
+
 
 }
