@@ -25,6 +25,7 @@ public class Encounter : MonoBehaviour
     public int DangerSeedModifer;
     [SerializeField] private Text FoeName, FriendName;
     public Attack TestAttack;
+    public GameObject SelectedCharacterObject;
     bool CharactersFirst = true, PlayerNext = true, autotick = false;
 
 
@@ -279,6 +280,8 @@ public class Encounter : MonoBehaviour
             SelectedFriendIndex = TurnFriendIndex;
             FriendName.text = Friends[SelectedFriendIndex].DisplayName;
             FriendlyIcon.sprite = Friends[SelectedFriendIndex].mySprite;
+            SelectedCharacterObject.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
+           // SelectedCharacterObject.transform.position = new Vector3(0, 0, 0);
             CalculatePlayerMovement();
             TurnFriendIndex++;
             if(TurnFriendIndex > Friends.Count - 1)
@@ -293,6 +296,8 @@ public class Encounter : MonoBehaviour
             //Debug.Log(Foes[TurnFoeIndex].Title + "'s Turn");
             FriendName.text = Friends[SelectedFriendIndex].DisplayName;
             FriendlyIcon.sprite = Friends[SelectedFriendIndex].mySprite;
+            SelectedCharacterObject.transform.SetParent(BattleFieldObject[Foes[SelectedFoeIndex].MapPosition.x, Foes[SelectedFoeIndex].MapPosition.y].transform, false);
+           // SelectedCharacterObject.transform.position = new Vector3(0, 0, 0);
 
             TurnFoeIndex++;
             if(TurnFoeIndex > Foes.Count - 1)
@@ -308,6 +313,8 @@ public class Encounter : MonoBehaviour
                 PlayerNext = true;
                 FriendName.text = Friends[SelectedFriendIndex].DisplayName;
                 FriendlyIcon.sprite = Friends[SelectedFriendIndex].mySprite;
+                SelectedCharacterObject.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
+
             }
             else
             {
