@@ -13,6 +13,8 @@ public class Encounter : MonoBehaviour
     public List<Monster> Foes;
     public List<string> Initative;
     [SerializeField] private BaseManager HomeBase;
+    public Image FriendlyIcon;
+    public Image EnemyIcon;
     public GameObject FieldTilePrefab;
     private GameObject[,] BattleFieldObject = new GameObject [4,12];
     public CombatTile[,] BattleFieldTiles = new CombatTile[4, 12];
@@ -161,6 +163,7 @@ public class Encounter : MonoBehaviour
         }
 
         FoeName.text = Foes[SelectedFoeIndex].Title;
+        EnemyIcon.sprite = Foes[SelectedFoeIndex].mySprite;
     }
 
     public void CycleSelFriend(bool Forward)
@@ -176,6 +179,7 @@ public class Encounter : MonoBehaviour
             if (SelectedFriendIndex < 0) { SelectedFriendIndex = Friends.Count-1; }
         }
         FriendName.text = Friends[SelectedFriendIndex].DisplayName;
+        FriendlyIcon.sprite = Friends[SelectedFriendIndex].mySprite;
     }
 
     public void StartDeployment(int FriendlyDeployspace, int EnemyDeployspace)
@@ -273,7 +277,8 @@ public class Encounter : MonoBehaviour
         {//Player Controls
             Friends[TurnFriendIndex].Movement = Friends[TurnFriendIndex].Speed;
             SelectedFriendIndex = TurnFriendIndex;
-            FriendName.text = Friends[SelectedFriendIndex].DisplayName;            
+            FriendName.text = Friends[SelectedFriendIndex].DisplayName;
+            FriendlyIcon.sprite = Friends[SelectedFriendIndex].mySprite;
             CalculatePlayerMovement();
             TurnFriendIndex++;
             if(TurnFriendIndex > Friends.Count - 1)
@@ -286,6 +291,9 @@ public class Encounter : MonoBehaviour
         else
         {//Monster turn
             //Debug.Log(Foes[TurnFoeIndex].Title + "'s Turn");
+            FriendName.text = Friends[SelectedFriendIndex].DisplayName;
+            FriendlyIcon.sprite = Friends[SelectedFriendIndex].mySprite;
+
             TurnFoeIndex++;
             if(TurnFoeIndex > Foes.Count - 1)
             {
@@ -298,7 +306,8 @@ public class Encounter : MonoBehaviour
             if(Friends[SelectedFriendIndex].Initiative >= Foes[SelectedFoeIndex].Initiative || endedRounds[1] == 1)
             {//Players go next
                 PlayerNext = true;
-            FriendName.text = Friends[SelectedFriendIndex].DisplayName;
+                FriendName.text = Friends[SelectedFriendIndex].DisplayName;
+                FriendlyIcon.sprite = Friends[SelectedFriendIndex].mySprite;
             }
             else
             {

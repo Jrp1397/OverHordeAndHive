@@ -9,6 +9,7 @@ public class Monster : MonoBehaviour
     public int Health, Stamina, MP, MaxHealth, Movement, Initiative, Speed;
     public string Title;
     public Vector2Int MapPosition = new Vector2Int(-1, -1);
+    public Sprite mySprite;
 
 
     // Start is called before the first frame update
