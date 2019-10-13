@@ -18,6 +18,8 @@ public class Encounter : MonoBehaviour
     public GameObject FieldTilePrefab;
     private GameObject[,] BattleFieldObject = new GameObject [4,12];
     public CombatTile[,] BattleFieldTiles = new CombatTile[4, 12];
+    public GameObject[] UIStatBars;
+    public GameObject[] UIStatBarTexts;
     private int[] endedRounds = { 0, 0 };
     public int SelectedFoeIndex = 0, SelectedFriendIndex = 0;
     public int TurnFoeIndex = 0, TurnFriendIndex = 0;
@@ -179,8 +181,7 @@ public class Encounter : MonoBehaviour
             SelectedFriendIndex--;
             if (SelectedFriendIndex < 0) { SelectedFriendIndex = Friends.Count-1; }
         }
-        FriendName.text = Friends[SelectedFriendIndex].DisplayName;
-        FriendlyIcon.sprite = Friends[SelectedFriendIndex].mySprite;
+        TickUIElements();
     }
 
     public void StartDeployment(int FriendlyDeployspace, int EnemyDeployspace)
@@ -238,7 +239,7 @@ public class Encounter : MonoBehaviour
         RollInitiative();
         foreach (Character chara in Friends)
         {
-            Debug.Log(chara.Initiative);
+
         }
         CombatTick();
 
@@ -278,8 +279,7 @@ public class Encounter : MonoBehaviour
         {//Player Controls
             Friends[TurnFriendIndex].Movement = Friends[TurnFriendIndex].Speed;
             SelectedFriendIndex = TurnFriendIndex;
-            FriendName.text = Friends[SelectedFriendIndex].DisplayName;
-            FriendlyIcon.sprite = Friends[SelectedFriendIndex].mySprite;
+            TickUIElements();
             SelectedCharacterObject.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
            // SelectedCharacterObject.transform.position = new Vector3(0, 0, 0);
             CalculatePlayerMovement();
@@ -293,9 +293,8 @@ public class Encounter : MonoBehaviour
         }
         else
         {//Monster turn
-            //Debug.Log(Foes[TurnFoeIndex].Title + "'s Turn");
-            FriendName.text = Friends[SelectedFriendIndex].DisplayName;
-            FriendlyIcon.sprite = Friends[SelectedFriendIndex].mySprite;
+         //Debug.Log(Foes[TurnFoeIndex].Title + "'s Turn");
+            TickUIElements();
             SelectedCharacterObject.transform.SetParent(BattleFieldObject[Foes[SelectedFoeIndex].MapPosition.x, Foes[SelectedFoeIndex].MapPosition.y].transform, false);
            // SelectedCharacterObject.transform.position = new Vector3(0, 0, 0);
 
@@ -311,8 +310,7 @@ public class Encounter : MonoBehaviour
             if(Friends[SelectedFriendIndex].Initiative >= Foes[SelectedFoeIndex].Initiative || endedRounds[1] == 1)
             {//Players go next
                 PlayerNext = true;
-                FriendName.text = Friends[SelectedFriendIndex].DisplayName;
-                FriendlyIcon.sprite = Friends[SelectedFriendIndex].mySprite;
+                TickUIElements();
                 SelectedCharacterObject.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
 
             }
@@ -346,63 +344,47 @@ public class Encounter : MonoBehaviour
         //Start loop that paints in all directions, checking for valid states of the tiles
         
         Vector2Int selectedPosition = Friends[SelectedFriendIndex].MapPosition;
+        int maxValue = Friends[SelectedFriendIndex].Movement; 
         Vector2Int tempPos;
-        int Xvalue = Friends[SelectedFriendIndex].Movement;
+        int Xvalue = maxValue;
         int Yvalue = 0;
         ClearMapOfMovement();
-        Debug.Log("calculating Movement for player # " + SelectedFriendIndex + " With a movement of " + Xvalue );
-        for (int i=0; i <= Friends[SelectedFriendIndex].Movement; i++)
+      
+        while (Xvalue >= -maxValue)
         {
-            while (Xvalue >= 0)
+            Yvalue = 0;
+            do
             {
-                tempPos = selectedPosition;
-                tempPos.x += Xvalue;
-                tempPos.y += Yvalue;
-                if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
-                {
-                    BattleFieldTiles[tempPos.x, tempPos.y].ChangeToMovable();
-                }
-
-                tempPos = selectedPosition;
-                tempPos.x -= Xvalue;
-                tempPos.y += Yvalue;
+                tempPos = new Vector2Int(selectedPosition.x + Xvalue, selectedPosition.y + Yvalue);
 
                 if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
                 {
                     BattleFieldTiles[tempPos.x, tempPos.y].ChangeToMovable();
                 }
 
-
-                tempPos = selectedPosition;
-                tempPos.x += Xvalue;
-                tempPos.y -= Yvalue;
+                tempPos = new Vector2Int(selectedPosition.x + Xvalue, selectedPosition.y - Yvalue);
                 if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
                 {
                     BattleFieldTiles[tempPos.x, tempPos.y].ChangeToMovable();
                 }
 
+                Yvalue++;
 
-                tempPos = selectedPosition;
-                tempPos.x -= Xvalue;
-                tempPos.y -= Yvalue;
-                if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
-                {
-                    BattleFieldTiles[tempPos.x, tempPos.y].ChangeToMovable();
-                }
+            } while ((Mathf.Abs(Xvalue) + Yvalue) <= maxValue);
 
-                Xvalue--;
-            }
-            Yvalue++;
-            Xvalue = Friends[TurnFriendIndex].Movement - Yvalue;
+
+            Xvalue--;
         }
-
-
 
     }
 
     public void OnPlayerMovement()
     {
+        TickUIElements();
         ClearMapOfMovement();
+        CalculatePlayerMovement();
+        SelectedCharacterObject.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
+
     }
 
     public void ClearMapOfMovement()
@@ -426,4 +408,15 @@ public class Encounter : MonoBehaviour
         }
     }
 
+    public void TickUIElements()
+    {
+        FriendName.text = Friends[SelectedFriendIndex].DisplayName;
+        FriendlyIcon.sprite = Friends[SelectedFriendIndex].mySprite;
+
+        UIStatBarTexts[0].GetComponent<Text>().text = (Friends[SelectedFriendIndex].Health + "/" + Friends[SelectedFriendIndex].MaxHealth);
+        UIStatBars[0].transform.localScale = new Vector3((float)Friends[SelectedFriendIndex].Health / (float)Friends[SelectedFriendIndex].MaxHealth,1,1);
+
+        UIStatBarTexts[1].GetComponent<Text>().text = (Friends[SelectedFriendIndex].Movement + "/" + Friends[SelectedFriendIndex].Speed);
+        UIStatBars[1].transform.localScale = new Vector3((float)Friends[SelectedFriendIndex].Movement / (float)Friends[SelectedFriendIndex].Speed, 1, 1);
+    }
 }
