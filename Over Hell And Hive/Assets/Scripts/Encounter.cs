@@ -165,8 +165,7 @@ public class Encounter : MonoBehaviour
             if (SelectedFoeIndex < 0) { SelectedFoeIndex = Foes.Count-1; }
         }
 
-        FoeName.text = Foes[SelectedFoeIndex].Title;
-        EnemyIcon.sprite = Foes[SelectedFoeIndex].mySprite;
+        TickUIElements();
     }
 
     public void CycleSelFriend(bool Forward)
@@ -412,11 +411,19 @@ public class Encounter : MonoBehaviour
     {
         FriendName.text = Friends[SelectedFriendIndex].DisplayName;
         FriendlyIcon.sprite = Friends[SelectedFriendIndex].mySprite;
+        FoeName.text = Foes[SelectedFoeIndex].Title;
+        EnemyIcon.sprite = Foes[SelectedFoeIndex].mySprite;
 
         UIStatBarTexts[0].GetComponent<Text>().text = (Friends[SelectedFriendIndex].Health + "/" + Friends[SelectedFriendIndex].MaxHealth);
         UIStatBars[0].transform.localScale = new Vector3((float)Friends[SelectedFriendIndex].Health / (float)Friends[SelectedFriendIndex].MaxHealth,1,1);
 
         UIStatBarTexts[1].GetComponent<Text>().text = (Friends[SelectedFriendIndex].Movement + "/" + Friends[SelectedFriendIndex].Speed);
         UIStatBars[1].transform.localScale = new Vector3((float)Friends[SelectedFriendIndex].Movement / (float)Friends[SelectedFriendIndex].Speed, 1, 1);
+
+        UIStatBarTexts[2].GetComponent<Text>().text = (Foes[SelectedFoeIndex].Health + "/" + Foes[SelectedFoeIndex].MaxHealth);
+        UIStatBars[2].transform.localScale = new Vector3((float)Foes[SelectedFoeIndex].Health / (float)Foes[SelectedFoeIndex].MaxHealth, 1, 1);
+
+        UIStatBarTexts[3].GetComponent<Text>().text = (Foes[SelectedFoeIndex].Movement + "/" + Foes[SelectedFoeIndex].Speed);
+        UIStatBars[3].transform.localScale = new Vector3((float)Foes[SelectedFoeIndex].Movement / (float)Foes[SelectedFoeIndex].Speed, 1, 1);
     }
 }
