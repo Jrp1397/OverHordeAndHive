@@ -2325,6 +2325,8 @@ MonoBehaviour:
   - {fileID: 255530818}
   - {fileID: 255530817}
   Initative: []
+  WeaponLoot: []
+  ArmourLoot: []
   HomeBase: {fileID: 980925424}
   FriendlyIcon: {fileID: 1306210734}
   EnemyIcon: {fileID: 580355456}
@@ -2376,6 +2378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fdc983d990a25c4ba96f3900345c3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myEncounter: {fileID: 255530815}
   UniqueID: 0
   Str: 0
   Wis: 0
@@ -2412,6 +2415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fdc983d990a25c4ba96f3900345c3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myEncounter: {fileID: 255530815}
   UniqueID: 0
   Str: 0
   Wis: 0
@@ -2448,6 +2452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fdc983d990a25c4ba96f3900345c3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myEncounter: {fileID: 255530815}
   UniqueID: 0
   Str: 0
   Wis: 0
@@ -2484,6 +2489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fdc983d990a25c4ba96f3900345c3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myEncounter: {fileID: 255530815}
   UniqueID: 0
   Str: 0
   Wis: 0
@@ -2520,6 +2526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fdc983d990a25c4ba96f3900345c3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myEncounter: {fileID: 255530815}
   UniqueID: 0
   Str: 0
   Wis: 0
@@ -8900,6 +8907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade320cc1f9ee2b43a368b945e8658a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myEncounter: {fileID: 255530815}
   UniqueID: 3
   Str: 4
   Wis: 3
@@ -8932,6 +8940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade320cc1f9ee2b43a368b945e8658a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myEncounter: {fileID: 255530815}
   UniqueID: 2
   Str: 4
   Wis: 2
@@ -8978,6 +8987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade320cc1f9ee2b43a368b945e8658a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myEncounter: {fileID: 255530815}
   UniqueID: 1
   Str: 3
   Wis: 2
@@ -9010,6 +9020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade320cc1f9ee2b43a368b945e8658a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myEncounter: {fileID: 255530815}
   UniqueID: 0
   Str: 2
   Wis: 3
