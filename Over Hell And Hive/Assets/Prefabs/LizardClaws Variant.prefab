@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 4113296407139256915, guid: fbe51db99fbcae64b8d1665df5b55403,
         type: 3}
       propertyPath: m_Name
-      value: LizardClaws
+      value: LizardClaws Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403,
         type: 3}
@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403,
         type: 3}
       propertyPath: SlashOffence
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403,
         type: 3}

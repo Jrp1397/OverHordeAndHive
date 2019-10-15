@@ -5,6 +5,7 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     //3 main stats, weapon type and tier, armour type and teir, class type and tier
+    public Encounter myEncounter;
     public int UniqueID, Str, Wis, Cha, OffType, OffTier, DefType, DefTier, SkillType, SkillTier, StanceType;
     public int Health, Stamina, MP, MaxHealth, Movement, Initiative, Speed;
     public string Title;
@@ -46,7 +47,7 @@ public class Monster : MonoBehaviour
 
 
         outgoingAttack.Damage = new Vector3(slashDMG, pierceDMG, crushDMG);
-        outgoingAttack.PenValue = OffTier + myWeapon.CritMultiplier;
+        outgoingAttack.PenValue = OffTier + myWeapon.APvalue;
         return outgoingAttack;
     }
 
@@ -60,6 +61,7 @@ public class Monster : MonoBehaviour
     public void ProcessAttack(Attack IncAttack)
     {
         int DefTier = myArmor.Tier;
+        IncAttack.PenValue -= DefTier;
         float DidHit = Random.Range(0.0f, 100.0f);
         Debug.Log("Random Chance =" + DidHit + "  Plus " + ((IncAttack.ToHitValue * 10) - (GenerateDefence() * 10)));
         DidHit += (IncAttack.ToHitValue * 10) - (GenerateDefence() * 10);
@@ -70,9 +72,10 @@ public class Monster : MonoBehaviour
             DidCrit += IncAttack.ToCritModifier - (myArmor.CritDefence + DefTier);
             Debug.Log("Crit level=" + DidCrit);
             if (DidCrit > 100)
-            {
-                float damagetotal = IncAttack.Damage.x + IncAttack.Damage.y + IncAttack.Damage.z;
-                Debug.Log("Regular Hit, total Damage =  " + damagetotal);
+            {//Crit, do full raw/damage
+                float damagetotal = IncAttack.Damage.x * IncAttack.Damage.x + IncAttack.Damage.y * IncAttack.Damage.y + IncAttack.Damage.z* IncAttack.Damage.z;
+                Debug.Log("Crit  Hit, total Damage =  " + damagetotal);
+                Health -= (int)damagetotal;
             }
             else
             {
@@ -83,33 +86,34 @@ public class Monster : MonoBehaviour
                 //See if the armor is completely penetrated or not, if it is, do full damage(like with a crit), otherwise, reduce the total damage
                 if (temp > 0)
                 {
-                    damagetotal += (IncAttack.Damage.x / temp);
+                    damagetotal += ((IncAttack.Damage.x * IncAttack.Damage.x)/ (2*temp) );
                 }
                 else
                 {
-                    damagetotal += IncAttack.Damage.x;
+                    damagetotal += IncAttack.Damage.x * IncAttack.Damage.x;
                 }
                 temp = (1 + myArmor.PierceDefence - IncAttack.PenValue);
                 Debug.Log(temp);
                 if (temp > 0)
                 {
-                    damagetotal += (IncAttack.Damage.y / temp);
+                    damagetotal += ((IncAttack.Damage.y* IncAttack.Damage.y) / (2*temp));
                 }
                 else
                 {
-                    damagetotal += IncAttack.Damage.y;
+                    damagetotal += IncAttack.Damage.y * IncAttack.Damage.y;
                 }
                 temp = (1 + (myArmor.CrushDefence - IncAttack.PenValue));
                 Debug.Log(temp);
                 if (temp > 0)
                 {
-                    damagetotal += (IncAttack.Damage.z / temp);
+                    damagetotal += ((IncAttack.Damage.z * IncAttack.Damage.z) /  (2 *temp));
                 }
                 else
                 {
-                    damagetotal += IncAttack.Damage.z;
+                    damagetotal += IncAttack.Damage.z*IncAttack.Damage.z;
                 }
                 Debug.Log("Regular Hit, total Damage =  " + damagetotal);
+                Health -= (int)damagetotal;
             }
         }
         else
@@ -117,6 +121,11 @@ public class Monster : MonoBehaviour
             Debug.Log("Hit FAILED");
         }
 
+
+        if(Health <= 0)
+        {
+            myEncounter.OnEntityDeath(MapPosition, false);
+        }
 
     }
 

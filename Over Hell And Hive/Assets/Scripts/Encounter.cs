@@ -12,6 +12,8 @@ public class Encounter : MonoBehaviour
     public List<Character> Friends;
     public List<Monster> Foes;
     public List<string> Initative;
+    public List<Weapon> WeaponLoot;
+    public List<Armour> ArmourLoot;
     [SerializeField] private BaseManager HomeBase;
     public Image FriendlyIcon;
     public Image EnemyIcon;
@@ -27,7 +29,7 @@ public class Encounter : MonoBehaviour
     public int DangerSeedModifer;
     [SerializeField] private Text FoeName, FriendName;
     public Attack TestAttack;
-    public GameObject SelectedCharacterObject;
+    public GameObject SelectedCharacterPrefab, SelectedTilePrefab;
     bool CharactersFirst = true, PlayerNext = true, autotick = false;
 
 
@@ -63,6 +65,26 @@ public class Encounter : MonoBehaviour
             }
         }
         return temp;
+    }
+
+    public void SelectTileOnRightClick(Vector2Int incMapPosition)
+    {
+        SelectedTilePrefab.transform.SetParent(BattleFieldObject[incMapPosition.x, incMapPosition.y].transform, false);
+
+    }
+
+    public void OnEnemyTileClick(Vector2Int incMapPosition)
+    {
+        int i = 0;
+        foreach(Monster Mob in Foes)
+        {
+            if(Mob.MapPosition == incMapPosition)
+            {
+                SelectedFoeIndex = i;
+                TickUIElements();
+            }
+            i++;
+        }
     }
 
     public void GiveCharacterById(int incID)
@@ -236,11 +258,9 @@ public class Encounter : MonoBehaviour
         }
 
         RollInitiative();
-        foreach (Character chara in Friends)
-        {
-
-        }
+        
         CombatTick();
+        CalculatePlayerMovement();
 
 
     }
@@ -279,8 +299,8 @@ public class Encounter : MonoBehaviour
             Friends[TurnFriendIndex].Movement = Friends[TurnFriendIndex].Speed;
             SelectedFriendIndex = TurnFriendIndex;
             TickUIElements();
-            SelectedCharacterObject.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
-           // SelectedCharacterObject.transform.position = new Vector3(0, 0, 0);
+            SelectedCharacterPrefab.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
+          
             CalculatePlayerMovement();
             TurnFriendIndex++;
             if(TurnFriendIndex > Friends.Count - 1)
@@ -294,8 +314,8 @@ public class Encounter : MonoBehaviour
         {//Monster turn
          //Debug.Log(Foes[TurnFoeIndex].Title + "'s Turn");
             TickUIElements();
-            SelectedCharacterObject.transform.SetParent(BattleFieldObject[Foes[SelectedFoeIndex].MapPosition.x, Foes[SelectedFoeIndex].MapPosition.y].transform, false);
-           // SelectedCharacterObject.transform.position = new Vector3(0, 0, 0);
+            SelectedCharacterPrefab.transform.SetParent(BattleFieldObject[Foes[SelectedFoeIndex].MapPosition.x, Foes[SelectedFoeIndex].MapPosition.y].transform, false);
+         
 
             TurnFoeIndex++;
             if(TurnFoeIndex > Foes.Count - 1)
@@ -310,7 +330,7 @@ public class Encounter : MonoBehaviour
             {//Players go next
                 PlayerNext = true;
                 TickUIElements();
-                SelectedCharacterObject.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
+                SelectedCharacterPrefab.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
 
             }
             else
@@ -382,7 +402,7 @@ public class Encounter : MonoBehaviour
         TickUIElements();
         ClearMapOfMovement();
         CalculatePlayerMovement();
-        SelectedCharacterObject.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
+        SelectedCharacterPrefab.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
 
     }
 
@@ -425,5 +445,35 @@ public class Encounter : MonoBehaviour
 
         UIStatBarTexts[3].GetComponent<Text>().text = (Foes[SelectedFoeIndex].Movement + "/" + Foes[SelectedFoeIndex].Speed);
         UIStatBars[3].transform.localScale = new Vector3((float)Foes[SelectedFoeIndex].Movement / (float)Foes[SelectedFoeIndex].Speed, 1, 1);
+    }
+
+    public void OnEntityDeath(Vector2Int location, bool isPlayer)
+    {
+        if (isPlayer)
+        {//player Death
+            foreach(Character chara in Friends)
+            {
+                if (chara.MapPosition == location)
+                {
+                    WeaponLoot.Add(chara.myWeapon);
+                    ArmourLoot.Add(chara.myArmor);
+                    Destroy(chara);
+                    BattleFieldTiles[location.x, location.y].ChangeState(0);
+                }
+            }
+        }
+        else
+        {//enemy death
+            foreach (Monster chara in Foes)
+            {
+                if (chara.MapPosition == location)
+                {
+                    WeaponLoot.Add(chara.myWeapon);
+                    ArmourLoot.Add(chara.myArmor);
+                    Destroy(chara);
+                    BattleFieldTiles[location.x, location.y].ChangeState(0);
+                }
+            }
+        }
     }
 }

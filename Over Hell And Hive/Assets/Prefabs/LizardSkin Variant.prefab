@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 622107020040698658, guid: 78ead944ee00fc840851d7cabc05f1b9,
         type: 3}
       propertyPath: m_Name
-      value: LizardSkin
+      value: LizardSkin Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9,
         type: 3}
@@ -20,7 +20,7 @@ PrefabInstance:
     - target: {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9,
         type: 3}
       propertyPath: Tier
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9,
         type: 3}

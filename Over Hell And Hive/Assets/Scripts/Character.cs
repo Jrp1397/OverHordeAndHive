@@ -15,6 +15,7 @@ public enum Worktype { CombatFight =0, CombatSupport =1, QuarryStone=2, QuarryOr
 public class Character : MonoBehaviour
 {
     //3 main stats, weapon type and tier, armour type and teir, class type and tier
+    public Encounter myEncounter;
     public int UniqueID, Str, Wis, Cha, StanceType;
     public int MaxHealth, Health, Stamina, MP, MaxMP, Speed, Movement, Initiative;
     public string DisplayName;
@@ -57,7 +58,7 @@ public class Character : MonoBehaviour
      
 
         outgoingAttack.Damage = new Vector3(slashDMG, pierceDMG, crushDMG);
-        outgoingAttack.PenValue = OffTier + myWeapon.CritMultiplier;
+        outgoingAttack.PenValue = OffTier + myWeapon.APvalue;
         return outgoingAttack;
     }
 
@@ -68,68 +69,78 @@ public class Character : MonoBehaviour
         return output;
     }
 
-    public void ProcessAttack( Attack IncAttack)
+
+    public void ProcessAttack(Attack IncAttack)
     {
         int DefTier = myArmor.Tier;
+        IncAttack.PenValue -= DefTier;
         float DidHit = Random.Range(0.0f, 100.0f);
         Debug.Log("Random Chance =" + DidHit + "  Plus " + ((IncAttack.ToHitValue * 10) - (GenerateDefence() * 10)));
-        DidHit += (IncAttack.ToHitValue * 10) - (GenerateDefence()*10);
+        DidHit += (IncAttack.ToHitValue * 10) - (GenerateDefence() * 10);
 
-        if(DidHit > 50)
+        if (DidHit > 50)
         {//Successful Hit, calculate Damage
             float DidCrit = Random.Range(0.0f, 100.0f);
-            DidCrit +=   IncAttack.ToCritModifier - (myArmor.CritDefence + DefTier);
+            DidCrit += IncAttack.ToCritModifier - (myArmor.CritDefence + DefTier);
             Debug.Log("Crit level=" + DidCrit);
             if (DidCrit > 100)
-            {
-                float damagetotal = IncAttack.Damage.x + IncAttack.Damage.y + IncAttack.Damage.z;
-                Debug.Log("Regular Hit, total Damage =  " + damagetotal);
+            {//Crit, do full raw/damage
+                float damagetotal = IncAttack.Damage.x * IncAttack.Damage.x + IncAttack.Damage.y * IncAttack.Damage.y + IncAttack.Damage.z * IncAttack.Damage.z;
+                Debug.Log("Crit  Hit, total Damage =  " + damagetotal);
+                Health -= (int)damagetotal;
             }
             else
             {
                 float damagetotal = 0;
                 //Damage totals       Slash damage is eaisest to reduce or remove,       pierce has an easier time penetrating, but blunt damage goes through the most
-                float temp = ( 1+ (myArmor.SlashDefence - IncAttack.PenValue));
+                float temp = (1 + (myArmor.SlashDefence - IncAttack.PenValue));
                 Debug.Log(temp);
                 //See if the armor is completely penetrated or not, if it is, do full damage(like with a crit), otherwise, reduce the total damage
-                if (temp > 0) {
-                    damagetotal +=( IncAttack.Damage.x / temp);
+                if (temp > 0)
+                {
+                    damagetotal += ((IncAttack.Damage.x * IncAttack.Damage.x) / (2 * temp));
                 }
                 else
                 {
-                    damagetotal += IncAttack.Damage.x;
+                    damagetotal += IncAttack.Damage.x * IncAttack.Damage.x;
                 }
-                temp = (1+  myArmor.PierceDefence - IncAttack.PenValue);
+                temp = (1 + myArmor.PierceDefence - IncAttack.PenValue);
                 Debug.Log(temp);
                 if (temp > 0)
                 {
-                    damagetotal += (IncAttack.Damage.y / temp);
+                    damagetotal += ((IncAttack.Damage.y * IncAttack.Damage.y) / (2 * temp));
                 }
                 else
                 {
-                    damagetotal += IncAttack.Damage.y;
+                    damagetotal += IncAttack.Damage.y * IncAttack.Damage.y;
                 }
-                temp =(1+ (myArmor.CrushDefence- IncAttack.PenValue));
+                temp = (1 + (myArmor.CrushDefence - IncAttack.PenValue));
                 Debug.Log(temp);
                 if (temp > 0)
                 {
-                    damagetotal += (IncAttack.Damage.z / temp);
+                    damagetotal += ((IncAttack.Damage.z * IncAttack.Damage.z) / (2 * temp));
                 }
                 else
                 {
-                    damagetotal += IncAttack.Damage.z;
+                    damagetotal += IncAttack.Damage.z * IncAttack.Damage.z;
                 }
                 Debug.Log("Regular Hit, total Damage =  " + damagetotal);
+                Health -= (int)damagetotal;
             }
         }
         else
         {
             Debug.Log("Hit FAILED");
         }
-        
+
+
+        if (Health <= 0)
+        {
+            myEncounter.OnEntityDeath(MapPosition, true);
+        }
 
     }
-    
+
 
 
 }

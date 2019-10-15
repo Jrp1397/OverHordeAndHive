@@ -86,10 +86,7 @@ public class Building : MonoBehaviour
                 StatusText.text = "Current Manpower = " + ManpowerTotal + "\n";
                 StatusText.text += "Current Max Party Size= " + ManpowerLeft + "\n";
                 StatusText.text += "Current Max Expedition Length = " + (ManpowerRight*2) +5 + "\n";
-
-
                 break;
-
             case 1://Quarry
                 StatusText.text = "Level " + Level + " Quarry\n";
                 StatusText.text += "Current Manpower = " + ManpowerTotal + "\n";

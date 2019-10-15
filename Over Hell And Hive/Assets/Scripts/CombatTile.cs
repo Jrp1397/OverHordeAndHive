@@ -104,75 +104,79 @@ public class CombatTile : MonoBehaviour
                 ChangeState(3);
             break;
 
-}
         }
+       }
+
+ 
    
-    private void OnMouseDown()
+    private void OnMouseOver()
     {
-        Debug.Log("You clicked on a " + myTileState.ToString() + " Tile");
         Vector2Int oldPosition;
-        switch (myTileState)
+      
+        if (Input.GetMouseButtonDown(1))//right Click
         {
-            case TileState.Empty:
-                Debug.Log("You clicked on a " + myTileState.ToString() + " Tile. This Does nothing.");
-                break;
-            case TileState.Blocked:
-                Debug.Log("You clicked on a " + myTileState.ToString() + " Tile. You can't go here, sorry.");
-                break;
-            case TileState.Ally:
-                Debug.Log("You clicked on a " + myTileState.ToString() + " Tile. This should change the selected Hero to this guy. we're working on it...");
-                break;
-            case TileState.Enemy:
-                Debug.Log("You clicked on a " + myTileState.ToString() + " Tile. This should change the selected Enemy to this guy. we're working on it...");
-                break;
-            case TileState.Deployable:
-                oldPosition = myEncounter.Friends[myEncounter.SelectedFriendIndex].MapPosition;
-                if (oldPosition.x >= 0)
-                {
-                    myEncounter.BattleFieldTiles[oldPosition.x, oldPosition.y].ChangeState(4);// make the old position available.
-                }
-                myEncounter.MoveSelectedCharacterTo(MapPosition, 0);
-                ChangeState(2);//Place Ally here
-                myEncounter.CycleSelFriend(true);
-                Debug.Log("You clicked on a " + myTileState.ToString() + " Tile. You have moved a character into this spot.");
-                break;
-            case TileState.Movable:
-                oldPosition = myEncounter.Friends[myEncounter.SelectedFriendIndex].MapPosition;
-                if (oldPosition.x >= 0)
-                {
-                    myEncounter.BattleFieldTiles[oldPosition.x, oldPosition.y].ChangeState(0);// make the old position available.
-                }
-                myEncounter.MoveSelectedCharacterTo(MapPosition, 0);
-                int movementTotal = Mathf.Abs(oldPosition.x - MapPosition.x) + Mathf.Abs(oldPosition.y - MapPosition.y);
-                myEncounter.Friends[myEncounter.SelectedFriendIndex].Movement -= movementTotal;
-                myEncounter.OnPlayerMovement();
-                ChangeState(2);//Place Ally here
-                Debug.Log("You clicked on a " + myTileState.ToString() + " Tile. You have moved a character into this spot. But we need to account for the speed, and reduce his movement.");
-                break;
-            case TileState.Threatened:
-                Debug.Log("You clicked on a " + myTileState.ToString() + " Tile. This is a dangerous spot for someone.");
-                mySR.color = Color.yellow;
-                break;
-            case TileState.Attackable:
-                if (myEncounter.Friends[myEncounter.SelectedFriendIndex].Movement > 0) { 
-                Debug.Log("You clicked on a " + myTileState.ToString() + " Tile.This should generate and then distribute an attack. Eek.");
-                myEncounter.AttackFoeAt(MapPosition, myEncounter.Friends[myEncounter.SelectedFriendIndex].GenerateAttack());
-                myEncounter.Friends[myEncounter.SelectedFriendIndex].Movement -= 2;//Currently set to attack value of 2
-                myEncounter.OnPlayerMovement();
-                mySR.color = Color.magenta;
-                }
-                else{
-                    Debug.Log("not Enough Movement Left.");
+            myEncounter.SelectTileOnRightClick(MapPosition);
+        }
 
-                }
-                break;
-            case TileState.InRange:
+        if (Input.GetMouseButtonDown(0))
+        {//For Left Clicks
+            switch (myTileState)
+            {
+                case TileState.Empty:
+                    break;
+                case TileState.Blocked:
+                    break;
+                case TileState.Ally:
+                    break;
+                case TileState.Enemy:
+                    myEncounter.OnEnemyTileClick(MapPosition);
+                    break;
+                case TileState.Deployable:
+                    oldPosition = myEncounter.Friends[myEncounter.SelectedFriendIndex].MapPosition;
+                    if (oldPosition.x >= 0)
+                    {
+                        myEncounter.BattleFieldTiles[oldPosition.x, oldPosition.y].ChangeState(4);// make the old position available.
+                    }
+                    myEncounter.MoveSelectedCharacterTo(MapPosition, 0);
+                    ChangeState(2);//Place Ally here
+                    myEncounter.CycleSelFriend(true);
+                    break;
+                case TileState.Movable:
+                    oldPosition = myEncounter.Friends[myEncounter.SelectedFriendIndex].MapPosition;
+                    if (oldPosition.x >= 0)
+                    {
+                        myEncounter.BattleFieldTiles[oldPosition.x, oldPosition.y].ChangeState(0);// make the old position available.
+                    }
+                    myEncounter.MoveSelectedCharacterTo(MapPosition, 0);
+                    int movementTotal = Mathf.Abs(oldPosition.x - MapPosition.x) + Mathf.Abs(oldPosition.y - MapPosition.y);
+                    myEncounter.Friends[myEncounter.SelectedFriendIndex].Movement -= movementTotal;
+                    myEncounter.OnPlayerMovement();
+                    ChangeState(2);//Place Ally here
+                    break;
+                case TileState.Threatened:
+                    mySR.color = Color.yellow;
+                    break;
+                case TileState.Attackable:
+                    if (myEncounter.Friends[myEncounter.SelectedFriendIndex].Movement > 0)
+                    {
+                        myEncounter.AttackFoeAt(MapPosition, myEncounter.Friends[myEncounter.SelectedFriendIndex].GenerateAttack());
+                        myEncounter.Friends[myEncounter.SelectedFriendIndex].Movement -= 2;//Currently set to attack value of 2
+                        myEncounter.OnPlayerMovement();
+                        mySR.color = Color.magenta;
+                    }
+                    else
+                    {
+                        Debug.Log("not Enough Movement Left.");
 
-                Debug.Log("You clicked on a " + myTileState.ToString() + " Tile. This shows you were you could attack, but theres no-one here...");
-                mySR.color = Color.Lerp(Color.red, Color.white, .5f);
-                break;
-            default:
-                break;
+                    }
+                    break;
+                case TileState.InRange:
+
+                    mySR.color = Color.Lerp(Color.red, Color.white, .5f);
+                    break;
+                default:
+                    break;
+            }
         }
 
     }

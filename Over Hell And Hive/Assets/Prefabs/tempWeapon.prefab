@@ -46,8 +46,8 @@ MonoBehaviour:
   Name: Bronze Shortsword
   Ranged: 0
   Tier: 3
-  SlashOffence: 6
-  PierceOffence: 3
+  SlashOffence: 5
+  PierceOffence: 2
   CrushOffence: 1
   CritMultiplier: 2
   Weight: 2
