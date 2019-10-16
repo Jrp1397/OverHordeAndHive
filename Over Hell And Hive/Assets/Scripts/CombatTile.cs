@@ -159,8 +159,7 @@ public class CombatTile : MonoBehaviour
                 case TileState.Attackable:
                     if (myEncounter.Friends[myEncounter.SelectedFriendIndex].Movement > 0)
                     {
-                        myEncounter.AttackFoeAt(MapPosition, myEncounter.Friends[myEncounter.SelectedFriendIndex].GenerateAttack());
-                        myEncounter.Friends[myEncounter.SelectedFriendIndex].Movement -= 2;//Currently set to attack value of 2
+                        myEncounter.AttackFoeAt(MapPosition);
                         myEncounter.OnPlayerMovement();
                         mySR.color = Color.magenta;
                     }

@@ -2320,13 +2320,12 @@ MonoBehaviour:
   - {fileID: 980925419}
   Foes:
   - {fileID: 255530821}
-  - {fileID: 255530820}
-  - {fileID: 255530819}
-  - {fileID: 255530818}
-  - {fileID: 255530817}
   Initative: []
   WeaponLoot: []
   ArmourLoot: []
+  ResourceGold: 0
+  ResourceConMat: 0
+  ResourceOre: 0
   HomeBase: {fileID: 980925424}
   FriendlyIcon: {fileID: 1306210734}
   EnemyIcon: {fileID: 580355456}
@@ -2350,6 +2349,7 @@ MonoBehaviour:
   DangerSeedModifer: 0
   FoeName: {fileID: 1636216964}
   FriendName: {fileID: 1219727154}
+  ReturnsToMainBase: {fileID: 1989667454}
   SelectedCharacterPrefab: {fileID: 291321545}
   SelectedTilePrefab: {fileID: 639852524}
 --- !u!4 &255530816
