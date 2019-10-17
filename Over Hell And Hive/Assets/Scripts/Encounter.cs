@@ -295,25 +295,17 @@ public class Encounter : MonoBehaviour
     
     public void CombatTick()
     {
+        bool MonstersNow = false;
        // ClearMapOfMovement();
         if (PlayerNext)
         {//Player Controls
-            Friends[TurnFriendIndex].Movement = Friends[TurnFriendIndex].Speed;
-            SelectedFriendIndex = TurnFriendIndex;
-            TickUIElements();
-            SelectedCharacterPrefab.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
-          
-            CalculatePlayerMovement();
-            TurnFriendIndex++;
-            if(TurnFriendIndex > Friends.Count - 1)
-            {
-                PlayerNext = false;
-                endedRounds[0] = 1;
-            }
+           
+           
 
         }
         else
         {//Monster turn
+            MonsterTurn();
          //Debug.Log(Foes[TurnFoeIndex].Title + "'s Turn");
             TickUIElements();
             SelectedCharacterPrefab.transform.SetParent(BattleFieldObject[Foes[TurnFoeIndex].MapPosition.x, Foes[TurnFoeIndex].MapPosition.y].transform, false);
@@ -335,14 +327,24 @@ public class Encounter : MonoBehaviour
                 PlayerNext = true;
                 TickUIElements();
                 SelectedCharacterPrefab.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
-
+                Friends[TurnFriendIndex].Movement = Friends[TurnFriendIndex].Speed;
+            SelectedFriendIndex = TurnFriendIndex;
+            TickUIElements();
+            SelectedCharacterPrefab.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
+          
+            CalculatePlayerMovement();
+                TurnFriendIndex++;
+                if (TurnFriendIndex > Friends.Count - 1)
+                {
+                    PlayerNext = false;
+                    endedRounds[0] = 1;
+                }
             }
             else
             {
-
+                MonstersNow = true;
                 FoeName.text = Foes[TurnFoeIndex].Title;
                 PlayerNext = false;
-                autotick = true;
             }
         }
         else
@@ -352,10 +354,11 @@ public class Encounter : MonoBehaviour
             TurnFoeIndex = 0;
             TurnFriendIndex = 0;
             PlayerNext = CharactersFirst;
-            if (!PlayerNext)
-            {
-                autotick = true;
-            }           
+                   
+        }
+        if (MonstersNow)
+        {
+            CombatTick();
         }
     }
 
@@ -412,7 +415,6 @@ public class Encounter : MonoBehaviour
 
     public void ClearMapOfMovement()
     {
-        Debug.Log("Clearing Map");
         foreach (CombatTile CT in BattleFieldTiles)
         {
             CT.ChangeFromMovable();
@@ -486,6 +488,10 @@ public class Encounter : MonoBehaviour
                     {
                         TurnFriendIndex = 0;
                         endedRounds[0] = 1;
+                    }
+                    if(SelectedFriendIndex > Friends.Count - 1)
+                    {
+                        SelectedFriendIndex = 0;
                     }
                 }
                 i++;
@@ -613,5 +619,57 @@ public class Encounter : MonoBehaviour
         ReturnsToMainBase.Toggle();
     }
 
+
+    private void MonsterTurn()
+    {
+        int minDistance = 5000, targetIndex = -1, i=0;
+        Vector2Int MyMapPos = Foes[TurnFoeIndex].MapPosition, RelativePosition = new Vector2Int(0,0);
+        Foes[TurnFoeIndex].Movement = Foes[TurnFoeIndex].Speed;
+
+        foreach (Character chara in Friends)
+        {//Determine the closest character. Later on determien most THREATENING character
+            if(Mathf.Abs(MyMapPos.x- chara.MapPosition.x) + Mathf.Abs(MyMapPos.y - chara.MapPosition.y) < minDistance)
+            {
+                RelativePosition.x = chara.MapPosition.x - MyMapPos.x;
+                RelativePosition.y = chara.MapPosition.y - MyMapPos.y;
+                minDistance = Mathf.Abs(MyMapPos.x - chara.MapPosition.x) + Mathf.Abs(MyMapPos.y - chara.MapPosition.y);
+                targetIndex = i;
+            }
+            i++;
+        }
+        //Move towards target, and/or attack
+        while(Foes[TurnFoeIndex].Movement > 0)
+        {//2 here is weapon range
+            if (minDistance <= 2)
+            {
+                Friends[targetIndex].ProcessAttack(Foes[TurnFoeIndex].GenerateAttack());
+                break;
+            }
+            else
+            {
+                if(Mathf.Abs(RelativePosition.x) > Mathf.Abs(RelativePosition.y))
+                {
+                    BattleFieldTiles[MyMapPos.x, MyMapPos.y].ChangeState(0);
+                    MyMapPos.x += RelativePosition.x / Mathf.Abs(RelativePosition.x);
+                    BattleFieldTiles[MyMapPos.x, MyMapPos.y].ChangeState(3);
+                    Foes[TurnFoeIndex].MapPosition = MyMapPos;
+                    RelativePosition.x -= RelativePosition.x / Mathf.Abs(RelativePosition.x);
+                }
+                else
+                {
+
+                    BattleFieldTiles[MyMapPos.x, MyMapPos.y].ChangeState(0);
+                    MyMapPos.y += RelativePosition.y/ Mathf.Abs(RelativePosition.y);
+                    BattleFieldTiles[MyMapPos.x, MyMapPos.y].ChangeState(3);
+                    Foes[TurnFoeIndex].MapPosition = MyMapPos;
+                }
+                minDistance--;
+                Foes[TurnFoeIndex].Movement--;
+            }
+          
+        }
+        TickUIElements();
+        ClearMapOfMovement();
+    }
 
 }

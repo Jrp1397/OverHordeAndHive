@@ -317,7 +317,6 @@ public class BaseManager : MonoBehaviour
         {
             if (child.gameObject != CharacterSelectionBox)
             {
-                Debug.Log("Removing button");
                 Destroy(child.gameObject);
             }
         }
