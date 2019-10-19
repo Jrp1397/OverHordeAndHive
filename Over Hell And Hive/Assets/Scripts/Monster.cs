@@ -129,7 +129,21 @@ public class Monster : MonoBehaviour
 
     }
 
+    public void AssignRandomStats(int Points)
+    {
+        int HealthAssigned = 0, SpeedAssigned = 1;
+        Points -= 1;
 
+        int Ratio = 2 + Random.Range(0, 4);
+        SpeedAssigned += (Points / Ratio);
+        Points -= (Points / Ratio); ;
+        HealthAssigned = Points;
+
+        MaxHealth = HealthAssigned * 3;
+        Health = MaxHealth;
+        Speed = SpeedAssigned;
+
+    }
 
 
 }

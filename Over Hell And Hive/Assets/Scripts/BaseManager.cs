@@ -346,5 +346,17 @@ public class BaseManager : MonoBehaviour
         UpdateIncomes();
     }
 
+    public void OnReturnFromCombat()
+    {
+        TickBuildings();
+
+        for (int i = Combatants.Count-1; i > 0; i--)
+        {
+            if(Combatants[i].myWork == Worktype.CombatFight || Combatants[i].myWork == Worktype.CombatSupport)
+            {
+                GiveCharacterById(Combatants[i].UniqueID);
+            }
+        }
+    }
 
 }

@@ -1351,6 +1351,7 @@ MonoBehaviour:
   ToggleOn:
   - {fileID: 397840934}
   - {fileID: 255530814}
+  - {fileID: 173687579}
 --- !u!114 &168757933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2288,11 +2289,6 @@ GameObject:
   m_Component:
   - component: {fileID: 255530816}
   - component: {fileID: 255530815}
-  - component: {fileID: 255530821}
-  - component: {fileID: 255530820}
-  - component: {fileID: 255530819}
-  - component: {fileID: 255530818}
-  - component: {fileID: 255530817}
   m_Layer: 0
   m_Name: EncounterObject
   m_TagString: Untagged
@@ -2318,18 +2314,43 @@ MonoBehaviour:
   - {fileID: 980925422}
   - {fileID: 980925420}
   - {fileID: 980925419}
-  Foes:
-  - {fileID: 255530821}
+  Foes: []
   Initative: []
   WeaponLoot: []
   ArmourLoot: []
+  WeaponTypes:
+  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
+  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
+  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
+  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
+  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
+  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
+  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
+  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
+  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
+  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
+  ArmourTypes:
+  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
+  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
+  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
+  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
+  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
+  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
+  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
+  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
+  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
+  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
   ResourceGold: 0
   ResourceConMat: 0
   ResourceOre: 0
+  ThreatLevelMax: 10
+  ThreatLevelMin: 3
   HomeBase: {fileID: 980925424}
   FriendlyIcon: {fileID: 1306210734}
   EnemyIcon: {fileID: 580355456}
   FieldTilePrefab: {fileID: 5677995056926713367, guid: 61625e9f37b62bf469ff6449a09c2a7e,
+    type: 3}
+  EmptyMonsterPrefab: {fileID: 4857946685970803049, guid: 90fead5455288ac498f54a1714fb89ea,
     type: 3}
   UIStatBars:
   - {fileID: 1537566821}
@@ -2366,191 +2387,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &255530817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255530814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fdc983d990a25c4ba96f3900345c3ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myEncounter: {fileID: 255530815}
-  UniqueID: 0
-  Str: 0
-  Wis: 0
-  Cha: 0
-  OffType: 0
-  OffTier: 0
-  DefType: 0
-  DefTier: 0
-  SkillType: 0
-  SkillTier: 0
-  StanceType: 0
-  Health: 4
-  Stamina: 0
-  MP: 4
-  MaxHealth: 4
-  Movement: 3
-  Initiative: 0
-  Speed: 3
-  Title: One Small Boi
-  MapPosition: {x: -1, y: -1}
-  mySprite: {fileID: 21300000, guid: 3bcd84e718889a64886ad2fe6d838dac, type: 3}
-  myArmor: {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
-  myWeapon: {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2,
-    type: 3}
---- !u!114 &255530818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255530814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fdc983d990a25c4ba96f3900345c3ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myEncounter: {fileID: 255530815}
-  UniqueID: 0
-  Str: 0
-  Wis: 0
-  Cha: 0
-  OffType: 0
-  OffTier: 0
-  DefType: 0
-  DefTier: 0
-  SkillType: 0
-  SkillTier: 0
-  StanceType: 0
-  Health: 6
-  Stamina: 0
-  MP: 6
-  MaxHealth: 6
-  Movement: 1
-  Initiative: 0
-  Speed: 1
-  Title: One Big Boi
-  MapPosition: {x: -1, y: -1}
-  mySprite: {fileID: 21300000, guid: 3bcd84e718889a64886ad2fe6d838dac, type: 3}
-  myArmor: {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
-  myWeapon: {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2,
-    type: 3}
---- !u!114 &255530819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255530814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fdc983d990a25c4ba96f3900345c3ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myEncounter: {fileID: 255530815}
-  UniqueID: 0
-  Str: 0
-  Wis: 0
-  Cha: 0
-  OffType: 0
-  OffTier: 0
-  DefType: 0
-  DefTier: 0
-  SkillType: 0
-  SkillTier: 0
-  StanceType: 0
-  Health: 5
-  Stamina: 0
-  MP: 5
-  MaxHealth: 5
-  Movement: 2
-  Initiative: 0
-  Speed: 2
-  Title: One Hungry Boi
-  MapPosition: {x: -1, y: -1}
-  mySprite: {fileID: 21300000, guid: 3bcd84e718889a64886ad2fe6d838dac, type: 3}
-  myArmor: {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
-  myWeapon: {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2,
-    type: 3}
---- !u!114 &255530820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255530814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fdc983d990a25c4ba96f3900345c3ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myEncounter: {fileID: 255530815}
-  UniqueID: 0
-  Str: 0
-  Wis: 0
-  Cha: 0
-  OffType: 0
-  OffTier: 0
-  DefType: 0
-  DefTier: 0
-  SkillType: 0
-  SkillTier: 0
-  StanceType: 0
-  Health: 5
-  Stamina: 0
-  MP: 5
-  MaxHealth: 5
-  Movement: 2
-  Initiative: 0
-  Speed: 2
-  Title: One Scaly Boi
-  MapPosition: {x: -1, y: -1}
-  mySprite: {fileID: 21300000, guid: 3bcd84e718889a64886ad2fe6d838dac, type: 3}
-  myArmor: {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
-  myWeapon: {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2,
-    type: 3}
---- !u!114 &255530821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255530814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fdc983d990a25c4ba96f3900345c3ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myEncounter: {fileID: 255530815}
-  UniqueID: 0
-  Str: 0
-  Wis: 0
-  Cha: 0
-  OffType: 0
-  OffTier: 0
-  DefType: 0
-  DefTier: 0
-  SkillType: 0
-  SkillTier: 0
-  StanceType: 0
-  Health: 3
-  Stamina: 0
-  MP: 0
-  MaxHealth: 3
-  Movement: 1
-  Initiative: 0
-  Speed: 1
-  Title: One Soft Boi
-  MapPosition: {x: -1, y: -1}
-  mySprite: {fileID: 21300000, guid: 3bcd84e718889a64886ad2fe6d838dac, type: 3}
-  myArmor: {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
-  myWeapon: {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2,
-    type: 3}
 --- !u!1 &276358991
 GameObject:
   m_ObjectHideFlags: 0
@@ -17795,6 +17631,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1989667454}
         m_MethodName: Toggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 980925424}
+        m_MethodName: OnReturnFromCombat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

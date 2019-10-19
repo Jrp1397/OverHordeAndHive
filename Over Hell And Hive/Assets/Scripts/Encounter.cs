@@ -14,11 +14,15 @@ public class Encounter : MonoBehaviour
     public List<string> Initative;
     public List<Weapon> WeaponLoot;
     public List<Armour> ArmourLoot;
-    public int ResourceGold = 0, ResourceConMat = 0, ResourceOre = 0;
+
+    public List<Weapon> WeaponTypes;
+    public List<Armour> ArmourTypes;
+    public int ResourceGold = 0, ResourceConMat = 0, ResourceOre = 0, ThreatLevelMax = 10, ThreatLevelMin =3;
+    
     [SerializeField] private BaseManager HomeBase;
     public Image FriendlyIcon;
     public Image EnemyIcon;
-    public GameObject FieldTilePrefab;
+    public GameObject FieldTilePrefab, EmptyMonsterPrefab;
     private GameObject[,] BattleFieldObject = new GameObject [4,12];
     public CombatTile[,] BattleFieldTiles = new CombatTile[4, 12];
     public GameObject[] UIStatBars;
@@ -155,6 +159,7 @@ public class Encounter : MonoBehaviour
         {
             obby.SetActive(true);
         }
+        GenerateCombatEncounter();
         StartDeployment(4,4);
     }
 
@@ -616,6 +621,16 @@ public class Encounter : MonoBehaviour
         WeaponLoot.Clear();
         ArmourLoot.Clear();
         ResourceConMat = 0; ResourceGold = 0; ResourceOre = 0;
+        foreach(CombatTile CT in BattleFieldTiles)
+        {
+            CT.ChangeState(0);
+        }
+        foreach(Character friend in Friends)
+        {
+            friend.MapPosition = new Vector2Int(-1, -1);
+        }
+        Foes.Clear();
+        HomeBase.OnReturnFromCombat();
         ReturnsToMainBase.Toggle();
     }
 
@@ -651,17 +666,34 @@ public class Encounter : MonoBehaviour
                 {
                     BattleFieldTiles[MyMapPos.x, MyMapPos.y].ChangeState(0);
                     MyMapPos.x += RelativePosition.x / Mathf.Abs(RelativePosition.x);
-                    BattleFieldTiles[MyMapPos.x, MyMapPos.y].ChangeState(3);
-                    Foes[TurnFoeIndex].MapPosition = MyMapPos;
-                    RelativePosition.x -= RelativePosition.x / Mathf.Abs(RelativePosition.x);
+                    if( BattleFieldTiles[MyMapPos.x, MyMapPos.y].myTileState == TileState.Empty) { //Prevent Overlapping
+                        BattleFieldTiles[MyMapPos.x, MyMapPos.y].ChangeState(3);
+                        Foes[TurnFoeIndex].MapPosition = MyMapPos;
+                        RelativePosition.x -= RelativePosition.x / Mathf.Abs(RelativePosition.x);
+                    }
+                    else
+                    {
+                        MyMapPos.x -= RelativePosition.x / Mathf.Abs(RelativePosition.x);
+                        BattleFieldTiles[MyMapPos.x, MyMapPos.y].ChangeState(3);
+                    }
                 }
                 else
                 {
 
                     BattleFieldTiles[MyMapPos.x, MyMapPos.y].ChangeState(0);
                     MyMapPos.y += RelativePosition.y/ Mathf.Abs(RelativePosition.y);
-                    BattleFieldTiles[MyMapPos.x, MyMapPos.y].ChangeState(3);
-                    Foes[TurnFoeIndex].MapPosition = MyMapPos;
+
+                    if (BattleFieldTiles[MyMapPos.x, MyMapPos.y].myTileState == TileState.Empty)
+                    { //Prevent Overlapping
+                        BattleFieldTiles[MyMapPos.x, MyMapPos.y].ChangeState(3);
+                        Foes[TurnFoeIndex].MapPosition = MyMapPos;
+                        RelativePosition.y -= RelativePosition.y / Mathf.Abs(RelativePosition.y);
+                    }
+                    else
+                    {
+                        MyMapPos.y -= RelativePosition.y / Mathf.Abs(RelativePosition.y);
+                        BattleFieldTiles[MyMapPos.x, MyMapPos.y].ChangeState(3);
+                    }
                 }
                 minDistance--;
                 Foes[TurnFoeIndex].Movement--;
@@ -671,5 +703,42 @@ public class Encounter : MonoBehaviour
         TickUIElements();
         ClearMapOfMovement();
     }
+
+    public void GenerateCombatEncounter()
+    {
+        int enemyNumbers = (int)((.5 + Random.Range(0, 1)) * Friends.Count);
+        enemyNumbers++;
+
+        for(int i=0; i< enemyNumbers; i++)
+        {//Generate enemies, give them weapons and armor
+           
+            Monster tempMonster = Instantiate(EmptyMonsterPrefab, gameObject.transform).GetComponent<Monster>();
+            tempMonster.myEncounter = this;
+            tempMonster.myWeapon = new Weapon();
+            tempMonster.myArmor = new Armour();
+            int seed = Random.Range(ThreatLevelMin, ThreatLevelMax);
+            int gearAlloc = Random.Range(0, seed);
+            if(gearAlloc > 20)
+            {
+                gearAlloc = 20;
+            }
+            else if(gearAlloc > (.75 * seed))
+            {
+                gearAlloc = (int)(.75 * seed);
+            }
+
+            int temp = Mathf.Clamp(Random.Range(0, gearAlloc), 0, 10);
+            tempMonster.myWeapon = WeaponTypes[temp];
+            tempMonster.myArmor =ArmourTypes[gearAlloc - temp];
+            tempMonster.AssignRandomStats(seed - gearAlloc);
+
+            Foes.Add(tempMonster);
+
+
+        }
+
+
+    }
+
 
 }
