@@ -7,7 +7,7 @@ public class Monster : MonoBehaviour
     //3 main stats, weapon type and tier, armour type and teir, class type and tier
     public Encounter myEncounter;
     public int UniqueID, Str, Wis, Cha, OffType, OffTier, DefType, DefTier, SkillType, SkillTier, StanceType;
-    public int Health, Stamina, MP, MaxHealth, Movement, Initiative, Speed;
+    public int Health, Stamina, MP, MaxHealth, Movement, Initiative, Speed, MaxRangeOpportunity=1;
     public string Title;
     public Vector2Int MapPosition = new Vector2Int(-1, -1);
     public Sprite mySprite;

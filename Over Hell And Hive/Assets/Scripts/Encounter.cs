@@ -301,7 +301,7 @@ public class Encounter : MonoBehaviour
     public void CombatTick()
     {
         bool MonstersNow = false;
-       // ClearMapOfMovement();
+       // AfterMapMovement();
         if (PlayerNext)
         {//Player Controls
            
@@ -379,7 +379,7 @@ public class Encounter : MonoBehaviour
         Vector2Int tempPos;
         int Xvalue = maxValue;
         int Yvalue = 0;
-        ClearMapOfMovement();
+        AfterMapMovement();
       
         while (Xvalue >= -maxValue)
         {
@@ -412,19 +412,96 @@ public class Encounter : MonoBehaviour
     public void OnPlayerMovement()
     {
         TickUIElements();
-        ClearMapOfMovement();
+        AfterMapMovement();
         CalculatePlayerMovement();
         SelectedCharacterPrefab.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
 
     }
 
-    public void ClearMapOfMovement()
+    public void AfterMapMovement()
     {
         foreach (CombatTile CT in BattleFieldTiles)
         {
             CT.ChangeFromMovable();
+            CT.ClearLists();
+        }
+
+        //ensure that tiles are properly threatened
+        foreach(Character chara in Friends)
+        {
+            //do the movement Calculation, but for 
+            Vector2Int selectedPosition = chara.MapPosition;
+            int maxValue = chara.MaxRangeOpportunity;
+            Vector2Int tempPos;
+            int Xvalue = maxValue;
+            int Yvalue = 0;
+
+            while (Xvalue >= -maxValue)
+            {
+                Yvalue = 0;
+                do
+                {
+                    tempPos = new Vector2Int(selectedPosition.x + Xvalue, selectedPosition.y + Yvalue);
+
+                    if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
+                    {
+                        BattleFieldTiles[tempPos.x, tempPos.y].AddThreateningPlayer(chara);
+                    }
+
+                    tempPos = new Vector2Int(selectedPosition.x + Xvalue, selectedPosition.y - Yvalue);
+                    if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
+                    {
+                        BattleFieldTiles[tempPos.x, tempPos.y].AddThreateningPlayer(chara);
+                    }
+
+                    Yvalue++;
+
+                } while ((Mathf.Abs(Xvalue) + Yvalue) <= maxValue);
+
+
+                Xvalue--;
+            }
+
+        }
+        foreach (Monster chara in Foes)
+        {
+            //do the movement Calculation, but for 
+            Vector2Int selectedPosition = chara.MapPosition;
+            int maxValue = chara.MaxRangeOpportunity;
+            Vector2Int tempPos;
+            int Xvalue = maxValue;
+            int Yvalue = 0;
+
+            while (Xvalue >= -maxValue)
+            {
+                Yvalue = 0;
+                do
+                {
+                    tempPos = new Vector2Int(selectedPosition.x + Xvalue, selectedPosition.y + Yvalue);
+
+                    if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
+                    {
+                        BattleFieldTiles[tempPos.x, tempPos.y].AddThreateningMonster(chara);
+                    }
+
+                    tempPos = new Vector2Int(selectedPosition.x + Xvalue, selectedPosition.y - Yvalue);
+                    if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
+                    {
+                        BattleFieldTiles[tempPos.x, tempPos.y].AddThreateningMonster(chara);
+                    }
+
+                    Yvalue++;
+
+                } while ((Mathf.Abs(Xvalue) + Yvalue) <= maxValue);
+
+
+                Xvalue--;
+            }
+
         }
     }
+
+   
 
     public void AttackFoeAt(Vector2Int location)
     {
@@ -683,7 +760,7 @@ public class Encounter : MonoBehaviour
                     BattleFieldTiles[MyMapPos.x, MyMapPos.y].ChangeState(0);
                     MyMapPos.y += RelativePosition.y/ Mathf.Abs(RelativePosition.y);
 
-                    if (BattleFieldTiles[MyMapPos.x, MyMapPos.y].myTileState == TileState.Empty)
+                    if (BattleFieldTiles[MyMapPos.x, MyMapPos.y].myTileState == TileState.Empty || BattleFieldTiles[MyMapPos.x, MyMapPos.y].myTileState == TileState.Threatened)
                     { //Prevent Overlapping
                         BattleFieldTiles[MyMapPos.x, MyMapPos.y].ChangeState(3);
                         Foes[TurnFoeIndex].MapPosition = MyMapPos;
@@ -701,7 +778,7 @@ public class Encounter : MonoBehaviour
           
         }
         TickUIElements();
-        ClearMapOfMovement();
+        AfterMapMovement();
     }
 
     public void GenerateCombatEncounter()
@@ -714,8 +791,8 @@ public class Encounter : MonoBehaviour
            
             Monster tempMonster = Instantiate(EmptyMonsterPrefab, gameObject.transform).GetComponent<Monster>();
             tempMonster.myEncounter = this;
-            tempMonster.myWeapon = new Weapon();
-            tempMonster.myArmor = new Armour();
+            tempMonster.myWeapon = tempMonster.gameObject.AddComponent<Weapon>();
+            tempMonster.myArmor = tempMonster.gameObject.AddComponent<Armour>();
             int seed = Random.Range(ThreatLevelMin, ThreatLevelMax);
             int gearAlloc = Random.Range(0, seed);
             if(gearAlloc > 20)
