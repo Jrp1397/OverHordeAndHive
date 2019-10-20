@@ -367,7 +367,42 @@ public class Encounter : MonoBehaviour
         }
     }
 
-    private void CalculatePlayerMovement()
+   public void CalculatePlayerRange()
+    {
+        Vector2Int selectedPosition = Friends[SelectedFriendIndex].MapPosition;
+        int maxValue = Friends[SelectedFriendIndex].myWeapon.Reach;
+        Vector2Int tempPos;
+        int Xvalue = maxValue;
+        int Yvalue = 0;
+        AfterMapMovement();
+
+        while (Xvalue >= -maxValue)
+        {
+            Yvalue = 0;
+            do
+            {
+                tempPos = new Vector2Int(selectedPosition.x + Xvalue, selectedPosition.y + Yvalue);
+
+                if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
+                {
+                    BattleFieldTiles[tempPos.x, tempPos.y].ChangeToAttackable();
+                }
+
+                tempPos = new Vector2Int(selectedPosition.x + Xvalue, selectedPosition.y - Yvalue);
+                if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
+                {
+                    BattleFieldTiles[tempPos.x, tempPos.y].ChangeToAttackable();
+                }
+
+                Yvalue++;
+
+            } while ((Mathf.Abs(Xvalue) + Yvalue) <= maxValue);
+
+
+            Xvalue--;
+        }
+    }
+        public void CalculatePlayerMovement()
     {
         //Propagate across movement range empty tiles to moveable, enemy tiles to Attackable
         //Get position of selected character
@@ -423,6 +458,7 @@ public class Encounter : MonoBehaviour
         foreach (CombatTile CT in BattleFieldTiles)
         {
             CT.ChangeFromMovable();
+            CT.ChangeFromAttackable();
             CT.ClearLists();
         }
 

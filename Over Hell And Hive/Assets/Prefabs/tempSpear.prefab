@@ -51,6 +51,6 @@ MonoBehaviour:
   CrushOffence: 1
   CritMultiplier: 2
   Weight: 2
-  Reach: 0
+  Reach: 2
   APvalue: 1
   WeaponIcon: {fileID: 21300000, guid: 1a75523b2f412e64e87b92a2784138d6, type: 3}

@@ -116,13 +116,6 @@ public class CombatTile : MonoBehaviour
             case TileState.Threatened:
                 ChangeState(9);
                 break;
-            case TileState.Enemy:
-                if (myEncounter.Friends[myEncounter.SelectedFriendIndex].Movement > 0) { 
-                    ChangeState(7);
-                }
-                break;
-            default:
-                break;
         }
     }
 
@@ -144,8 +137,38 @@ public class CombatTile : MonoBehaviour
         }
        }
 
+    public void ChangeToAttackable()
+    {
+        switch (myTileState)
+        {
+            case TileState.Enemy:
+                ChangeState(7);
+                break;
+            case TileState.Ally:
+            case TileState.Blocked:
+                break;
+            default:
+                ChangeState(8);
+                break;
+        }
+    }
+
  
-   
+    public void ChangeFromAttackable()
+    {
+        switch (myTileState)
+        {
+            case TileState.Attackable:
+                ChangeState(3);
+                break;
+            case TileState.InRange:
+                ChangeState(0);
+                break;
+            default:
+                break;
+        }
+    }
+
     private void OnMouseOver()
     {
         Vector2Int oldPosition;
