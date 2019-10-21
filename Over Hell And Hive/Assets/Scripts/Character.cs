@@ -16,7 +16,7 @@ public class Character : MonoBehaviour
 {
     //3 main stats, weapon type and tier, armour type and teir, class type and tier
     public Encounter myEncounter;
-    public int UniqueID, Str, Wis, Cha, StanceType;
+    public int UniqueID, Str, Wis, Cha, StanceType, MaxRangeOpportunity=1;
     public int MaxHealth, Health, Stamina, MP, MaxMP, Speed, Movement, Initiative;
     public string DisplayName;
     public Sprite mySprite;

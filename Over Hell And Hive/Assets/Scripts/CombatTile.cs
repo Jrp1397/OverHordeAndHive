@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TileState {Empty=0, Blocked=1, Ally=2, Enemy=3, Deployable=4, Movable=5, Threatened=6, Attackable=7, InRange=8}
+public enum TileState {Empty=0, Blocked=1, Ally=2, Enemy=3, Deployable=4, Movable=5, Threatened=6, Attackable=7, InRange=8, ThreatenedAndMovable=9}
 
 public class CombatTile : MonoBehaviour
 {
@@ -11,13 +11,42 @@ public class CombatTile : MonoBehaviour
     public bool isTileStateDirty;
     public Vector2Int MapPosition;
     public Encounter myEncounter;
+    public List<Character> ThreatenedFriendList;
+    public List<Monster> ThreatenedFoeList;
 
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
         mySR = gameObject.GetComponent<SpriteRenderer>();    
         
+    }
+    public void ClearLists()
+    {
+        ThreatenedFoeList.Clear();
+        ThreatenedFriendList.Clear();
+    }
+
+    public void AddThreateningPlayer(Character chara)
+    {
+        if (!ThreatenedFriendList.Contains(chara))
+        {
+            ThreatenedFriendList.Add(chara);
+        }
+    }
+
+    public void AddThreateningMonster(Monster chara)
+    {
+        if (!ThreatenedFoeList.Contains(chara))
+        {
+            ThreatenedFoeList.Add(chara);
+        }
+        if(myTileState != TileState.Ally && myTileState != TileState.Enemy && myTileState != TileState.Deployable)
+        {
+            myTileState = TileState.Threatened;
+
+        }
     }
 
     // Update is called once per frame
@@ -44,6 +73,7 @@ public class CombatTile : MonoBehaviour
     {
         switch (myTileState)
         {
+            case TileState.Threatened:
             case TileState.Empty:
                 mySR.color = Color.white;
                 break;
@@ -62,7 +92,7 @@ public class CombatTile : MonoBehaviour
             case TileState.Movable:
                 mySR.color = Color.green;
                 break;
-            case TileState.Threatened:
+            case TileState.ThreatenedAndMovable:
                 mySR.color = Color.yellow;
                 break;
             case TileState.Attackable:
@@ -83,12 +113,8 @@ public class CombatTile : MonoBehaviour
             case TileState.Empty:
                 ChangeState(5);
                 break;
-            case TileState.Enemy:
-                if (myEncounter.Friends[myEncounter.SelectedFriendIndex].Movement > 0) { 
-                    ChangeState(7);
-                }
-                break;
-            default:
+            case TileState.Threatened:
+                ChangeState(9);
                 break;
         }
     }
@@ -104,11 +130,45 @@ public class CombatTile : MonoBehaviour
                 ChangeState(3);
             break;
 
+            case TileState.ThreatenedAndMovable:
+                ChangeState(0);
+            break;
+
         }
        }
 
+    public void ChangeToAttackable()
+    {
+        switch (myTileState)
+        {
+            case TileState.Enemy:
+                ChangeState(7);
+                break;
+            case TileState.Ally:
+            case TileState.Blocked:
+                break;
+            default:
+                ChangeState(8);
+                break;
+        }
+    }
+
  
-   
+    public void ChangeFromAttackable()
+    {
+        switch (myTileState)
+        {
+            case TileState.Attackable:
+                ChangeState(3);
+                break;
+            case TileState.InRange:
+                ChangeState(0);
+                break;
+            default:
+                break;
+        }
+    }
+
     private void OnMouseOver()
     {
         Vector2Int oldPosition;
@@ -141,6 +201,7 @@ public class CombatTile : MonoBehaviour
                     ChangeState(2);//Place Ally here
                     myEncounter.CycleSelFriend(true);
                     break;
+                case TileState.ThreatenedAndMovable:
                 case TileState.Movable:
                     oldPosition = myEncounter.Friends[myEncounter.SelectedFriendIndex].MapPosition;
                     if (oldPosition.x >= 0)
