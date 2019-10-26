@@ -27,6 +27,8 @@ public class Encounter : MonoBehaviour
     public CombatTile[,] BattleFieldTiles = new CombatTile[4, 12];
     public GameObject[] UIStatBars;
     public GameObject[] UIStatBarTexts;
+    public Image[] ActionButtonImages = new Image[4];
+    public Text[] ActionButtonTexts = new Text[4];
     private int[] endedRounds = { 0, 0 };
     public int SelectedFoeIndex = 0, SelectedFriendIndex = 0;
     public int TurnFoeIndex = 0, TurnFriendIndex = 0;
@@ -333,11 +335,11 @@ public class Encounter : MonoBehaviour
                 TickUIElements();
                 SelectedCharacterPrefab.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
                 Friends[TurnFriendIndex].Movement = Friends[TurnFriendIndex].Speed;
-            SelectedFriendIndex = TurnFriendIndex;
-            TickUIElements();
-            SelectedCharacterPrefab.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
+                SelectedFriendIndex = TurnFriendIndex;
+                TickUIElements();
+                SelectedCharacterPrefab.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
           
-            CalculatePlayerMovement();
+                CalculatePlayerMovement();
                 TurnFriendIndex++;
                 if (TurnFriendIndex > Friends.Count - 1)
                 {
@@ -573,6 +575,16 @@ public class Encounter : MonoBehaviour
 
         UIStatBarTexts[1].GetComponent<Text>().text = (Friends[SelectedFriendIndex].Movement + "/" + Friends[SelectedFriendIndex].Speed);
         UIStatBars[1].transform.localScale = new Vector3((float)Friends[SelectedFriendIndex].Movement / (float)Friends[SelectedFriendIndex].Speed, 1, 1);
+
+        //reset and relabel the skills for the active player
+        ActionButtonImages[0].sprite = Friends[SelectedFriendIndex].AvailableSkills[0].mySprite;
+        ActionButtonImages[1].sprite = Friends[SelectedFriendIndex].AvailableSkills[1].mySprite;
+        ActionButtonImages[2].sprite = Friends[SelectedFriendIndex].AvailableSkills[2].mySprite;
+
+        ActionButtonTexts[0].text = Friends[SelectedFriendIndex].AvailableSkills[0].Name;
+        ActionButtonTexts[1].text = Friends[SelectedFriendIndex].AvailableSkills[1].Name;
+        ActionButtonTexts[2].text = Friends[SelectedFriendIndex].AvailableSkills[2].Name;
+
         if (SelectedFoeIndex >= Foes.Count || SelectedFoeIndex == -1)
         {//what to do if no enemy is selected
             UIStatBarTexts[2].GetComponent<Text>().text = ("Enemy Health");
@@ -586,8 +598,6 @@ public class Encounter : MonoBehaviour
         {
             FoeName.text = Foes[SelectedFoeIndex].Title;
             EnemyIcon.sprite = Foes[SelectedFoeIndex].mySprite;
-
-
 
             UIStatBarTexts[2].GetComponent<Text>().text = (Foes[SelectedFoeIndex].Health + "/" + Foes[SelectedFoeIndex].MaxHealth);
             UIStatBars[2].transform.localScale = new Vector3((float)Foes[SelectedFoeIndex].Health / (float)Foes[SelectedFoeIndex].MaxHealth, 1, 1);
