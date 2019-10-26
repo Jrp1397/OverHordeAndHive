@@ -2468,6 +2468,16 @@ MonoBehaviour:
   - {fileID: 276358991}
   - {fileID: 1741578277}
   - {fileID: 527577540}
+  ActionButtonImages:
+  - {fileID: 2069792327}
+  - {fileID: 596185174}
+  - {fileID: 1238062255}
+  - {fileID: 1788947007}
+  ActionButtonTexts:
+  - {fileID: 1510804623}
+  - {fileID: 1521575973}
+  - {fileID: 673876394}
+  - {fileID: 506682795}
   SelectedFoeIndex: 0
   SelectedFriendIndex: 0
   TurnFoeIndex: 0
