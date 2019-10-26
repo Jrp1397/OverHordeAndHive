@@ -367,10 +367,10 @@ public class Encounter : MonoBehaviour
         }
     }
 
-   public void CalculatePlayerRange()
+    public void CalculatePlayerRange()
     {
         Vector2Int selectedPosition = Friends[SelectedFriendIndex].MapPosition;
-        int maxValue = Friends[SelectedFriendIndex].myWeapon.Reach;
+        int maxValue = Friends[SelectedFriendIndex].myWeapon.Reach + Friends[SelectedFriendIndex].AvailableSkills[Friends[SelectedFriendIndex].SelectedSkill].rangeModifier;
         Vector2Int tempPos;
         int Xvalue = maxValue;
         int Yvalue = 0;
@@ -402,7 +402,8 @@ public class Encounter : MonoBehaviour
             Xvalue--;
         }
     }
-        public void CalculatePlayerMovement()
+
+    public void CalculatePlayerMovement()
     {
         //Propagate across movement range empty tiles to moveable, enemy tiles to Attackable
         //Get position of selected character
@@ -537,7 +538,15 @@ public class Encounter : MonoBehaviour
         }
     }
 
-   
+    public void ActivateCharacterSkill(int index)
+    {
+        if (Friends[SelectedFriendIndex].AvailableSkills.Length > index && Friends[SelectedFriendIndex].AvailableSkills[index] != null)
+        {//if the selected skill is invalid, just do nothing.
+            Friends[SelectedFriendIndex].AvailableSkills[Friends[SelectedFriendIndex].SelectedSkill].OnDeselect();
+            Friends[SelectedFriendIndex].SelectedSkill = index;
+            Friends[SelectedFriendIndex].AvailableSkills[Friends[SelectedFriendIndex].SelectedSkill].OnSelect();
+        }
+    }
 
     public void AttackFoeAt(Vector2Int location)
     {
@@ -547,7 +556,7 @@ public class Encounter : MonoBehaviour
             if (foe.MapPosition == location)
             {
                 Debug.Log("attack found viable Target");
-                Friends[SelectedFriendIndex].Movement -= 2;//Currently set to attack value of 2
+                Friends[SelectedFriendIndex].Movement -= Friends[SelectedFriendIndex].AvailableSkills[Friends[SelectedFriendIndex].SelectedSkill].cost;
                 foe.ProcessAttack(tempAttack);
                 break;
             }

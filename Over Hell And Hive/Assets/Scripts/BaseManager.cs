@@ -35,6 +35,8 @@ public class BaseManager : MonoBehaviour
         TestAttack.Damage = new Vector3(3, 2, 1);
         SetSelectedCharacter(0);
         UpdateCharacterSelection();
+        
+
     }
 
     // Update is called once per frame
@@ -326,6 +328,9 @@ public class BaseManager : MonoBehaviour
             GameObject temp = Instantiate(CharacterSelectorPrefab, CharacterSelectionBox.transform);
             temp.GetComponent<Button>().onClick.AddListener(delegate { SetSelectedCharacter(chara.UniqueID); });
             temp.GetComponent<Image>().sprite = WorkIcons[(int)chara.myWork];
+            chara.AvailableSkills[0].myCharacter = chara;
+            chara.AvailableSkills[1].myCharacter = chara;
+            chara.AvailableSkills[2].myCharacter = chara;
         }
 
     }

@@ -2054,6 +2054,112 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237283537}
   m_CullTransparentMesh: 0
+--- !u!1 &243500758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 243500762}
+  - component: {fileID: 243500761}
+  - component: {fileID: 243500760}
+  - component: {fileID: 243500759}
+  m_Layer: 0
+  m_Name: Skills
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &243500759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243500758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926de14e61e11a448a4c7e957c16a122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ranged: 0
+  unlocked: 1
+  rangeModifier: 1
+  toHitModifier: 2
+  toCritModifier: 2
+  cost: 3
+  knockbackModifer: 0
+  damageModifier: {x: 0, y: 2, z: 0}
+  Name: Lunging attack
+  Desc: Thisi s good one, it lets you hit someone from farther away. Bit more exhausting
+    though
+  myCharacter: {fileID: 0}
+  mySprite: {fileID: 21300000, guid: 1a75523b2f412e64e87b92a2784138d6, type: 3}
+--- !u!114 &243500760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243500758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926de14e61e11a448a4c7e957c16a122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ranged: 0
+  unlocked: 1
+  rangeModifier: 0
+  toHitModifier: -2
+  toCritModifier: 3
+  cost: 2
+  knockbackModifer: 0
+  damageModifier: {x: 1, y: 1, z: 1}
+  Name: Power Attack
+  Desc: 'Imagine hitting someone, but like, putting your back into it '
+  myCharacter: {fileID: 0}
+  mySprite: {fileID: 21300000, guid: a58195248bc71c94d950842aaaf17e97, type: 3}
+--- !u!114 &243500761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243500758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926de14e61e11a448a4c7e957c16a122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ranged: 0
+  unlocked: 1
+  rangeModifier: 0
+  toHitModifier: 2
+  toCritModifier: 0
+  cost: 2
+  knockbackModifer: 0
+  damageModifier: {x: 0, y: 0, z: 0}
+  Name: Regular Attack
+  Desc: Just a regular old smack with whatever your hero can get a hand on
+  myCharacter: {fileID: 0}
+  mySprite: {fileID: 21300000, guid: 0a97b2e9874c98040a1234f3da9f23c6, type: 3}
+--- !u!4 &243500762
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243500758}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 622.5604, y: 601.2423, z: -33.625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &244554400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5349,6 +5455,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496784923}
   m_CullTransparentMesh: 0
+--- !u!1 &506682793
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 506682794}
+  - component: {fileID: 506682796}
+  - component: {fileID: 506682795}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &506682794
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506682793}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1788947005}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.0000038146973, y: -48.4}
+  m_SizeDelta: {x: 16.98, y: -63.72}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &506682795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506682793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Move
+--- !u!222 &506682796
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506682793}
+  m_CullTransparentMesh: 0
 --- !u!1 &513376937
 GameObject:
   m_ObjectHideFlags: 0
@@ -6346,7 +6529,7 @@ GameObject:
   - component: {fileID: 596185174}
   - component: {fileID: 596185173}
   m_Layer: 5
-  m_Name: GaurdStanceButton
+  m_Name: Skill2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6365,12 +6548,12 @@ RectTransform:
   m_Children:
   - {fileID: 1521575972}
   m_Father: {fileID: 1228925814}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 70, y: -6.100006}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 26.6, y: 5.7}
+  m_SizeDelta: {x: 81.91, y: 81.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &596185173
 MonoBehaviour:
@@ -6416,7 +6599,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 255530815}
-        m_MethodName: CalculatePlayerMovement
+        m_MethodName: ActivateCharacterSkill
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 255530815}
+        m_MethodName: CalculatePlayerRange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7095,8 +7289,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -68.1}
-  m_SizeDelta: {x: 0, y: -69}
+  m_AnchoredPosition: {x: 2.8, y: -51.4}
+  m_SizeDelta: {x: 16.32, y: -66.43}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &673876394
 MonoBehaviour:
@@ -7129,7 +7323,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Toggle Stance\n (Free)"
+  m_Text: Skill 3
 --- !u!222 &673876395
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8769,9 +8963,16 @@ MonoBehaviour:
   Speed: 2
   Movement: 2
   Initiative: 0
+  SelectedSkill: 0
+  critMod: 0
   DisplayName: Von Hohen
   mySprite: {fileID: 21300000, guid: 7f884d8f07089ea43b59273157e909b1, type: 3}
+  AvailableSkills:
+  - {fileID: 243500761}
+  - {fileID: 243500760}
+  - {fileID: 243500759}
   MapPosition: {x: -1, y: -1}
+  DamageMod: {x: 0, y: 0, z: 0}
   myWork: 0
   myArmor: {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
   myWeapon: {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403,
@@ -8803,9 +9004,16 @@ MonoBehaviour:
   Speed: 2
   Movement: 2
   Initiative: 0
+  SelectedSkill: 0
+  critMod: 0
   DisplayName: Bombastus
   mySprite: {fileID: 21300000, guid: cf041673e93cc4d469a1a1ffce1a583b, type: 3}
+  AvailableSkills:
+  - {fileID: 243500761}
+  - {fileID: 243500760}
+  - {fileID: 243500759}
   MapPosition: {x: -1, y: -1}
+  DamageMod: {x: 0, y: 0, z: 0}
   myWork: 0
   myArmor: {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
   myWeapon: {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403,
@@ -8851,9 +9059,16 @@ MonoBehaviour:
   Speed: 2
   Movement: 2
   Initiative: 0
+  SelectedSkill: 0
+  critMod: 0
   DisplayName: Theophrastus
   mySprite: {fileID: 21300000, guid: 29475be153db9834ab7e8fdcdcb602f2, type: 3}
+  AvailableSkills:
+  - {fileID: 243500761}
+  - {fileID: 243500760}
+  - {fileID: 243500759}
   MapPosition: {x: -1, y: -1}
+  DamageMod: {x: 0, y: 0, z: 0}
   myWork: 0
   myArmor: {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
   myWeapon: {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403,
@@ -8885,9 +9100,16 @@ MonoBehaviour:
   Speed: 2
   Movement: 2
   Initiative: 0
+  SelectedSkill: 0
+  critMod: 0
   DisplayName: Number 23
   mySprite: {fileID: 21300000, guid: 3cdb0701034ba794aac85b3c79dddf5e, type: 3}
+  AvailableSkills:
+  - {fileID: 243500761}
+  - {fileID: 243500760}
+  - {fileID: 243500759}
   MapPosition: {x: -1, y: -1}
+  DamageMod: {x: 0, y: 0, z: 0}
   myWork: 0
   myArmor: {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
   myWeapon: {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403,
@@ -11105,9 +11327,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 596185172}
   - {fileID: 2069792325}
+  - {fileID: 596185172}
   - {fileID: 1238062253}
+  - {fileID: 1788947005}
   m_Father: {fileID: 638049327}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11455,7 +11678,7 @@ GameObject:
   - component: {fileID: 1238062255}
   - component: {fileID: 1238062254}
   m_Layer: 5
-  m_Name: DefenseStanceButton
+  m_Name: Skill3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11478,8 +11701,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 180, y: -6.100006}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 110.5, y: 5.7}
+  m_SizeDelta: {x: 81.91, y: 81.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1238062254
 MonoBehaviour:
@@ -11523,7 +11746,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1238062255}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 255530815}
+        m_MethodName: ActivateCharacterSkill
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 255530815}
+        m_MethodName: CalculatePlayerRange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1238062255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13826,8 +14071,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -61.80001}
-  m_SizeDelta: {x: 0, y: -81.49}
+  m_AnchoredPosition: {x: 0, y: -49.699997}
+  m_SizeDelta: {x: 16.32, y: -65.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1510804623
 MonoBehaviour:
@@ -13860,7 +14105,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Attack
+  m_Text: Skill 1
 --- !u!222 &1510804624
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13903,8 +14148,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -61.80001}
-  m_SizeDelta: {x: 0, y: -81.49}
+  m_AnchoredPosition: {x: 0.0000038146973, y: -48.4}
+  m_SizeDelta: {x: 16.98, y: -63.72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1521575973
 MonoBehaviour:
@@ -13937,7 +14182,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Move
+  m_Text: Skill 2
 --- !u!222 &1521575974
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15710,6 +15955,135 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762875054}
+  m_CullTransparentMesh: 0
+--- !u!1 &1788947004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1788947005}
+  - component: {fileID: 1788947008}
+  - component: {fileID: 1788947007}
+  - component: {fileID: 1788947006}
+  m_Layer: 5
+  m_Name: Movement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1788947005
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788947004}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 506682794}
+  m_Father: {fileID: 1228925814}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 195.1, y: 5.7}
+  m_SizeDelta: {x: 81.91, y: 81.91}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1788947006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788947004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1788947007}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 255530815}
+        m_MethodName: CalculatePlayerMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1788947007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788947004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1788947008
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788947004}
   m_CullTransparentMesh: 0
 --- !u!1 &1790371632
 GameObject:
@@ -18786,7 +19160,7 @@ GameObject:
   - component: {fileID: 2069792327}
   - component: {fileID: 2069792326}
   m_Layer: 5
-  m_Name: AggStanceButton
+  m_Name: Skill1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18805,12 +19179,12 @@ RectTransform:
   m_Children:
   - {fileID: 1510804622}
   m_Father: {fileID: 1228925814}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -40, y: -6.1}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -58.000004, y: 5.6999884}
+  m_SizeDelta: {x: 81.91, y: 81.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2069792326
 MonoBehaviour:
@@ -18855,6 +19229,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 255530815}
+        m_MethodName: ActivateCharacterSkill
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 255530815}
         m_MethodName: CalculatePlayerRange
         m_Mode: 1
