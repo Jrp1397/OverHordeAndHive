@@ -38,7 +38,7 @@ public class Encounter : MonoBehaviour
     public SceneSwitcher ReturnsToMainBase;
     public Attack TestAttack;
     public GameObject SelectedCharacterPrefab, SelectedTilePrefab;
-    bool CharactersFirst = true, PlayerNext = true, autotick = false;
+    bool CharactersFirst = true, PlayerNext = true, autotick = false, isDirty = false;
 
 
     // Start is called before the first frame update
@@ -54,6 +54,13 @@ public class Encounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isDirty)
+        {
+            Friends[SelectedFriendIndex].AvailableSkills[0].myCharacter = Friends[SelectedFriendIndex];
+            Friends[SelectedFriendIndex].AvailableSkills[1].myCharacter = Friends[SelectedFriendIndex];
+            Friends[SelectedFriendIndex].AvailableSkills[2].myCharacter = Friends[SelectedFriendIndex];
+            isDirty = false;
+        }
         if (autotick)
         {
             autotick = false;
@@ -306,14 +313,15 @@ public class Encounter : MonoBehaviour
        // AfterMapMovement();
         if (PlayerNext)
         {//Player Controls
-           
-           
+
+            isDirty = true;
 
         }
         else
         {//Monster turn
             MonsterTurn();
-         //Debug.Log(Foes[TurnFoeIndex].Title + "'s Turn");
+
+            //Debug.Log(Foes[TurnFoeIndex].Title + "'s Turn");
             TickUIElements();
             SelectedCharacterPrefab.transform.SetParent(BattleFieldObject[Foes[TurnFoeIndex].MapPosition.x, Foes[TurnFoeIndex].MapPosition.y].transform, false);
          
@@ -333,9 +341,9 @@ public class Encounter : MonoBehaviour
             {//Players go next
                 PlayerNext = true;
                 TickUIElements();
-                SelectedCharacterPrefab.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
                 Friends[TurnFriendIndex].Movement = Friends[TurnFriendIndex].Speed;
                 SelectedFriendIndex = TurnFriendIndex;
+                isDirty = true;
                 TickUIElements();
                 SelectedCharacterPrefab.transform.SetParent(BattleFieldObject[Friends[SelectedFriendIndex].MapPosition.x, Friends[SelectedFriendIndex].MapPosition.y].transform, false);
           

@@ -48,6 +48,8 @@ public class Monster : MonoBehaviour
 
         outgoingAttack.Damage = new Vector3(slashDMG, pierceDMG, crushDMG);
         outgoingAttack.PenValue = OffTier + myWeapon.APvalue;
+        outgoingAttack.KnockbackValue = 0;
+        outgoingAttack.SourcePos = MapPosition;
         return outgoingAttack;
     }
 
@@ -81,38 +83,93 @@ public class Monster : MonoBehaviour
             {
                 float damagetotal = 0;
                 //Damage totals       Slash damage is eaisest to reduce or remove,       pierce has an easier time penetrating, but blunt damage goes through the most
-                float temp = (1 + (myArmor.SlashDefence - IncAttack.PenValue));
-                Debug.Log(temp);
-                //See if the armor is completely penetrated or not, if it is, do full damage(like with a crit), otherwise, reduce the total damage
-                if (temp > 0)
-                {
-                    damagetotal += ((IncAttack.Damage.x * IncAttack.Damage.x)/ (2*temp) );
-                }
-                else
-                {
-                    damagetotal += IncAttack.Damage.x * IncAttack.Damage.x;
+                    float temp = (1 + (myArmor.SlashDefence - IncAttack.PenValue));
+                if (IncAttack.Damage.x > 0)
+                {//Ignore negative damage values
+                    //See if the armor is completely penetrated or not, if it is, do full damage(like with a crit), otherwise, reduce the total damage
+                    if (temp > 0)
+                    {
+                        damagetotal += ((IncAttack.Damage.x * IncAttack.Damage.x) / (2 * temp));
+                    }
+                    else
+                    {
+                        damagetotal += IncAttack.Damage.x * IncAttack.Damage.x;
+                    }
                 }
                 temp = (1 + myArmor.PierceDefence - IncAttack.PenValue);
-                Debug.Log(temp);
-                if (temp > 0)
-                {
-                    damagetotal += ((IncAttack.Damage.y* IncAttack.Damage.y) / (2*temp));
+
+                if (IncAttack.Damage.y > 0)
+                {//Ignore negative damage values
+                    if (temp > 0)
+                    {
+                        damagetotal += ((IncAttack.Damage.y * IncAttack.Damage.y) / (2 * temp));
+                    }
+                    else
+                    {
+                        damagetotal += IncAttack.Damage.y * IncAttack.Damage.y;
+                    }
+
                 }
-                else
-                {
-                    damagetotal += IncAttack.Damage.y * IncAttack.Damage.y;
+
+                if (IncAttack.Damage.z > 0)
+                {//Ignore negative damage values
+                    temp = (1 + (myArmor.CrushDefence - IncAttack.PenValue));
+                    if (temp > 0)
+                    {
+                        damagetotal += ((IncAttack.Damage.z * IncAttack.Damage.z) / (2 * temp));
+                    }
+                    else
+                    {
+                        damagetotal += IncAttack.Damage.z * IncAttack.Damage.z;
+                    }
                 }
-                temp = (1 + (myArmor.CrushDefence - IncAttack.PenValue));
-                Debug.Log(temp);
-                if (temp > 0)
+
+                if(IncAttack.KnockbackValue > 0)
                 {
-                    damagetotal += ((IncAttack.Damage.z * IncAttack.Damage.z) /  (2 *temp));
+                    Vector2 relativeDistance = MapPosition - IncAttack.SourcePos;
+                    int i = IncAttack.KnockbackValue;
+                    
+                    while (i > 0)
+                    {
+                        if(Mathf.Abs(relativeDistance.x) > Mathf.Abs(relativeDistance.y))
+                        {//bigger x difference than y
+                            Vector2Int newtemp = MapPosition;
+                            newtemp.x += (int)(relativeDistance.x / Mathf.Abs(relativeDistance.x));
+                            if(newtemp.x >0 && newtemp.x <4 && (myEncounter.BattleFieldTiles[newtemp.x, newtemp.y].myTileState == TileState.Empty || myEncounter.BattleFieldTiles[newtemp.x, newtemp.y].myTileState == TileState.Threatened || myEncounter.BattleFieldTiles[newtemp.x, newtemp.y].myTileState == TileState.InRange))
+                            {
+                                myEncounter.BattleFieldTiles[MapPosition.x, MapPosition.y].ChangeState(0);
+                                MapPosition = newtemp;
+                                myEncounter.BattleFieldTiles[MapPosition.x, MapPosition.y].ChangeState(3);
+                            }
+                            else
+                            {
+                                damagetotal += 1;
+                            }
+                        }
+                        else
+                        {
+                            Vector2Int newtemp = MapPosition;
+                            newtemp.y += (int)(relativeDistance.y / Mathf.Abs(relativeDistance.y));
+                            if (newtemp.y > 0 && newtemp.y < 12 && (myEncounter.BattleFieldTiles[newtemp.x, newtemp.y].myTileState == TileState.Empty || myEncounter.BattleFieldTiles[newtemp.x, newtemp.y].myTileState == TileState.Threatened  || myEncounter.BattleFieldTiles[newtemp.x, newtemp.y].myTileState == TileState.InRange))
+                            {
+                                myEncounter.BattleFieldTiles[MapPosition.x, MapPosition.y].ChangeState(0);
+                                MapPosition = newtemp;
+                                myEncounter.BattleFieldTiles[MapPosition.x, MapPosition.y].ChangeState(3);
+                            }
+                            else
+                            {
+                                damagetotal += 1;
+                            }
+                        }
+
+                        i--;
+                    }
+
+
                 }
-                else
-                {
-                    damagetotal += IncAttack.Damage.z*IncAttack.Damage.z;
-                }
+
                 Debug.Log("Regular Hit, total Damage =  " + damagetotal);
+                
                 Health -= (int)damagetotal;
             }
         }

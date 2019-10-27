@@ -2372,6 +2372,7 @@ GameObject:
   - component: {fileID: 243500761}
   - component: {fileID: 243500760}
   - component: {fileID: 243500759}
+  - component: {fileID: 243500763}
   m_Layer: 0
   m_Name: Skills
   m_TagString: Untagged
@@ -2466,6 +2467,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &243500763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243500758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926de14e61e11a448a4c7e957c16a122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ranged: 0
+  unlocked: 1
+  rangeModifier: 1
+  toHitModifier: 10
+  toCritModifier: -10
+  cost: 2
+  knockbackModifer: 2
+  damageModifier: {x: -4, y: -4, z: -2}
+  Name: Shield Bash
+  Desc: Slam an enemy with your shield, sending them flying backwards
+  myCharacter: {fileID: 0}
+  mySprite: {fileID: 21300000, guid: caa46b4d023700d4bb7155e607c81432, type: 3}
 --- !u!1001 &244554400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2731,32 +2756,32 @@ MonoBehaviour:
   WeaponLoot: []
   ArmourLoot: []
   WeaponTypes:
-  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
-  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
-  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
-  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
-  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
-  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
-  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
-  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
-  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
-  - {fileID: 6682984836469782963, guid: 00c207332b5c00743bd5aeb628ab7fe2, type: 3}
+  - {fileID: 1073222874}
+  - {fileID: 1073222869}
+  - {fileID: 1073222873}
+  - {fileID: 1073222868}
+  - {fileID: 1073222872}
+  - {fileID: 1073222867}
+  - {fileID: 1073222871}
+  - {fileID: 1073222866}
+  - {fileID: 1073222870}
+  - {fileID: 1073222865}
   ArmourTypes:
-  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
-  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
-  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
-  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
-  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
-  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
-  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
-  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
-  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
-  - {fileID: 5639583448998510304, guid: 210d0c3ca796d714ebc860e48c597dcb, type: 3}
+  - {fileID: 1126381861}
+  - {fileID: 1126381860}
+  - {fileID: 1126381859}
+  - {fileID: 1126381858}
+  - {fileID: 1126381857}
+  - {fileID: 1126381856}
+  - {fileID: 1126381855}
+  - {fileID: 1126381854}
+  - {fileID: 1126381853}
+  - {fileID: 1126381852}
   ResourceGold: 0
   ResourceConMat: 0
   ResourceOre: 0
-  ThreatLevelMax: 10
-  ThreatLevelMin: 3
+  ThreatLevelMax: 12
+  ThreatLevelMin: 6
   HomeBase: {fileID: 980925424}
   FriendlyIcon: {fileID: 1306210734}
   EnemyIcon: {fileID: 580355456}
@@ -9955,9 +9980,8 @@ MonoBehaviour:
   MapPosition: {x: -1, y: -1}
   DamageMod: {x: 0, y: 0, z: 0}
   myWork: 0
-  myArmor: {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
-  myWeapon: {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403,
-    type: 3}
+  myArmor: {fileID: 1126381857}
+  myWeapon: {fileID: 1073222872}
 --- !u!114 &980925420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9996,9 +10020,8 @@ MonoBehaviour:
   MapPosition: {x: -1, y: -1}
   DamageMod: {x: 0, y: 0, z: 0}
   myWork: 0
-  myArmor: {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
-  myWeapon: {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403,
-    type: 3}
+  myArmor: {fileID: 1126381857}
+  myWeapon: {fileID: 1073222872}
 --- !u!4 &980925421
 Transform:
   m_ObjectHideFlags: 0
@@ -10051,9 +10074,8 @@ MonoBehaviour:
   MapPosition: {x: -1, y: -1}
   DamageMod: {x: 0, y: 0, z: 0}
   myWork: 0
-  myArmor: {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
-  myWeapon: {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403,
-    type: 3}
+  myArmor: {fileID: 1126381857}
+  myWeapon: {fileID: 1073222872}
 --- !u!114 &980925423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10092,9 +10114,8 @@ MonoBehaviour:
   MapPosition: {x: -1, y: -1}
   DamageMod: {x: 0, y: 0, z: 0}
   myWork: 0
-  myArmor: {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
-  myWeapon: {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403,
-    type: 3}
+  myArmor: {fileID: 1126381857}
+  myWeapon: {fileID: 1073222872}
 --- !u!114 &980925424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10114,21 +10135,22 @@ MonoBehaviour:
   ResourceOre: 0
   ResourceTomes: 0
   BaseArmorInventory:
-  - {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
-  - {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
-  - {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
-  - {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
-  - {fileID: 3869597071038868471, guid: 78ead944ee00fc840851d7cabc05f1b9, type: 3}
+  - {fileID: 1126381858}
+  - {fileID: 1126381858}
+  - {fileID: 1126381857}
+  - {fileID: 1126381857}
+  - {fileID: 1126381856}
   BaseWeaponInventory:
-  - {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403, type: 3}
-  - {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403, type: 3}
-  - {fileID: 8495768770285120466, guid: fbe51db99fbcae64b8d1665df5b55403, type: 3}
-  - {fileID: 8495768770285120466, guid: 8ca708d5e45e3de4c80fe5769f1db598, type: 3}
-  - {fileID: 8495768770285120466, guid: 8ca708d5e45e3de4c80fe5769f1db598, type: 3}
+  - {fileID: 1073222872}
+  - {fileID: 1073222872}
+  - {fileID: 1073222872}
+  - {fileID: 1073222867}
+  - {fileID: 1073222867}
   AvailableSkills:
   - {fileID: 243500761}
   - {fileID: 243500760}
   - {fileID: 243500759}
+  - {fileID: 243500763}
   SelectedSkill: 0
   StatsBlock:
   - {fileID: 1062253297}
@@ -10171,6 +10193,7 @@ MonoBehaviour:
   - {fileID: 243500761}
   - {fileID: 243500760}
   - {fileID: 243500759}
+  - {fileID: 243500763}
   PlayerInventory:
   - {fileID: 1146466467}
   - {fileID: 1884361278}
@@ -11207,6 +11230,276 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071341028}
   m_CullTransparentMesh: 0
+--- !u!1 &1073222864
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1073222875}
+  - component: {fileID: 1073222874}
+  - component: {fileID: 1073222873}
+  - component: {fileID: 1073222872}
+  - component: {fileID: 1073222871}
+  - component: {fileID: 1073222870}
+  - component: {fileID: 1073222869}
+  - component: {fileID: 1073222868}
+  - component: {fileID: 1073222867}
+  - component: {fileID: 1073222866}
+  - component: {fileID: 1073222865}
+  m_Layer: 0
+  m_Name: Weapons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1073222865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073222864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4f55191d4291a46a82112a89086d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Silvered Steel Spear
+  Ranged: 0
+  Tier: 5
+  SlashOffence: 3
+  PierceOffence: 6
+  CrushOffence: 3
+  CritMultiplier: 3
+  Weight: 9
+  Reach: 2
+  APvalue: 3
+  WeaponIcon: {fileID: 21300000, guid: 1a75523b2f412e64e87b92a2784138d6, type: 3}
+--- !u!114 &1073222866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073222864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4f55191d4291a46a82112a89086d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Iron Spear
+  Ranged: 0
+  Tier: 4
+  SlashOffence: 2
+  PierceOffence: 4
+  CrushOffence: 2
+  CritMultiplier: 3
+  Weight: 10
+  Reach: 2
+  APvalue: 2
+  WeaponIcon: {fileID: 21300000, guid: 1a75523b2f412e64e87b92a2784138d6, type: 3}
+--- !u!114 &1073222867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073222864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4f55191d4291a46a82112a89086d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Bronze Spear
+  Ranged: 0
+  Tier: 3
+  SlashOffence: 2
+  PierceOffence: 4
+  CrushOffence: 2
+  CritMultiplier: 2
+  Weight: 8
+  Reach: 2
+  APvalue: 2
+  WeaponIcon: {fileID: 21300000, guid: 1a75523b2f412e64e87b92a2784138d6, type: 3}
+--- !u!114 &1073222868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073222864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4f55191d4291a46a82112a89086d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Copper Spear
+  Ranged: 0
+  Tier: 2
+  SlashOffence: 2
+  PierceOffence: 3
+  CrushOffence: 1
+  CritMultiplier: 2
+  Weight: 7
+  Reach: 2
+  APvalue: 1
+  WeaponIcon: {fileID: 0}
+--- !u!114 &1073222869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073222864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4f55191d4291a46a82112a89086d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Bone Spear
+  Ranged: 0
+  Tier: 1
+  SlashOffence: 1
+  PierceOffence: 2
+  CrushOffence: 1
+  CritMultiplier: 2
+  Weight: 3
+  Reach: 2
+  APvalue: 1
+  WeaponIcon: {fileID: 21300000, guid: 1a75523b2f412e64e87b92a2784138d6, type: 3}
+--- !u!114 &1073222870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073222864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4f55191d4291a46a82112a89086d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Silvered Steel Blade
+  Ranged: 0
+  Tier: 5
+  SlashOffence: 5
+  PierceOffence: 3
+  CrushOffence: 2
+  CritMultiplier: 3
+  Weight: 7
+  Reach: 1
+  APvalue: 3
+  WeaponIcon: {fileID: 21300000, guid: 5fbbba125c7b8ea438d98c09e0091f7e, type: 3}
+--- !u!114 &1073222871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073222864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4f55191d4291a46a82112a89086d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Iron Blade
+  Ranged: 0
+  Tier: 4
+  SlashOffence: 4
+  PierceOffence: 3
+  CrushOffence: 2
+  CritMultiplier: 3
+  Weight: 8
+  Reach: 1
+  APvalue: 2
+  WeaponIcon: {fileID: 21300000, guid: 5fbbba125c7b8ea438d98c09e0091f7e, type: 3}
+--- !u!114 &1073222872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073222864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4f55191d4291a46a82112a89086d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Bronze Blade
+  Ranged: 0
+  Tier: 3
+  SlashOffence: 3
+  PierceOffence: 3
+  CrushOffence: 2
+  CritMultiplier: 2
+  Weight: 6
+  Reach: 1
+  APvalue: 1
+  WeaponIcon: {fileID: 21300000, guid: 5fbbba125c7b8ea438d98c09e0091f7e, type: 3}
+--- !u!114 &1073222873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073222864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4f55191d4291a46a82112a89086d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Copper Blade
+  Ranged: 0
+  Tier: 2
+  SlashOffence: 3
+  PierceOffence: 2
+  CrushOffence: 1
+  CritMultiplier: 1
+  Weight: 5
+  Reach: 1
+  APvalue: 0
+  WeaponIcon: {fileID: 21300000, guid: 5fbbba125c7b8ea438d98c09e0091f7e, type: 3}
+--- !u!114 &1073222874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073222864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4f55191d4291a46a82112a89086d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Bone Blade
+  Ranged: 0
+  Tier: 1
+  SlashOffence: 2
+  PierceOffence: 2
+  CrushOffence: 1
+  CritMultiplier: 0
+  Weight: 3
+  Reach: 1
+  APvalue: 0
+  WeaponIcon: {fileID: 21300000, guid: 5fbbba125c7b8ea438d98c09e0091f7e, type: 3}
+--- !u!4 &1073222875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073222864}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 511.92877, y: 842.44586, z: -529.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1078920198
 GameObject:
   m_ObjectHideFlags: 0
@@ -11450,6 +11743,246 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088765842}
   m_CullTransparentMesh: 0
+--- !u!1 &1126381851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1126381862}
+  - component: {fileID: 1126381861}
+  - component: {fileID: 1126381860}
+  - component: {fileID: 1126381859}
+  - component: {fileID: 1126381858}
+  - component: {fileID: 1126381857}
+  - component: {fileID: 1126381856}
+  - component: {fileID: 1126381855}
+  - component: {fileID: 1126381854}
+  - component: {fileID: 1126381853}
+  - component: {fileID: 1126381852}
+  m_Layer: 0
+  m_Name: Armors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1126381852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126381851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9a588de22e3384ebb447c84fe2e40b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Silvered Steel Scale Armor
+  Tier: 5
+  SlashDefence: 12
+  PierceDefence: 7
+  CrushDefence: 6
+  CritDefence: 3
+  Weight: 20
+  ArmorIcon: {fileID: 21300000, guid: 7c207bf8b5f8a7f44839c49fd8b0072c, type: 3}
+--- !u!114 &1126381853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126381851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9a588de22e3384ebb447c84fe2e40b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Padded Iron Plate
+  Tier: 4
+  SlashDefence: 10
+  PierceDefence: 5
+  CrushDefence: 5
+  CritDefence: 3
+  Weight: 20
+  ArmorIcon: {fileID: 21300000, guid: 7c207bf8b5f8a7f44839c49fd8b0072c, type: 3}
+--- !u!114 &1126381854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126381851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9a588de22e3384ebb447c84fe2e40b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Iron Chain Maille
+  Tier: 4
+  SlashDefence: 10
+  PierceDefence: 7
+  CrushDefence: 3
+  CritDefence: 1
+  Weight: 10
+  ArmorIcon: {fileID: 21300000, guid: 7c207bf8b5f8a7f44839c49fd8b0072c, type: 3}
+--- !u!114 &1126381855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126381851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9a588de22e3384ebb447c84fe2e40b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Bronze Studded Padded Leather
+  Tier: 3
+  SlashDefence: 5
+  PierceDefence: 5
+  CrushDefence: 5
+  CritDefence: 2
+  Weight: 10
+  ArmorIcon: {fileID: 21300000, guid: 7c207bf8b5f8a7f44839c49fd8b0072c, type: 3}
+--- !u!114 &1126381856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126381851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9a588de22e3384ebb447c84fe2e40b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Bronze Plate Armor
+  Tier: 3
+  SlashDefence: 6
+  PierceDefence: 6
+  CrushDefence: 3
+  CritDefence: 3
+  Weight: 15
+  ArmorIcon: {fileID: 21300000, guid: 7c207bf8b5f8a7f44839c49fd8b0072c, type: 3}
+--- !u!114 &1126381857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126381851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9a588de22e3384ebb447c84fe2e40b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Padded Leather Armor
+  Tier: 2
+  SlashDefence: 4
+  PierceDefence: 4
+  CrushDefence: 4
+  CritDefence: 2
+  Weight: 10
+  ArmorIcon: {fileID: 21300000, guid: 7c207bf8b5f8a7f44839c49fd8b0072c, type: 3}
+--- !u!114 &1126381858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126381851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9a588de22e3384ebb447c84fe2e40b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Wood and Leather Lammalar
+  Tier: 2
+  SlashDefence: 6
+  PierceDefence: 3
+  CrushDefence: 2
+  CritDefence: 2
+  Weight: 6
+  ArmorIcon: {fileID: 21300000, guid: 7c207bf8b5f8a7f44839c49fd8b0072c, type: 3}
+--- !u!114 &1126381859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126381851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9a588de22e3384ebb447c84fe2e40b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Leather Armor
+  Tier: 1
+  SlashDefence: 4
+  PierceDefence: 4
+  CrushDefence: 2
+  CritDefence: 1
+  Weight: 5
+  ArmorIcon: {fileID: 21300000, guid: 7c207bf8b5f8a7f44839c49fd8b0072c, type: 3}
+--- !u!114 &1126381860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126381851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9a588de22e3384ebb447c84fe2e40b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Fur Cloak
+  Tier: 1
+  SlashDefence: 3
+  PierceDefence: 3
+  CrushDefence: 4
+  CritDefence: 1
+  Weight: 3
+  ArmorIcon: {fileID: 21300000, guid: 7c207bf8b5f8a7f44839c49fd8b0072c, type: 3}
+--- !u!114 &1126381861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126381851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9a588de22e3384ebb447c84fe2e40b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Tattered Clothes
+  Tier: 0
+  SlashDefence: 2
+  PierceDefence: 2
+  CrushDefence: 2
+  CritDefence: 0
+  Weight: 1
+  ArmorIcon: {fileID: 21300000, guid: 7c207bf8b5f8a7f44839c49fd8b0072c, type: 3}
+--- !u!4 &1126381862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126381851}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 511.92877, y: 842.44586, z: -529.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1138470522
 GameObject:
   m_ObjectHideFlags: 0
@@ -13091,7 +13624,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a58195248bc71c94d950842aaaf17e97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56117292e85fd744594a24c050d23426, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

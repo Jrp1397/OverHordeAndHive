@@ -329,6 +329,7 @@ public class BaseManager : MonoBehaviour
         int index = 0;
         foreach(Skill tempSkill in SkillInventory)
         {
+            Debug.Log("Activatibng skill #" + index + " of " + SkillInventory.Length);
             SkillObject basetemp = DisplaySkills[index % 10].GetComponent<SkillObject>();
             basetemp.mySkill = tempSkill;
             basetemp.isFull = true; basetemp.isDirty = true;
