@@ -122,9 +122,5 @@ public class InventoryObject : MonoBehaviour
 
 
     }
-
-    public void foobart(int debug)
-    {
-        Debug.Log(debug);
-    }
+ 
 }

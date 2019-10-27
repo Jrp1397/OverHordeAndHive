@@ -12,9 +12,14 @@ public class BaseManager : MonoBehaviour
     public int ResourceGold = 0, ResourceConMat = 0, ResourceOre = 0, ResourceTomes = 0;
     public List<Armour> BaseArmorInventory;
     public List<Weapon> BaseWeaponInventory;
+    public List<Skill> AvailableSkills;
+    public int SelectedSkill;
     [SerializeField] private Text[] StatsBlock = new Text[9];
     [SerializeField] private GameObject[] DisplayInventory;
+    [SerializeField] private GameObject[] DisplaySkills;
+    [SerializeField] private Skill[] SkillInventory;
     [SerializeField] private GameObject[] PlayerInventory;
+    [SerializeField] private GameObject[] PlayerSkills;
     [SerializeField] private Encounter ExplorationPhase;
     [SerializeField] private Text AddorRemovetextBox;
     [SerializeField] private Text[] CurrencyBoxes;
@@ -35,6 +40,8 @@ public class BaseManager : MonoBehaviour
         TestAttack.Damage = new Vector3(3, 2, 1);
         SetSelectedCharacter(0);
         UpdateCharacterSelection();
+        
+
     }
 
     // Update is called once per frame
@@ -114,7 +121,6 @@ public class BaseManager : MonoBehaviour
         }
     }
 
-
     public void ToggleActiveCharacterExpedition()
     {
         for (int i = Combatants.Count - 1; i >= 0; i--)
@@ -144,8 +150,6 @@ public class BaseManager : MonoBehaviour
         }
     }
 
-
-
     public void SetSelectedCharacter(int incnumb)
     {//change the value, and then update any required UI elements.
         selectedChar = incnumb;
@@ -159,6 +163,7 @@ public class BaseManager : MonoBehaviour
                 isCharhere = true;
                 UpdateStatsPanel(Combatants[i]);
                 UpdateInventoryPanel(Combatants[i], 0);
+                UpdateSkillsPanel();
             }
         }
 
@@ -170,11 +175,11 @@ public class BaseManager : MonoBehaviour
         {
             UpdateStatsPanel(ExplorationPhase.AccessCharacterById(incnumb));
             UpdateInventoryPanel(ExplorationPhase.AccessCharacterById(incnumb),0);
+            UpdateSkillsPanel();
             AddorRemovetextBox.text = "Remove Unit From Expedition";
         }
     }
 
-   
     //takes item from unit, and adds it to bases list
     public void TakeItemFromSelectedUnit(bool isArmor, Character IncChar)
     {
@@ -218,6 +223,11 @@ public class BaseManager : MonoBehaviour
         }
     }
 
+    public void AssignSkilltoSelectedUnit(Skill IncSkill)
+    {
+        AccessSelectedCharacter().AvailableSkills[SelectedSkill] = IncSkill;
+    }
+
     public void UpdateStatsPanel(Character IncChar){
         //current order = Name, Health, Attack, Armor, Stamina, Speed, Magic, Resistance, and Mana
         StatsBlock[0].text = (IncChar.DisplayName);
@@ -254,11 +264,12 @@ public class BaseManager : MonoBehaviour
             obby.SetActive(false);
         }
 
+        //player inventory
         InventoryObject temp = PlayerInventory[0].GetComponent<InventoryObject>();
         temp.possibleArmor = IncChar.myArmor; 
         if(IncChar.myArmor == null) { temp.isFull = false; } else { temp.isFull = true; }
         temp.isDirty = true;
-
+        //player inventory
         temp = PlayerInventory[1].GetComponent<InventoryObject>();
         temp.possibleWeapon = IncChar.myWeapon;
         if (IncChar.myWeapon == null) { temp.isFull = false; } else { temp.isFull = true; }
@@ -299,6 +310,36 @@ public class BaseManager : MonoBehaviour
 
     }
 
+    public void UpdateSkillsPanel()
+    {
+        foreach (GameObject obby in DisplaySkills)
+        {
+           obby.SetActive(false);
+        }
+
+        //player inventory
+        for (int i = 0; i < 3; i++)
+        {
+            SkillObject temp = PlayerSkills[i].GetComponent<SkillObject>();
+            temp.mySkill = AccessSelectedCharacter().AvailableSkills[i];
+            if (temp.mySkill == null) { temp.isFull = false; } else { temp.isFull = true; }
+            temp.isDirty = true;
+
+        }
+        int index = 0;
+        foreach(Skill tempSkill in SkillInventory)
+        {
+            SkillObject basetemp = DisplaySkills[index % 10].GetComponent<SkillObject>();
+            basetemp.mySkill = tempSkill;
+            basetemp.isFull = true; basetemp.isDirty = true;
+            basetemp.Index = index;
+            DisplaySkills[index].SetActive(true);
+            index++;
+        }
+
+    }
+
+
     public void UpdateCharacterSelection()
     {
         List<Character> TempList = new List<Character>();
@@ -326,6 +367,9 @@ public class BaseManager : MonoBehaviour
             GameObject temp = Instantiate(CharacterSelectorPrefab, CharacterSelectionBox.transform);
             temp.GetComponent<Button>().onClick.AddListener(delegate { SetSelectedCharacter(chara.UniqueID); });
             temp.GetComponent<Image>().sprite = WorkIcons[(int)chara.myWork];
+            chara.AvailableSkills[0].myCharacter = chara;
+            chara.AvailableSkills[1].myCharacter = chara;
+            chara.AvailableSkills[2].myCharacter = chara;
         }
 
     }

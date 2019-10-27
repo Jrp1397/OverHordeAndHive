@@ -17,10 +17,12 @@ public class Character : MonoBehaviour
     //3 main stats, weapon type and tier, armour type and teir, class type and tier
     public Encounter myEncounter;
     public int UniqueID, Str, Wis, Cha, StanceType, MaxRangeOpportunity=1;
-    public int MaxHealth, Health, Stamina, MP, MaxMP, Speed, Movement, Initiative;
+    public int MaxHealth, Health, Stamina, MP, MaxMP, Speed, Movement, Initiative, SelectedSkill, critMod;
     public string DisplayName;
     public Sprite mySprite;
+    public Skill[] AvailableSkills = {null,null, null};
     public Vector2Int MapPosition = new Vector2Int(-1, -1);
+    public Vector3Int DamageMod = new Vector3Int(0, 0, 0);
     public Worktype myWork;
     public Armour myArmor= null;
     public Weapon myWeapon = null;
@@ -53,8 +55,8 @@ public class Character : MonoBehaviour
         Attack outgoingAttack = new Attack(); 
         //                              Stances are Defensive, Nuetral, Offensive. Higher stances give a better result.  Stamina gives up to a 25% boost, and 25% penalty
         outgoingAttack.ToHitValue = ((float)Str * (((float)StanceType / 2.0f) + .5f) + (float)OffTier) * (.75f +(.5f * ((float)Stamina/MaxHealth)));
-        outgoingAttack.ToCritModifier = OffTier * (myWeapon.CritMultiplier);
-        float slashDMG =myWeapon.SlashOffence, pierceDMG = myWeapon.PierceOffence, crushDMG = myWeapon.CrushOffence;
+        outgoingAttack.ToCritModifier = critMod+( OffTier * (myWeapon.CritMultiplier));
+        float slashDMG =myWeapon.SlashOffence + DamageMod[0], pierceDMG = myWeapon.PierceOffence + DamageMod[1], crushDMG = myWeapon.CrushOffence + DamageMod[2];
      
 
         outgoingAttack.Damage = new Vector3(slashDMG, pierceDMG, crushDMG);
