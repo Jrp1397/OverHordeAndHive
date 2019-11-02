@@ -28,6 +28,7 @@ public class Encounter : MonoBehaviour
     public GameObject[] UIStatBars;
     public GameObject[] UIStatBarTexts;
     public Image[] ActionButtonImages = new Image[4];
+    public Image[] StanceButtonImages = new Image[3];
     public Text[] ActionButtonTexts = new Text[4];
     private int[] endedRounds = { 0, 0 };
     public int SelectedFoeIndex = 0, SelectedFriendIndex = 0;
@@ -142,7 +143,7 @@ public class Encounter : MonoBehaviour
         }
     }
 
-   void OnDisable()
+    void OnDisable()
     {
         foreach (GameObject obby in BattleFieldObject)
         {
@@ -584,6 +585,11 @@ public class Encounter : MonoBehaviour
         UIStatBarTexts[1].GetComponent<Text>().text = (Friends[SelectedFriendIndex].Movement + "/" + Friends[SelectedFriendIndex].Speed);
         UIStatBars[1].transform.localScale = new Vector3((float)Friends[SelectedFriendIndex].Movement / (float)Friends[SelectedFriendIndex].Speed, 1, 1);
 
+        StanceButtonImages[0].color = Color.white;
+        StanceButtonImages[1].color = Color.white;
+        StanceButtonImages[2].color = Color.white;
+        StanceButtonImages[Friends[SelectedFriendIndex].StanceType].color = new Color(0, 207/256, 172/256);
+
         //reset and relabel the skills for the active player
         ActionButtonImages[0].sprite = Friends[SelectedFriendIndex].AvailableSkills[0].mySprite;
         ActionButtonImages[1].sprite = Friends[SelectedFriendIndex].AvailableSkills[1].mySprite;
@@ -774,6 +780,10 @@ public class Encounter : MonoBehaviour
         ReturnsToMainBase.Toggle();
     }
 
+    public void SetPlayerStance(int incStance)
+    {
+        Friends[SelectedFriendIndex].StanceType = incStance;
+    }
 
     private void MonsterTurn()
     {
