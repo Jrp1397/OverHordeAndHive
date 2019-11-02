@@ -17,7 +17,7 @@ public class Character : MonoBehaviour
 {
     //3 main stats, weapon type and tier, armour type and teir, class type and tier
     public Encounter myEncounter;
-    public int UniqueID, Str, Wis, Cha, StanceType, MaxRangeOpportunity=1;
+    public int UniqueID, Str, Wis, Cha, StanceType, MaxRangeOpportunity=1, timesAttackedThisTurn=0;
     public int MaxHealth, Health, Stamina, MP, MaxMP, Speed, Movement, Initiative, SelectedSkill, critMod;
     public string DisplayName;
     public Sprite mySprite;
@@ -69,7 +69,7 @@ public class Character : MonoBehaviour
 
     public float GenerateDefence()
     {
-        float output = ((float)Str * ((1.5f - (float)StanceType / 2.0f) ) + (float)myArmor.Tier) * (.75f + (.5f * ((float)Stamina / MaxHealth)));
+        float output = ((float)Str * ((1.5f - (float)StanceType / 2.0f) ) + (float)myArmor.Tier - timesAttackedThisTurn) * (.75f + (.5f * ((float)Stamina / MaxHealth)));
         Debug.Log(output);
         return output;
     }

@@ -7,7 +7,7 @@ public class Monster : MonoBehaviour
     //3 main stats, weapon type and tier, armour type and teir, class type and tier
     public Encounter myEncounter;
     public int UniqueID, Str, Wis, Cha, OffType, OffTier, DefType, DefTier, SkillType, SkillTier, StanceType;
-    public int Health, Stamina, MP, MaxHealth, Movement, Initiative, Speed, MaxRangeOpportunity=1;
+    public int Health, Stamina, MP, MaxHealth, Movement, Initiative, Speed, MaxRangeOpportunity = 1, timesAttackedThisTurn = 0;
     public string Title;
     public Vector2Int MapPosition = new Vector2Int(-1, -1);
     public Sprite mySprite;
@@ -55,13 +55,14 @@ public class Monster : MonoBehaviour
 
     public float GenerateDefence()
     {
-        float output = ((float)Str * ((1.5f - (float)StanceType / 2.0f)) + (float)myArmor.Tier) * (.75f + (.5f * ((float)Stamina / MaxHealth)));
+        float output = ((float)Str * ((1.5f - (float)StanceType / 2.0f)) + (float)myArmor.Tier - timesAttackedThisTurn) * (.75f + (.5f * ((float)Stamina / MaxHealth)));
         Debug.Log(output);
         return output;
     }
 
     public void ProcessAttack(Attack IncAttack)
     {
+        timesAttackedThisTurn++;
         int DefTier = myArmor.Tier;
         IncAttack.PenValue -= DefTier;
         float DidHit = Random.Range(0.0f, 100.0f);

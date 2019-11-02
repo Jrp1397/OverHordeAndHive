@@ -343,6 +343,7 @@ public class Encounter : MonoBehaviour
                 PlayerNext = true;
                 TickUIElements();
                 Friends[TurnFriendIndex].Movement = Friends[TurnFriendIndex].Speed;
+                Friends[TurnFriendIndex].timesAttackedThisTurn = 0;
                 SelectedFriendIndex = TurnFriendIndex;
                 isDirty = true;
                 TickUIElements();
@@ -802,6 +803,7 @@ public class Encounter : MonoBehaviour
         int minDistance = 5000, targetIndex = -1, i=0;
         Vector2Int MyMapPos = Foes[TurnFoeIndex].MapPosition, RelativePosition = new Vector2Int(0,0);
         Foes[TurnFoeIndex].Movement = Foes[TurnFoeIndex].Speed;
+        Foes[TurnFoeIndex].timesAttackedThisTurn = 0;
 
         foreach (Character chara in Friends)
         {//Determine the closest character. Later on determien most THREATENING character
