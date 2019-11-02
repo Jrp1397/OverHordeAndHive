@@ -2417,6 +2417,7 @@ GameObject:
   - component: {fileID: 243500760}
   - component: {fileID: 243500759}
   - component: {fileID: 243500763}
+  - component: {fileID: 243500764}
   m_Layer: 0
   m_Name: Skills
   m_TagString: Untagged
@@ -2535,6 +2536,30 @@ MonoBehaviour:
   Desc: Slam an enemy with your shield, sending them flying backwards
   myCharacter: {fileID: 0}
   mySprite: {fileID: 21300000, guid: caa46b4d023700d4bb7155e607c81432, type: 3}
+--- !u!114 &243500764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243500758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926de14e61e11a448a4c7e957c16a122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ranged: 1
+  unlocked: 1
+  rangeModifier: 0
+  toHitModifier: -1
+  toCritModifier: 0
+  cost: 2
+  knockbackModifer: 1
+  damageModifier: {x: 3, y: -1, z: -2}
+  Name: FireFlash
+  Desc: Trigger a torrent of flame anywhere on the battlefield
+  myCharacter: {fileID: 0}
+  mySprite: {fileID: 21300000, guid: 14428b1c823fb15458ea34b4d16d09b5, type: 3}
 --- !u!1001 &244554400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10221,6 +10246,7 @@ MonoBehaviour:
   - {fileID: 243500760}
   - {fileID: 243500759}
   - {fileID: 243500763}
+  - {fileID: 243500764}
   SelectedSkill: 0
   StatsBlock:
   - {fileID: 1062253297}
@@ -10264,6 +10290,7 @@ MonoBehaviour:
   - {fileID: 243500760}
   - {fileID: 243500759}
   - {fileID: 243500763}
+  - {fileID: 243500764}
   PlayerInventory:
   - {fileID: 1146466467}
   - {fileID: 1884361278}

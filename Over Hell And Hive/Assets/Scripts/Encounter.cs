@@ -380,37 +380,49 @@ public class Encounter : MonoBehaviour
 
     public void CalculatePlayerRange()
     {
-        Vector2Int selectedPosition = Friends[SelectedFriendIndex].MapPosition;
-        int maxValue = Friends[SelectedFriendIndex].myWeapon.Reach + Friends[SelectedFriendIndex].AvailableSkills[Friends[SelectedFriendIndex].SelectedSkill].rangeModifier;
-        Vector2Int tempPos;
-        int Xvalue = maxValue;
-        int Yvalue = 0;
-        AfterMapMovement();
-
-        while (Xvalue >= -maxValue)
+        if (Friends[SelectedFriendIndex].AvailableSkills[Friends[SelectedFriendIndex].SelectedSkill].Ranged || Friends[SelectedFriendIndex].myWeapon.Ranged)
         {
-            Yvalue = 0;
-            do
+            foreach(Monster mob in Foes)
             {
-                tempPos = new Vector2Int(selectedPosition.x + Xvalue, selectedPosition.y + Yvalue);
+                BattleFieldTiles[mob.MapPosition.x, mob.MapPosition.y].ChangeToAttackable();
+            }
+        }
+        else
+        {
 
-                if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
+
+            Vector2Int selectedPosition = Friends[SelectedFriendIndex].MapPosition;
+            int maxValue = Friends[SelectedFriendIndex].myWeapon.Reach + Friends[SelectedFriendIndex].AvailableSkills[Friends[SelectedFriendIndex].SelectedSkill].rangeModifier;
+            Vector2Int tempPos;
+            int Xvalue = maxValue;
+            int Yvalue = 0;
+            AfterMapMovement();
+
+            while (Xvalue >= -maxValue)
+            {
+                Yvalue = 0;
+                do
                 {
-                    BattleFieldTiles[tempPos.x, tempPos.y].ChangeToAttackable();
-                }
+                    tempPos = new Vector2Int(selectedPosition.x + Xvalue, selectedPosition.y + Yvalue);
 
-                tempPos = new Vector2Int(selectedPosition.x + Xvalue, selectedPosition.y - Yvalue);
-                if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
-                {
-                    BattleFieldTiles[tempPos.x, tempPos.y].ChangeToAttackable();
-                }
+                    if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
+                    {
+                        BattleFieldTiles[tempPos.x, tempPos.y].ChangeToAttackable();
+                    }
 
-                Yvalue++;
+                    tempPos = new Vector2Int(selectedPosition.x + Xvalue, selectedPosition.y - Yvalue);
+                    if ((tempPos.x >= 0 && tempPos.x < 4) && (tempPos.y >= 0 && tempPos.y < 12))
+                    {
+                        BattleFieldTiles[tempPos.x, tempPos.y].ChangeToAttackable();
+                    }
 
-            } while ((Mathf.Abs(Xvalue) + Yvalue) <= maxValue);
+                    Yvalue++;
+
+                } while ((Mathf.Abs(Xvalue) + Yvalue) <= maxValue);
 
 
-            Xvalue--;
+                Xvalue--;
+            }
         }
     }
 
@@ -588,7 +600,7 @@ public class Encounter : MonoBehaviour
         StanceButtonImages[0].color = Color.white;
         StanceButtonImages[1].color = Color.white;
         StanceButtonImages[2].color = Color.white;
-        StanceButtonImages[Friends[SelectedFriendIndex].StanceType].color = new Color(0, 207/256, 172/256);
+        StanceButtonImages[Friends[SelectedFriendIndex].StanceType].color = new Color(0, 207, 172);
 
         //reset and relabel the skills for the active player
         ActionButtonImages[0].sprite = Friends[SelectedFriendIndex].AvailableSkills[0].mySprite;
