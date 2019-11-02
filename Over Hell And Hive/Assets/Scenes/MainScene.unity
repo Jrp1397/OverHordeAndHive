@@ -361,7 +361,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 27681671}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 255530815}
+        m_MethodName: SetPlayerStance
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 255530815}
+        m_MethodName: TickUIElements
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &27681671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,7 +1151,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 118027922}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 255530815}
+        m_MethodName: SetPlayerStance
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 255530815}
+        m_MethodName: TickUIElements
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &118027922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1143,7 +1187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.8113208, b: 0.67569184, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2804,6 +2848,10 @@ MonoBehaviour:
   - {fileID: 596185174}
   - {fileID: 1238062255}
   - {fileID: 1788947007}
+  StanceButtonImages:
+  - {fileID: 862089879}
+  - {fileID: 27681671}
+  - {fileID: 118027922}
   ActionButtonTexts:
   - {fileID: 1510804623}
   - {fileID: 1521575973}
@@ -9205,7 +9253,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 862089879}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 255530815}
+        m_MethodName: SetPlayerStance
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 255530815}
+        m_MethodName: TickUIElements
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &862089879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10907,11 +10977,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Interception Stance
-
-    (Lower Hit,
-
-    AOO Enabled)'
+  m_Text: Balanced Stance
 --- !u!222 &1047684360
 CanvasRenderer:
   m_ObjectHideFlags: 0

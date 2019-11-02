@@ -41,12 +41,7 @@ public class CombatTile : MonoBehaviour
         if (!ThreatenedFoeList.Contains(chara))
         {
             ThreatenedFoeList.Add(chara);
-        }
-        if(myTileState != TileState.Ally && myTileState != TileState.Enemy && myTileState != TileState.Deployable)
-        {
-            myTileState = TileState.Threatened;
-
-        }
+        }   
     }
 
     // Update is called once per frame
@@ -108,15 +103,17 @@ public class CombatTile : MonoBehaviour
 
     public void ChangeToMovable()
     {
-        switch (myTileState)
-        {
-            case TileState.Empty:
-                ChangeState(5);
-                break;
-            case TileState.Threatened:
+       if(myTileState == TileState.Empty) {
+            if (ThreatenedFoeList.Count > 0)
+            {
                 ChangeState(9);
-                break;
-        }
+            }
+            else
+            {
+                ChangeState(5);
+            }
+       }
+        
     }
 
     public void ChangeFromMovable()
@@ -126,9 +123,6 @@ public class CombatTile : MonoBehaviour
             case TileState.Movable:
                 ChangeState(0);
              break;
-            case TileState.Attackable:
-                ChangeState(3);
-            break;
 
             case TileState.ThreatenedAndMovable:
                 ChangeState(0);
