@@ -2449,7 +2449,7 @@ MonoBehaviour:
   Desc: Thisi s good one, it lets you hit someone from farther away. Bit more exhausting
     though
   myCharacter: {fileID: 0}
-  mySprite: {fileID: 21300000, guid: 1a75523b2f412e64e87b92a2784138d6, type: 3}
+  mySprite: {fileID: 21300000, guid: 9626ffba6a0e34f42b9422354ecc1780, type: 3}
 --- !u!114 &243500760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2473,7 +2473,7 @@ MonoBehaviour:
   Name: Power Attack
   Desc: 'Imagine hitting someone, but like, putting your back into it '
   myCharacter: {fileID: 0}
-  mySprite: {fileID: 21300000, guid: a58195248bc71c94d950842aaaf17e97, type: 3}
+  mySprite: {fileID: 21300000, guid: 0b7e20d3ab6b2cf4097205d44520e2dd, type: 3}
 --- !u!114 &243500761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2497,7 +2497,7 @@ MonoBehaviour:
   Name: Regular Attack
   Desc: Just a regular old smack with whatever your hero can get a hand on
   myCharacter: {fileID: 0}
-  mySprite: {fileID: 21300000, guid: 0a97b2e9874c98040a1234f3da9f23c6, type: 3}
+  mySprite: {fileID: 21300000, guid: 0b7e20d3ab6b2cf4097205d44520e2dd, type: 3}
 --- !u!4 &243500762
 Transform:
   m_ObjectHideFlags: 0
@@ -2535,7 +2535,7 @@ MonoBehaviour:
   Name: Shield Bash
   Desc: Slam an enemy with your shield, sending them flying backwards
   myCharacter: {fileID: 0}
-  mySprite: {fileID: 21300000, guid: caa46b4d023700d4bb7155e607c81432, type: 3}
+  mySprite: {fileID: 21300000, guid: addd363110b8992478d678b29444d2d8, type: 3}
 --- !u!114 &243500764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10056,6 +10056,7 @@ MonoBehaviour:
   Cha: 2
   StanceType: 0
   MaxRangeOpportunity: 1
+  timesAttackedThisTurn: 0
   MaxHealth: 5
   Health: 5
   Stamina: 0
@@ -10096,6 +10097,7 @@ MonoBehaviour:
   Cha: 3
   StanceType: 0
   MaxRangeOpportunity: 1
+  timesAttackedThisTurn: 0
   MaxHealth: 5
   Health: 5
   Stamina: 0
@@ -10150,6 +10152,7 @@ MonoBehaviour:
   Cha: 4
   StanceType: 0
   MaxRangeOpportunity: 1
+  timesAttackedThisTurn: 0
   MaxHealth: 5
   Health: 5
   Stamina: 0
@@ -10190,6 +10193,7 @@ MonoBehaviour:
   Cha: 4
   StanceType: 0
   MaxRangeOpportunity: 1
+  timesAttackedThisTurn: 0
   MaxHealth: 5
   Health: 5
   Stamina: 5
@@ -10307,14 +10311,14 @@ MonoBehaviour:
   - {fileID: 365479726}
   CharacterDisplay: {fileID: 1348749497}
   WorkIcons:
-  - {fileID: 21300000, guid: 0a97b2e9874c98040a1234f3da9f23c6, type: 3}
-  - {fileID: 21300000, guid: 0a97b2e9874c98040a1234f3da9f23c6, type: 3}
-  - {fileID: 21300000, guid: 211999ae9be2e6042b91a90be5c75687, type: 3}
-  - {fileID: 21300000, guid: 211999ae9be2e6042b91a90be5c75687, type: 3}
-  - {fileID: 21300000, guid: e4fd05ce9ed1337448621d973f29dd8b, type: 3}
-  - {fileID: 21300000, guid: e4fd05ce9ed1337448621d973f29dd8b, type: 3}
-  - {fileID: 21300000, guid: 14428b1c823fb15458ea34b4d16d09b5, type: 3}
-  - {fileID: 21300000, guid: 14428b1c823fb15458ea34b4d16d09b5, type: 3}
+  - {fileID: 21300000, guid: a58195248bc71c94d950842aaaf17e97, type: 3}
+  - {fileID: 21300000, guid: a58195248bc71c94d950842aaaf17e97, type: 3}
+  - {fileID: 21300000, guid: fe633393a54857c4cb2c22a1819cf9f1, type: 3}
+  - {fileID: 21300000, guid: fe633393a54857c4cb2c22a1819cf9f1, type: 3}
+  - {fileID: 21300000, guid: 27f2210ac6cd12e4a80016af99d65999, type: 3}
+  - {fileID: 21300000, guid: 27f2210ac6cd12e4a80016af99d65999, type: 3}
+  - {fileID: 21300000, guid: 38dd19d7cead58841848ac09d9332425, type: 3}
+  - {fileID: 21300000, guid: 38dd19d7cead58841848ac09d9332425, type: 3}
   - {fileID: 21300000, guid: 5fbbba125c7b8ea438d98c09e0091f7e, type: 3}
   - {fileID: 21300000, guid: 5fbbba125c7b8ea438d98c09e0091f7e, type: 3}
   Buildings:
@@ -11371,7 +11375,7 @@ MonoBehaviour:
   Weight: 9
   Reach: 2
   APvalue: 3
-  WeaponIcon: {fileID: 21300000, guid: 1a75523b2f412e64e87b92a2784138d6, type: 3}
+  WeaponIcon: {fileID: 21300000, guid: ab8128d9f36ea1241b92720e577ce920, type: 3}
 --- !u!114 &1073222866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11394,7 +11398,7 @@ MonoBehaviour:
   Weight: 10
   Reach: 2
   APvalue: 2
-  WeaponIcon: {fileID: 21300000, guid: 1a75523b2f412e64e87b92a2784138d6, type: 3}
+  WeaponIcon: {fileID: 21300000, guid: 6ca94c770ad9d4145a9dc36c7c8420d1, type: 3}
 --- !u!114 &1073222867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11417,7 +11421,7 @@ MonoBehaviour:
   Weight: 8
   Reach: 2
   APvalue: 2
-  WeaponIcon: {fileID: 21300000, guid: 1a75523b2f412e64e87b92a2784138d6, type: 3}
+  WeaponIcon: {fileID: 21300000, guid: c67ee4f7fdd23ba41bc34362f01773c9, type: 3}
 --- !u!114 &1073222868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11440,7 +11444,7 @@ MonoBehaviour:
   Weight: 7
   Reach: 2
   APvalue: 1
-  WeaponIcon: {fileID: 0}
+  WeaponIcon: {fileID: 21300000, guid: 8c17639e8ad7bb249bc9483db863db67, type: 3}
 --- !u!114 &1073222869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11463,7 +11467,7 @@ MonoBehaviour:
   Weight: 3
   Reach: 2
   APvalue: 1
-  WeaponIcon: {fileID: 21300000, guid: 1a75523b2f412e64e87b92a2784138d6, type: 3}
+  WeaponIcon: {fileID: 21300000, guid: fe7656fd973336d4695ac5101a5fcaa4, type: 3}
 --- !u!114 &1073222870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11486,7 +11490,7 @@ MonoBehaviour:
   Weight: 7
   Reach: 1
   APvalue: 3
-  WeaponIcon: {fileID: 21300000, guid: 5fbbba125c7b8ea438d98c09e0091f7e, type: 3}
+  WeaponIcon: {fileID: 21300000, guid: fd3e4b035a01def4ea9c5b66c2965fda, type: 3}
 --- !u!114 &1073222871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11509,7 +11513,7 @@ MonoBehaviour:
   Weight: 8
   Reach: 1
   APvalue: 2
-  WeaponIcon: {fileID: 21300000, guid: 5fbbba125c7b8ea438d98c09e0091f7e, type: 3}
+  WeaponIcon: {fileID: 21300000, guid: 6b4327668938ea741bac0b462c557fc7, type: 3}
 --- !u!114 &1073222872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11532,7 +11536,7 @@ MonoBehaviour:
   Weight: 6
   Reach: 1
   APvalue: 1
-  WeaponIcon: {fileID: 21300000, guid: 5fbbba125c7b8ea438d98c09e0091f7e, type: 3}
+  WeaponIcon: {fileID: 21300000, guid: 6310d8622c4132d4da21d597e44babb8, type: 3}
 --- !u!114 &1073222873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11555,7 +11559,7 @@ MonoBehaviour:
   Weight: 5
   Reach: 1
   APvalue: 0
-  WeaponIcon: {fileID: 21300000, guid: 5fbbba125c7b8ea438d98c09e0091f7e, type: 3}
+  WeaponIcon: {fileID: 21300000, guid: c664e4f76183a654fb663628a73dd1c7, type: 3}
 --- !u!114 &1073222874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11578,7 +11582,7 @@ MonoBehaviour:
   Weight: 3
   Reach: 1
   APvalue: 0
-  WeaponIcon: {fileID: 21300000, guid: 5fbbba125c7b8ea438d98c09e0091f7e, type: 3}
+  WeaponIcon: {fileID: 21300000, guid: 98e64a18e6a467b4bb98d370e745e02e, type: 3}
 --- !u!4 &1073222875
 Transform:
   m_ObjectHideFlags: 0
