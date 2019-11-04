@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5677995056926713367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2, y: 2, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2.793}
+  m_LocalScale: {x: 0.21, y: 0.21, z: 0.21}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -47,6 +47,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTileState: 0
   isTileStateDirty: 0
+  PotentialSprites:
+  - {fileID: 21300000, guid: f314ee35e56b28b49b0523b07951e390, type: 3}
+  - {fileID: 21300000, guid: 2ab1b33b0d07f2f44af68a73bf8185c8, type: 3}
+  - {fileID: 21300000, guid: c862dc92b5cb8764aacd79babaa2ec75, type: 3}
+  MapPosition: {x: 0, y: 0}
+  myEncounter: {fileID: 0}
+  ThreatenedFriendList: []
+  ThreatenedFoeList: []
 --- !u!212 &1530182133317974757
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -72,6 +80,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -84,7 +93,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: aeaef8a6ab8c0024fa72b8ec5367ae23, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f314ee35e56b28b49b0523b07951e390, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,16 +117,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.010331154, y: -0.030992627}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.5}
+    oldSize: {x: 5, y: 5}
     newSize: {x: 0.5, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 4.98359, y: 5.024914}
   m_EdgeRadius: 0

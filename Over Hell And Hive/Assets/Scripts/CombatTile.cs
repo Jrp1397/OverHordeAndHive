@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public enum TileState {Empty=0, Blocked=1, Ally=2, Enemy=3, Deployable=4, Movable=5, Threatened=6, Attackable=7, InRange=8, ThreatenedAndMovable=9}
 
@@ -9,6 +11,7 @@ public class CombatTile : MonoBehaviour
     private SpriteRenderer mySR;
     public TileState myTileState;
     public bool isTileStateDirty;
+    public List<Sprite> PotentialSprites;
     public Vector2Int MapPosition;
     public Encounter myEncounter;
     public List<Character> ThreatenedFriendList;
@@ -19,7 +22,7 @@ public class CombatTile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mySR = gameObject.GetComponent<SpriteRenderer>();    
+        mySR = gameObject.GetComponent<SpriteRenderer>();
         
     }
     public void ClearLists()
@@ -70,30 +73,39 @@ public class CombatTile : MonoBehaviour
         {
             case TileState.Threatened:
             case TileState.Empty:
+                mySR.sprite = PotentialSprites[0];
                 mySR.color = Color.white;
                 break;
             case TileState.Blocked:
+                mySR.sprite = PotentialSprites[0];
                 mySR.color = Color.black;
                 break;
             case TileState.Ally:
-                mySR.color = Color.blue;
+                mySR.sprite = PotentialSprites[1];
+                mySR.color = Color.white;
                 break;
             case TileState.Enemy:
-                mySR.color = Color.red;
+                mySR.sprite = PotentialSprites[2];
+                mySR.color = Color.white;
                 break;
             case TileState.Deployable:
+                mySR.sprite = PotentialSprites[0];
                 mySR.color = new Color(83.0f / 256.0f, 196.0f / 256.0f, 61.0f / 256.0f);
                 break;
             case TileState.Movable:
+                mySR.sprite = PotentialSprites[0];
                 mySR.color = Color.green;
                 break;
             case TileState.ThreatenedAndMovable:
+                mySR.sprite = PotentialSprites[0];
                 mySR.color = Color.yellow;
                 break;
             case TileState.Attackable:
-                mySR.color = Color.magenta;
+                mySR.sprite = PotentialSprites[2];
+                mySR.color = Color.red;
                 break;
             case TileState.InRange:
+                mySR.sprite = PotentialSprites[0];
                 mySR.color = Color.Lerp(Color.red, Color.white, .5f);
                 break;
             default:
