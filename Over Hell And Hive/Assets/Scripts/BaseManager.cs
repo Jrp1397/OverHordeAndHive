@@ -15,7 +15,8 @@ public class BaseManager : MonoBehaviour
     public List<Skill> AvailableSkills;
     public int SelectedSkill;
     [SerializeField] private Text[] StatsBlock = new Text[9];
-    [SerializeField] private GameObject[] DisplayInventory;
+    [SerializeField] private Text SkillDescription;
+   [SerializeField] private GameObject[] DisplayInventory;
     [SerializeField] private GameObject[] DisplaySkills;
     [SerializeField] private Skill[] SkillInventory;
     [SerializeField] private GameObject[] PlayerInventory;
@@ -226,6 +227,9 @@ public class BaseManager : MonoBehaviour
     public void AssignSkilltoSelectedUnit(Skill IncSkill)
     {
         AccessSelectedCharacter().AvailableSkills[SelectedSkill] = IncSkill;
+        SkillDescription.text = "Skill Description \n" + IncSkill.Desc;
+
+
     }
 
     public void UpdateStatsPanel(Character IncChar){
@@ -327,6 +331,7 @@ public class BaseManager : MonoBehaviour
 
         }
         int index = 0;
+        //base inventory
         foreach(Skill tempSkill in SkillInventory)
         {
             Debug.Log("Activatibng skill #" + index + " of " + SkillInventory.Length);

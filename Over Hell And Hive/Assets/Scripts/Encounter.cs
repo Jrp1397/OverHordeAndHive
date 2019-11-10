@@ -30,6 +30,7 @@ public class Encounter : MonoBehaviour
     public Image[] ActionButtonImages = new Image[4];
     public Image[] StanceButtonImages = new Image[3];
     public Text[] ActionButtonTexts = new Text[4];
+    public Text LeftText, RightText;
     private int[] endedRounds = { 0, 0 };
     public int SelectedFoeIndex = 0, SelectedFriendIndex = 0;
     public int TurnFoeIndex = 0, TurnFriendIndex = 0;
@@ -83,9 +84,109 @@ public class Encounter : MonoBehaviour
         return temp;
     }
 
+    public Character AccessCharacterByLocation(Vector2Int incPos)
+    {
+        Character temp = null;
+        for (int i = Friends.Count - 1; i >= 0; i--)
+        {
+            if (Friends[i].MapPosition == incPos)
+            {
+                temp = Friends[i];
+                break;
+            }
+        }
+        return temp;
+    }
+
+    public Monster AccessMonsterByLocation(Vector2Int incPos)
+    {
+        Monster temp = null;
+        for (int i = Foes.Count - 1; i >= 0; i--)
+        {
+            if (Foes[i].MapPosition == incPos)
+            {
+                temp = Foes[i];
+                break;
+            }
+        }
+        return temp;
+    }
+
     public void SelectTileOnRightClick(Vector2Int incMapPosition)
     {
         SelectedTilePrefab.transform.SetParent(BattleFieldObject[incMapPosition.x, incMapPosition.y].transform, false);
+        Monster TargetedMonster;
+       
+        switch (BattleFieldTiles[incMapPosition.x, incMapPosition.y].myTileState)
+            {
+            case TileState.Ally:
+                //Display selected Characters stats on the right screen.
+                Character TargetedCharacter = AccessCharacterByLocation(incMapPosition);
+
+
+                FoeName.text = TargetedCharacter.DisplayName;
+                EnemyIcon.sprite = TargetedCharacter.mySprite;
+
+                UIStatBarTexts[2].GetComponent<Text>().text = (TargetedCharacter.Health + "/" + TargetedCharacter.MaxHealth);
+                UIStatBars[2].transform.localScale = new Vector3((float)TargetedCharacter.Health / (float)TargetedCharacter.MaxHealth, 1, 1);
+
+                UIStatBarTexts[3].GetComponent<Text>().text = (TargetedCharacter.Movement + "/" + TargetedCharacter.Speed);
+                UIStatBars[3].transform.localScale = new Vector3((float)TargetedCharacter.Movement / (float)TargetedCharacter.Speed, 1, 1);
+
+                RightText.text = "Ally Weapon: " + TargetedCharacter.myWeapon.name + " (" + TargetedCharacter.myWeapon.SlashOffence + "/" + TargetedCharacter.myWeapon.PierceOffence + "/" + TargetedCharacter.myWeapon.CrushOffence + ")";
+                RightText.text += "\n Armour Penetration:" + TargetedCharacter.myWeapon.APvalue + "   Crit Multiplier:" + TargetedCharacter.myWeapon.CritMultiplier;
+                RightText.text += "\n Armour:" + TargetedCharacter.myArmor.Name + " (" + TargetedCharacter.myArmor.SlashDefence + "/" + TargetedCharacter.myArmor.PierceDefence + "/" + TargetedCharacter.myArmor.CrushDefence + ")";
+                
+
+
+
+                break;
+            case TileState.Enemy:
+                //Display selected Enemy stats on the right screen.
+                TargetedMonster = AccessMonsterByLocation(incMapPosition);
+                
+                FoeName.text = TargetedMonster.Title;
+                EnemyIcon.sprite = TargetedMonster.mySprite;
+
+                UIStatBarTexts[2].GetComponent<Text>().text = (TargetedMonster.Health + "/" + TargetedMonster.MaxHealth);
+                UIStatBars[2].transform.localScale = new Vector3((float)TargetedMonster.Health / (float)TargetedMonster.MaxHealth, 1, 1);
+
+                UIStatBarTexts[3].GetComponent<Text>().text = (TargetedMonster.Movement + "/" + TargetedMonster.Speed);
+                UIStatBars[3].transform.localScale = new Vector3((float)TargetedMonster.Movement / (float)TargetedMonster.Speed, 1, 1);
+
+                RightText.text = "Ally Weapon: " + TargetedMonster.myWeapon.name + " (" + TargetedMonster.myWeapon.SlashOffence + "/" + TargetedMonster.myWeapon.PierceOffence + "/" + TargetedMonster.myWeapon.CrushOffence + ")";
+                RightText.text += "\n Armour Penetration:" + TargetedMonster.myWeapon.APvalue + "   Crit Multiplier:" + TargetedMonster.myWeapon.CritMultiplier;
+                RightText.text += "\n Armour:" + TargetedMonster.myArmor.Name + " (" + TargetedMonster.myArmor.SlashDefence + "/" + TargetedMonster.myArmor.PierceDefence + "/" + TargetedMonster.myArmor.CrushDefence + ")";
+
+
+                break;
+            case TileState.Attackable:
+                //Display hit chance, and damage modifiers
+                TargetedMonster = AccessMonsterByLocation(incMapPosition);
+
+                FoeName.text = TargetedMonster.Title;
+                EnemyIcon.sprite = TargetedMonster.mySprite;
+
+                UIStatBarTexts[2].GetComponent<Text>().text = (TargetedMonster.Health + "/" + TargetedMonster.MaxHealth);
+                UIStatBars[2].transform.localScale = new Vector3((float)TargetedMonster.Health / (float)TargetedMonster.MaxHealth, 1, 1);
+
+                UIStatBarTexts[3].GetComponent<Text>().text = (TargetedMonster.Movement + "/" + TargetedMonster.Speed);
+                UIStatBars[3].transform.localScale = new Vector3((float)TargetedMonster.Movement / (float)TargetedMonster.Speed, 1, 1);
+
+               // RightText.text = "Ally Weapon: " + TargetedMonster.myWeapon.name + " (" + TargetedMonster.myWeapon.SlashOffence + "/" + TargetedMonster.myWeapon.PierceOffence + "/" + TargetedMonster.myWeapon.CrushOffence + ")";
+               // RightText.text += "\n Armour Penetration:" + TargetedMonster.myWeapon.APvalue + "   Crit Multiplier:" + TargetedMonster.myWeapon.CritMultiplier;
+               // RightText.text += "\n Armour:" + TargetedMonster.myArmor.Name + " (" + TargetedMonster.myArmor.SlashDefence + "/" + TargetedMonster.myArmor.PierceDefence + "/" + TargetedMonster.myArmor.CrushDefence + ")";
+                Attack tempAttack = Friends[SelectedFriendIndex].GenerateAttack();
+                RightText.text = "\nHit Chance =" + (50+((tempAttack.ToHitValue - TargetedMonster.GenerateDefence()) * 10));
+                float DamageTemp = (tempAttack.Damage.x * tempAttack.Damage.x) / (TargetedMonster.myArmor.SlashDefence + 1.0f - tempAttack.PenValue);
+                DamageTemp = (tempAttack.Damage.y * tempAttack.Damage.y) / (TargetedMonster.myArmor.PierceDefence + 1 - tempAttack.PenValue);
+                DamageTemp = (tempAttack.Damage.z * tempAttack.Damage.z) / (TargetedMonster.myArmor.CrushDefence + 1 - tempAttack.PenValue);
+                RightText.text += "\nDamage On Hit:" + DamageTemp;
+                break;
+            default:
+
+                break;
+        }
 
     }
 
@@ -593,7 +694,7 @@ public class Encounter : MonoBehaviour
         FriendlyIcon.sprite = Friends[SelectedFriendIndex].mySprite;
 
         UIStatBarTexts[0].GetComponent<Text>().text = (Friends[SelectedFriendIndex].Health + "/" + Friends[SelectedFriendIndex].MaxHealth);
-        UIStatBars[0].transform.localScale = new Vector3((float)Friends[SelectedFriendIndex].Health / (float)Friends[SelectedFriendIndex].MaxHealth,1,1);
+        UIStatBars[0].transform.localScale = new Vector3((float)Friends[SelectedFriendIndex].Health / (float)Friends[SelectedFriendIndex].MaxHealth, 1, 1);
 
         UIStatBarTexts[1].GetComponent<Text>().text = (Friends[SelectedFriendIndex].Movement + "/" + Friends[SelectedFriendIndex].Speed);
         UIStatBars[1].transform.localScale = new Vector3((float)Friends[SelectedFriendIndex].Movement / (float)Friends[SelectedFriendIndex].Speed, 1, 1);
@@ -612,26 +713,6 @@ public class Encounter : MonoBehaviour
         ActionButtonTexts[1].text = Friends[SelectedFriendIndex].AvailableSkills[1].Name;
         ActionButtonTexts[2].text = Friends[SelectedFriendIndex].AvailableSkills[2].Name;
 
-        if (SelectedFoeIndex >= Foes.Count || SelectedFoeIndex == -1)
-        {//what to do if no enemy is selected
-            UIStatBarTexts[2].GetComponent<Text>().text = ("Enemy Health");
-            UIStatBars[2].transform.localScale = new Vector3(1, 1, 1);
-
-            UIStatBarTexts[3].GetComponent<Text>().text = ("Enemy Stamina");
-            UIStatBars[3].transform.localScale = new Vector3(1, 1, 1);
-
-        }
-        else
-        {
-            FoeName.text = Foes[SelectedFoeIndex].Title;
-            EnemyIcon.sprite = Foes[SelectedFoeIndex].mySprite;
-
-            UIStatBarTexts[2].GetComponent<Text>().text = (Foes[SelectedFoeIndex].Health + "/" + Foes[SelectedFoeIndex].MaxHealth);
-            UIStatBars[2].transform.localScale = new Vector3((float)Foes[SelectedFoeIndex].Health / (float)Foes[SelectedFoeIndex].MaxHealth, 1, 1);
-
-            UIStatBarTexts[3].GetComponent<Text>().text = (Foes[SelectedFoeIndex].Movement + "/" + Foes[SelectedFoeIndex].Speed);
-            UIStatBars[3].transform.localScale = new Vector3((float)Foes[SelectedFoeIndex].Movement / (float)Foes[SelectedFoeIndex].Speed, 1, 1);
-        }
     }
 
     public void OnEntityDeath(Vector2Int location, bool isPlayer)
