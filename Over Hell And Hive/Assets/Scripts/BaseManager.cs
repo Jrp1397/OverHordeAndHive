@@ -226,9 +226,16 @@ public class BaseManager : MonoBehaviour
 
     public void AssignSkilltoSelectedUnit(Skill IncSkill)
     {
-        AccessSelectedCharacter().AvailableSkills[SelectedSkill] = IncSkill;
+        Character TempChara = AccessSelectedCharacter();
+        TempChara.AvailableSkills[SelectedSkill] = IncSkill;
         SkillDescription.text = "Skill Description \n" + IncSkill.Desc;
-
+        SkillDescription.text += "Range Modifier: " + IncSkill.rangeModifier;
+        SkillDescription.text += "     Hit Modifier: " + IncSkill.toHitModifier;
+        SkillDescription.text += "n/Crit Modifier: " + IncSkill.toCritModifier;
+        SkillDescription.text += "     Stamina Cost: " + IncSkill.cost;
+        SkillDescription.text += "n/Damage:( " + TempChara.MyWeapon.SlashOffence + IncSkill.damageModifier.x;
+        SkillDescription.text += "/ " + TempChara.MyWeapon.PierceOffence + IncSkill.damageModifier.y;
+        SkillDescription.text += "/ " + TempChara.MyWeapon.CrushOffence + IncSkill.damageModifier.z + ")";
 
     }
 
