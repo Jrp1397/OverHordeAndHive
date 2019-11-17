@@ -229,13 +229,13 @@ public class BaseManager : MonoBehaviour
         Character TempChara = AccessSelectedCharacter();
         TempChara.AvailableSkills[SelectedSkill] = IncSkill;
         SkillDescription.text = "Skill Description \n" + IncSkill.Desc;
-        SkillDescription.text += "Range Modifier: " + IncSkill.rangeModifier;
+        SkillDescription.text += "\nRange Modifier: " + IncSkill.rangeModifier;
         SkillDescription.text += "     Hit Modifier: " + IncSkill.toHitModifier;
-        SkillDescription.text += "n/Crit Modifier: " + IncSkill.toCritModifier;
+        SkillDescription.text += "\nCrit Modifier: " + IncSkill.toCritModifier;
         SkillDescription.text += "     Stamina Cost: " + IncSkill.cost;
-        SkillDescription.text += "n/Damage:( " + TempChara.MyWeapon.SlashOffence + IncSkill.damageModifier.x;
-        SkillDescription.text += "/ " + TempChara.MyWeapon.PierceOffence + IncSkill.damageModifier.y;
-        SkillDescription.text += "/ " + TempChara.MyWeapon.CrushOffence + IncSkill.damageModifier.z + ")";
+        SkillDescription.text += "\nDamage:( " + ((int)TempChara.myWeapon.SlashOffence + (int)IncSkill.damageModifier.x);
+        SkillDescription.text += "/" + ((int)TempChara.myWeapon.PierceOffence + (int)IncSkill.damageModifier.y);
+        SkillDescription.text += "/" + ((int)TempChara.myWeapon.CrushOffence + (int)IncSkill.damageModifier.z) + ")";
 
     }
 
