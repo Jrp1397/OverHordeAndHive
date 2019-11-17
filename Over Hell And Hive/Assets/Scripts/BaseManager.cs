@@ -22,7 +22,6 @@ public class BaseManager : MonoBehaviour
     [SerializeField] private GameObject[] PlayerInventory;
     [SerializeField] private GameObject[] PlayerSkills;
     [SerializeField] private Encounter ExplorationPhase;
-    [SerializeField] private Text AddorRemovetextBox;
     [SerializeField] private Text[] CurrencyBoxes;
     [SerializeField] private Image CharacterDisplay;
     [SerializeField] private Sprite[] WorkIcons;
@@ -129,12 +128,10 @@ public class BaseManager : MonoBehaviour
             if (Combatants[i].UniqueID == selectedChar)//if this is the selected Character
             {
                 GiveCharacterById(selectedChar);
-                AddorRemovetextBox.text = "Remove Unit From Expedition";
                 return;
             }
         }
         ExplorationPhase.GiveCharacterById(selectedChar);
-        AddorRemovetextBox.text = "Add Unit To Expedition";
     }
 
     public void DirectionalToggleActiveCharacterExpedition(bool embarking)
@@ -142,12 +139,10 @@ public class BaseManager : MonoBehaviour
         if (embarking)
         {
             GiveCharacterById(selectedChar);
-            AddorRemovetextBox.text = "Remove Unit From Expedition";
         }
         else
         {
             ExplorationPhase.GiveCharacterById(selectedChar);
-            AddorRemovetextBox.text = "Add Unit To Expedition";
         }
     }
 
@@ -168,16 +163,11 @@ public class BaseManager : MonoBehaviour
             }
         }
 
-        if (isCharhere)
-        {
-            AddorRemovetextBox.text = "Add Unit To Expedition";
-        }
-        else
-        {
+        if (!isCharhere)
+        {        
             UpdateStatsPanel(ExplorationPhase.AccessCharacterById(incnumb));
             UpdateInventoryPanel(ExplorationPhase.AccessCharacterById(incnumb),0);
             UpdateSkillsPanel();
-            AddorRemovetextBox.text = "Remove Unit From Expedition";
         }
     }
 
