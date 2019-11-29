@@ -223,9 +223,9 @@ public class BaseManager : MonoBehaviour
         SkillDescription.text += "     Hit Modifier: " + IncSkill.toHitModifier;
         SkillDescription.text += "\nCrit Modifier: " + IncSkill.toCritModifier;
         SkillDescription.text += "     Stamina Cost: " + IncSkill.cost;
-        SkillDescription.text += "\nDamage:( " + ((int)TempChara.myWeapon.SlashOffence + (int)IncSkill.damageModifier.x);
-        SkillDescription.text += "/" + ((int)TempChara.myWeapon.PierceOffence + (int)IncSkill.damageModifier.y);
-        SkillDescription.text += "/" + ((int)TempChara.myWeapon.CrushOffence + (int)IncSkill.damageModifier.z) + ")";
+        SkillDescription.text += "\nDamage:( " + Mathf.Max(0,((int)TempChara.myWeapon.SlashOffence + (int)IncSkill.damageModifier.x));
+        SkillDescription.text += "/" + Mathf.Max(0, ((int)TempChara.myWeapon.PierceOffence + (int)IncSkill.damageModifier.y));
+        SkillDescription.text += "/" + Mathf.Max(0, ((int)TempChara.myWeapon.CrushOffence + (int)IncSkill.damageModifier.z)) + ")";
 
     }
 

@@ -252,26 +252,22 @@ public class Encounter : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    public void OnEnableAttempt(SceneSwitcher incSS)
     {
-        if (BattleFieldObject[0,0] == null) { return; }
-        foreach (GameObject obby in BattleFieldObject)
+        if(Friends.Count <= 0)
         {
-           
-            obby.SetActive(true);
+            return;
         }
 
-        StartDeployment(4, 4);
-    }
+        incSS.Toggle();
 
-    public void EnableMap()
-    {
         foreach (GameObject obby in BattleFieldObject)
         {
             obby.SetActive(true);
         }
         GenerateCombatEncounter();
         StartDeployment(4,4);
+
     }
 
     public void GenerateField()
@@ -350,23 +346,21 @@ public class Encounter : MonoBehaviour
             }
             
         }
-
-
-
-
     }
 
-    public void EndDeployment()
+    public void EndDeployment(SceneSwitcher incSS)
     {
         foreach(Character chara in Friends)
         {
             if(chara.MapPosition.x < 0)
             {
+                Debug.Log("Not all units deployed");
                 return;
             }
         }
         //run the controls to start standard combat.
 
+        incSS.Toggle();
         foreach(CombatTile comtil in BattleFieldTiles)
         {
             if(comtil.myTileState == TileState.Deployable)
