@@ -8,6 +8,8 @@ public class Building : MonoBehaviour
     [SerializeField] private BaseManager myBase;
     [SerializeField] private int BuildingType;
     public int Level, ManpowerTotal, ManpowerLeft, ManpowerRight;
+    public int [] BaseCostToUpgrade = new int [3] ;
+    public Image ButtonSR; 
     public Text StatusText, CostToUpgrade;
 
     // Start is called before the first frame update
@@ -78,7 +80,7 @@ public class Building : MonoBehaviour
 
 
     public void UpdateStatusText()
-    {
+    {//Activates when pressed
         switch (BuildingType)
         {
             case 0://Expedition
@@ -111,7 +113,52 @@ public class Building : MonoBehaviour
             default:
                 break;
         }
+
+        CostToUpgrade.text = " ";
+        if(BaseCostToUpgrade[0] > 0)
+        {
+            CostToUpgrade.text += BaseCostToUpgrade[0] * Level + " Gold ";
+        }
+        if (BaseCostToUpgrade[1] > 0)
+        {
+            CostToUpgrade.text += BaseCostToUpgrade[1] * Level + " Brick ";
+        }
+        if (BaseCostToUpgrade[2] > 0)
+        {
+            CostToUpgrade.text += BaseCostToUpgrade[2] * Level + " Ore ";
+        }
+
+        if (myBase.ResourceGold > BaseCostToUpgrade[0]*Level && myBase.ResourceConMat > BaseCostToUpgrade[1] * Level && myBase.ResourceOre > BaseCostToUpgrade[2] * Level)
+        {
+            ButtonSR.color = Color.white;
+        }
+        else
+        {
+            ButtonSR.color = Color.red;
+        }
         myBase.UpdateIncomes();
+    }
+
+    public void UpgradeBuilding()
+    {//Upgrades the building, and increases the basic manpower present if it is a resource producing building
+        if (myBase.ResourceGold > BaseCostToUpgrade[0] * Level && myBase.ResourceConMat > BaseCostToUpgrade[1] * Level && myBase.ResourceOre > BaseCostToUpgrade[2] * Level)
+        {
+            myBase.ResourceGold -= BaseCostToUpgrade[0] * Level;
+            myBase.ResourceConMat -= BaseCostToUpgrade[1] * Level;
+            myBase.ResourceOre -= BaseCostToUpgrade[2] * Level;
+            Level++;
+            if(BuildingType != 0)
+            {
+                ManpowerLeft++;
+                ManpowerRight++;
+            }
+
+
+
+            myBase.UpdateIncomes();
+            UpdateStatusText();
+        }
+
     }
 
 }
