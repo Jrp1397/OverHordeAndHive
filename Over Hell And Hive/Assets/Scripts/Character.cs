@@ -27,6 +27,7 @@ public class Character : MonoBehaviour
     public Worktype myWork;
     public Armour myArmor= null;
     public Weapon myWeapon = null;
+    public bool ChangedStanceThisRound  = false;
     
     // Start is called before the first frame update
     void Start()

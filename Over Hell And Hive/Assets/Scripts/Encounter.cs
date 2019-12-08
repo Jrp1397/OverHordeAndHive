@@ -406,6 +406,7 @@ public class Encounter : MonoBehaviour
     public void CombatTick()
     {
         bool MonstersNow = false;
+        Friends[SelectedFriendIndex].ChangedStanceThisRound = false;
        // AfterMapMovement();
         if (PlayerNext)
         {//Player Controls
@@ -466,6 +467,7 @@ public class Encounter : MonoBehaviour
             TurnFoeIndex = 0;
             TurnFriendIndex = 0;
             PlayerNext = CharactersFirst;
+            CombatTick();
                    
         }
         if (MonstersNow)
@@ -493,6 +495,17 @@ public class Encounter : MonoBehaviour
             int Xvalue = maxValue;
             int Yvalue = 0;
             AfterMapMovement();
+
+            foreach(Monster mob in Foes)
+            {
+                Debug.Log(Mathf.Abs(mob.MapPosition.x - selectedPosition.x) + Mathf.Abs(mob.MapPosition.y - selectedPosition.y) + " vs " + maxValue);
+                if (Mathf.Abs(mob.MapPosition.x - selectedPosition.x) + Mathf.Abs(mob.MapPosition.y - selectedPosition.y) <= maxValue)
+                {
+                    BattleFieldTiles[mob.MapPosition.x, mob.MapPosition.y].ChangeState(7);
+                }
+            }
+
+
 
             while (Xvalue >= -maxValue)
             {
@@ -691,7 +704,7 @@ public class Encounter : MonoBehaviour
         UIStatBars[0].transform.localScale = new Vector3((float)Friends[SelectedFriendIndex].Health / (float)Friends[SelectedFriendIndex].MaxHealth, 1, 1);
 
         UIStatBarTexts[1].GetComponent<Text>().text = (Friends[SelectedFriendIndex].Movement + "/" + Friends[SelectedFriendIndex].Speed);
-        UIStatBars[1].transform.localScale = new Vector3((float)Friends[SelectedFriendIndex].Movement / (float)Friends[SelectedFriendIndex].Speed, 1, 1);
+        UIStatBars[1].transform.localScale = new Vector3(Mathf.Max((float)Friends[SelectedFriendIndex].Movement / (float)Friends[SelectedFriendIndex].Speed, 0), 1, 1);
 
         StanceButtonImages[0].color = Color.white;
         StanceButtonImages[1].color = Color.white;
@@ -870,7 +883,15 @@ public class Encounter : MonoBehaviour
 
     public void SetPlayerStance(int incStance)
     {
-        Friends[SelectedFriendIndex].StanceType = incStance;
+        if (!Friends[SelectedFriendIndex].ChangedStanceThisRound)
+        {
+            Friends[SelectedFriendIndex].StanceType = incStance;
+            Friends[SelectedFriendIndex].ChangedStanceThisRound = true;
+        }
+        else
+        {
+            Debug.Log("Stance Already Changed this round");
+        }
     }
 
     private void MonsterTurn()

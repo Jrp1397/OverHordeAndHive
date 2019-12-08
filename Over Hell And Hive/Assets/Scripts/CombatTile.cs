@@ -152,6 +152,7 @@ public class CombatTile : MonoBehaviour
                 break;
             case TileState.Ally:
             case TileState.Blocked:
+            case TileState.Attackable:
                 break;
             default:
                 ChangeState(8);
